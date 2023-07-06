@@ -1,0 +1,6 @@
+pydantic~=2.0
+
+# Development
+ruff~=0.0.277
+yapf~=0.40
+pytest~=7.4

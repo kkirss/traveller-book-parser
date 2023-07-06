@@ -1,0 +1,41 @@
+[tool.ruff]
+select = [
+    "F",
+    "E",
+    "W",
+    "I",
+    "N",
+    "ANN",
+    "S",
+    "BLE",
+    "FBT",
+    "B",
+    "A",
+    "COM",
+    "C4",
+    "ISC",
+    "G",
+    "INP",
+    "SIM",
+    "TID",
+    "ARG",
+    "PTH",
+    "PERF",
+    "RUF",
+    "UP",
+]
+ignore = [
+    "ANN101", # https://beta.ruff.rs/docs/rules/missing-type-self/
+    "A003", # (class attribute) https://beta.ruff.rs/docs/rules/builtin-attribute-shadowing/
+    "S101", # S101
+]
+
+#fix = true
+
+[tool.ruff.flake8-annotations]
+suppress-none-returning = true
+
+
+[tool.ruff.isort]
+force-sort-within-sections = true
+split-on-trailing-comma = false

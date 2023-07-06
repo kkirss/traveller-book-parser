@@ -2,6 +2,7 @@
 .vscode/
 
 .mypy_cache/
+.ruff_cache/
 
 data/
 .env
