@@ -19,6 +19,7 @@ select = [
     "INP",
     "SIM",
     "TID",
+    "TCH",
     "ARG",
     "PTH",
     "PERF",
