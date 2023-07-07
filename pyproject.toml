@@ -5,6 +5,7 @@ select = [
     "W",
     "I",
     "N",
+    "D",
     "ANN",
     "S",
     "BLE",
@@ -27,7 +28,10 @@ select = [
 ignore = [
     "ANN101", # https://beta.ruff.rs/docs/rules/missing-type-self/
     "A003", # (class attribute) https://beta.ruff.rs/docs/rules/builtin-attribute-shadowing/
-    "S101", # S101
+    "S101",  # Use of assert detected
+    "D1",  # Missing docstrings
+    "D203",  # https://beta.ruff.rs/docs/rules/one-blank-line-before-class/
+    "D213",  # https://beta.ruff.rs/docs/rules/multi-line-summary-second-line/
 ]
 
 #fix = true
