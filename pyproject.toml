@@ -1,3 +1,7 @@
+[project]
+name = "traveller-book-parser"
+requires-python = ">=3.11"
+
 [tool.ruff]
 select = [
     "F",
