@@ -13,6 +13,9 @@ class Settings(BaseSettings):
 
     log_level: LogLevel = LogLevel.INFO
 
+    books_path: Path = Field(
+        description="Folder path where books are loaded from",
+        default_factory=lambda: Path(".") / "data" / "books")
     book_descriptions_path: Path = Field(
         description="Folder path where book description files are loaded from",
         default_factory=lambda: Path(".") / "book_descriptions")
