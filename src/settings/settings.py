@@ -1,6 +1,7 @@
 import logging
+from pathlib import Path
 
-from pydantic import ValidationError
+from pydantic import Field, ValidationError
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from .log_level import LogLevel
@@ -11,6 +12,10 @@ class Settings(BaseSettings):
                                       env_file_encoding='utf-8')
 
     log_level: LogLevel = LogLevel.INFO
+
+    book_descriptions_path: Path = Field(
+        description="Folder path where book description files are loaded from",
+        default_factory=lambda: Path(".") / "book_descriptions")
 
 
 try:
