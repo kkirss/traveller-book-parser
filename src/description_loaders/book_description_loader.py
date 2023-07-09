@@ -19,7 +19,8 @@ def get_book_description_path(book_code_name: str) -> Path:
 
     if not paths:
         raise FileNotFoundError(
-            f"Book description file not found for {book_code_name}")
+            f"Book description file not found for {book_code_name}",
+        )
 
     return get_supported_path(paths)
 

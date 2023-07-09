@@ -22,7 +22,8 @@ def load_file_data(path: Path) -> dict[str, Any]:
         file_type_loader = FILE_TYPE_LOADERS[path.suffix]
     except KeyError as e:
         raise NotImplementedError(
-            f"File type is not supported: {path.suffix}") from e
+            f"File type is not supported: {path.suffix}",
+        ) from e
 
     return file_type_loader(path)
 

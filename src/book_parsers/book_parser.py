@@ -44,8 +44,10 @@ def parse_book(path: Path):
 def parse_all_books():
     paths = get_book_paths()
     if not paths:
-        logger.error("Did not find any books in `books_path`: %s",
-                     SETTINGS.books_path)
+        logger.error(
+            "Did not find any books in `books_path`: %s",
+            SETTINGS.books_path,
+        )
         return
 
     for path in paths:
