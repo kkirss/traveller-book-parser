@@ -4,6 +4,6 @@ from .base_characteristic import BaseCharacteristic, CharacteristicType
 
 
 class Intellect(BaseCharacteristic):
-    type: Literal[CharacteristicType.INT]
+    characteristic_type: Literal[CharacteristicType.INT]
 
     NAME: ClassVar[str] = "Intellect"

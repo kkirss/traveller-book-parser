@@ -4,6 +4,6 @@ from .base_characteristic import BaseCharacteristic, CharacteristicType
 
 
 class Luck(BaseCharacteristic):
-    type: Literal[CharacteristicType.LCK]
+    characteristic_type: Literal[CharacteristicType.LCK]
 
     NAME: ClassVar[str] = "Luck"

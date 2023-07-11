@@ -19,7 +19,7 @@ Characteristic = Annotated[Strength
                            | SocialStanding
                            | Influence
                            | Luck,
-                           Field(discriminator="type")]
+                           Field(discriminator="characteristic_type")]
 
 
 def get_characteristic_model(**kwargs: dict[str, Any]) -> Characteristic:

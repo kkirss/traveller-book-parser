@@ -4,6 +4,6 @@ from .base_characteristic import BaseCharacteristic, CharacteristicType
 
 
 class SocialStanding(BaseCharacteristic):
-    type: Literal[CharacteristicType.SOC]
+    characteristic_type: Literal[CharacteristicType.SOC]
 
     NAME: ClassVar[str] = "Social Standing"

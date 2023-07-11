@@ -4,6 +4,6 @@ from .base_characteristic import BaseCharacteristic, CharacteristicType
 
 
 class Endurance(BaseCharacteristic):
-    type: Literal[CharacteristicType.END]
+    characteristic_type: Literal[CharacteristicType.END]
 
     NAME: ClassVar[str] = "Endurance"

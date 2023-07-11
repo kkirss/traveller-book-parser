@@ -5,7 +5,7 @@ from traveller_models.characteristics.strength import Strength
 
 def test_characteristic():
     input_data = {
-        "type": "STR",
+        "characteristic_type": "STR",
         "level": 3,
     }
 
@@ -13,7 +13,7 @@ def test_characteristic():
 
     assert {
         **input_data,
-        "type": CharacteristicType.STR,
+        "characteristic_type": CharacteristicType.STR,
         "name": "Strength",
     } == model.model_dump(exclude_defaults=True)
     assert isinstance(model, Strength)

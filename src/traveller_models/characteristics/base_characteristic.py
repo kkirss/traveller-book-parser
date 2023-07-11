@@ -18,7 +18,7 @@ class CharacteristicType(str, Enum):
 
 
 class BaseCharacteristic(BaseModel):
-    type: CharacteristicType = Field(repr=True)
+    characteristic_type: CharacteristicType = Field(repr=True)
 
     level: int | None = Field(default=None, repr=True)
 

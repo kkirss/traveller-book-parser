@@ -4,6 +4,6 @@ from .base_characteristic import BaseCharacteristic, CharacteristicType
 
 
 class Strength(BaseCharacteristic):
-    type: Literal[CharacteristicType.STR]
+    characteristic_type: Literal[CharacteristicType.STR]
 
     NAME: ClassVar[str] = "Strength"
