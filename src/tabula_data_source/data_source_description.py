@@ -17,3 +17,7 @@ class TabulaDataSourceDescription(BaseDataSourceDescription):
         default=1,
         description="The sequential number of the table on the page.",
     )
+
+    @property
+    def page_table_index(self) -> int:
+        return self.page_table_number - 1

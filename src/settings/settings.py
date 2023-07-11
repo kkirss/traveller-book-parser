@@ -26,6 +26,11 @@ class Settings(BaseSettings):
         default_factory=lambda: PROJECT_PATH / "book_descriptions",
     )
 
+    cache_path: Path = Field(
+        description="Path for temporary files",
+        default_factory=lambda: PROJECT_PATH / "data" / "cache",
+    )
+
 
 try:
     SETTINGS = Settings()
