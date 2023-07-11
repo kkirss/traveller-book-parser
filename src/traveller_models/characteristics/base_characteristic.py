@@ -1,7 +1,9 @@
 from enum import Enum
-from typing import ClassVar
+from typing import ClassVar, Literal
 
 from pydantic import BaseModel, Field, computed_field
+
+from traveller_models.entity_types import EntityType
 
 
 class CharacteristicType(str, Enum):
@@ -18,6 +20,7 @@ class CharacteristicType(str, Enum):
 
 
 class BaseCharacteristic(BaseModel):
+    entity_type: Literal[EntityType.CHARACTERISTIC] = EntityType.CHARACTERISTIC
     characteristic_type: CharacteristicType = Field(repr=True)
 
     level: int | None = Field(default=None, repr=True)
