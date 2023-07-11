@@ -12,5 +12,5 @@ def test_characteristic(characteristic_input_data: dict[str, Any]):
         **characteristic_input_data,
         "characteristic_type": CharacteristicType.STR,
         "name": "Strength",
-    } == model.model_dump(exclude_defaults=True)
+    } == model.model_dump(exclude_unset=True)
     assert isinstance(model, Strength)

@@ -16,7 +16,7 @@ def test_item_weapon_melee(melee_weapon_input_data: dict[str, Any]):
         "item_type": ItemType.weapon,
         "weapon_type": WeaponType.melee,
         "weight": Decimal(0),
-    } == model.model_dump(exclude_defaults=True)
+    } == model.model_dump(exclude_unset=True)
     assert isinstance(model, MeleeWeapon)
 
 
@@ -27,5 +27,5 @@ def test_item_armour(armour_input_data: dict[str, Any]):
         **armour_input_data,
         "item_type": ItemType.armour,
         "weight": Decimal(5),
-    } == model.model_dump(exclude_defaults=True)
+    } == model.model_dump(exclude_unset=True)
     assert isinstance(model, Armour)

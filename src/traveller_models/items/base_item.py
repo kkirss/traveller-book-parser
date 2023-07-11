@@ -12,6 +12,8 @@ class ItemType(str, Enum):
 
 
 class BaseItem(BaseModel):
+    item_type: ItemType
+
     name: str = Field(repr=True)
     description: str = ""
 

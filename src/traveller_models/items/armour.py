@@ -9,7 +9,7 @@ from .base_item import BaseItem, ItemType
 
 
 class Armour(BaseItem):
-    item_type: Literal[ItemType.armour]
+    item_type: Literal[ItemType.armour] = ItemType.armour
 
     protection: int
     protection_laser: int | None = None

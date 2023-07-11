@@ -17,7 +17,7 @@ class WeaponType(str, Enum):
 
 
 class BaseWeapon(BaseItem):
-    item_type: Literal[ItemType.weapon]
+    item_type: Literal[ItemType.weapon] = ItemType.weapon
     weapon_type: WeaponType
 
     range: WeaponRangeMelee | int

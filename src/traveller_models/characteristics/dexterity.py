@@ -4,6 +4,7 @@ from .base_characteristic import BaseCharacteristic, CharacteristicType
 
 
 class Dexterity(BaseCharacteristic):
-    characteristic_type: Literal[CharacteristicType.DEX]
+    characteristic_type: Literal[CharacteristicType.DEX
+                                 ] = CharacteristicType.DEX
 
     NAME: ClassVar[str] = "Dexterity"
