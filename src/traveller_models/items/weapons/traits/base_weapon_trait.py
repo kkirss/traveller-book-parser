@@ -1,6 +1,9 @@
 from enum import Enum
+from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
+
+from traveller_models.validators import remove_comma_separators
 
 
 class WeaponTraitType(str, Enum):
@@ -27,3 +30,15 @@ class WeaponTraitType(str, Enum):
 class BaseWeaponTrait(BaseModel):
     weapon_trait_type: WeaponTraitType
     amount: int | None = None
+
+    @field_validator("amount", mode="before")
+    def amount_infinite(
+        cls: type["BaseWeaponTrait"],  # noqa: N805
+        value: Any  # noqa: ANN401
+    ) -> Any:  # noqa: ANN401
+        if isinstance(value, str) and value == "∞":
+            return None
+        return value
+
+    amount_separators = field_validator("amount", mode="before"
+                                        )(remove_comma_separators)
