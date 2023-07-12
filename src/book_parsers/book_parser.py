@@ -80,10 +80,6 @@ def parse_all_books() -> list[Entity]:
 
     all_entities = []
     for path in paths:
-        try:
-            entities = parse_book(path)
-        except Exception:
-            logger.exception("Parsing book %s failed.", path.stem)
-        else:
-            all_entities.extend(entities)
+        entities = parse_book(path)
+        all_entities.extend(entities)
     return all_entities
