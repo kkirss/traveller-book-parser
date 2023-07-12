@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from pathlib import Path
 
 from description_models.book_description import BookDescription, get_book_file_path
@@ -21,13 +22,16 @@ def get_tabula_cache_path(
     return tabula_cache_path / file_name
 
 
-def _get_book_page_tabula_data(book_code_name: str,
-                               page: int) -> list[DataFrame]:
+def _get_book_page_tabula_data(
+    book_code_name: str,
+    page: int,
+    area: Iterable[float] | None = None,
+) -> list[DataFrame]:
     book_path = get_book_file_path(book_code_name)
     tabula_cache_path = get_tabula_cache_path(book_code_name, page)
 
     if not tabula_cache_path.exists():
-        export_tabula_data_file(book_path, tabula_cache_path, page)
+        export_tabula_data_file(book_path, tabula_cache_path, page, area)
 
     return read_tabula_data_file(tabula_cache_path)
 
@@ -38,5 +42,9 @@ def extract_tabula_data_frame(
 ) -> DataFrame:
     """Extract DataFrame for a table, using Tabula."""
     page = book_description.pages_not_numbered + tabula_data_source.page
-    page_dfs = _get_book_page_tabula_data(book_description.code_name, page)
+    page_dfs = _get_book_page_tabula_data(
+        book_description.code_name,
+        page,
+        tabula_data_source.area,
+    )
     return page_dfs[tabula_data_source.page_table_index]

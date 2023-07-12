@@ -17,6 +17,12 @@ class TabulaDataSourceDescription(BaseDataSourceDescription):
         default=1,
         description="The sequential number of the table on the page.",
     )
+    # For getting the area, see:
+    # https://github.com/tabulapdf/tabula-java/wiki/Using-the-command-line-tabula-extractor-tool#grab-coordinates-of-the-table-you-want
+    area: list[float] | None = Field(
+        description="Area of page to look for table in.",
+        default=None,
+    )
 
     @property
     def page_table_index(self) -> int:
