@@ -1,6 +1,6 @@
 from typing import Any
 
-DASH_VALUES = ("-", "—")
+DASH_VALUES = ("-", "\u2014", "\u2013")
 
 
 def dash_is_zero(value: Any) -> Any:  # noqa: ANN401
