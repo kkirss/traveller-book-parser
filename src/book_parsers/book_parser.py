@@ -7,6 +7,7 @@ from traceback import format_exception_only
 from description_loaders.book_description_loader import load_book_description
 from description_models.book_description import BookDescription
 from description_models.collection_description import CollectionDescription
+from entity_collections import all_collection_parsers  # noqa: F401
 from entity_collections.parse_entities import parse_collection_entities
 from pydantic import ValidationError
 from settings import SETTINGS, ensure_folder
