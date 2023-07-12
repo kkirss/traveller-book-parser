@@ -1,4 +1,5 @@
 from collections.abc import Iterable
+from typing import Any
 
 from description_models.base_data_source_description import BaseDataSourceDescription
 from description_models.book_description import BookDescription
@@ -12,5 +13,6 @@ def parse_collection_entities(
     book_description: BookDescription,  # noqa: ARG001
     data_source_description: BaseDataSourceDescription,  # noqa: ARG001
     entity_type: EntityType,  # noqa: ARG001
+    entity_fields: dict[str, Any],  # noqa: ARG001
 ) -> Iterable[Entity]:
     """Parse a collection of entities from a collection description."""

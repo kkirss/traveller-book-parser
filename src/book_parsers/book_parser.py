@@ -65,6 +65,7 @@ def parse_book(path: Path) -> list[Entity]:
             book_description,
             collection_description.data_source_description,
             collection_description.entity_type,
+            collection_description.entity_fields,
         )
         all_entities.extend(entities)
     return all_entities
