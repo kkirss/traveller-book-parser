@@ -5,6 +5,7 @@ from description_models.book_description import BookDescription, get_book_file_p
 from pandas import DataFrame
 from settings import SETTINGS, ensure_folder
 
+from .data_cleaners.clean_data_frame import clean_data_frame
 from .data_source_description import TabulaDataSourceDescription
 from .tabula_integration import export_tabula_data_file, read_tabula_data_file
 
@@ -47,4 +48,6 @@ def extract_tabula_data_frame(
         page,
         tabula_data_source.area,
     )
-    return page_dfs[tabula_data_source.page_table_index]
+    data_frame = page_dfs[tabula_data_source.page_table_index]
+    data_frame = clean_data_frame(data_frame)
+    return data_frame
