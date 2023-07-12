@@ -3,12 +3,14 @@ import copy
 import json
 import logging
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import pandas
 import tabula
 
 logger = logging.getLogger(__name__)
+
+ExtractionMethod = Literal["lattice"] | Literal["stream"] | None
 
 TABULA_PANDAS_OPTIONS = {}
 
@@ -34,11 +36,19 @@ def export_tabula_data_file(
     export_path: Path,
     pages: str | int | Iterable[int] | None,
     area: Iterable[float] | None = None,
+    extraction_method: ExtractionMethod = None,
 ) -> None:
+    kwargs = {}
+    if extraction_method == "lattice":
+        kwargs = {"lattice": True}
+    elif extraction_method == "stream":
+        kwargs = {"stream": True}
+
     tabula.convert_into(
         book_pdf_path,
         str(export_path),
         output_format="json",
         pages=pages,
         area=area,
+        **kwargs,
     )
