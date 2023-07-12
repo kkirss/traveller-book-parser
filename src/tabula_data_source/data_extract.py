@@ -3,7 +3,8 @@ from pathlib import Path
 
 from description_models.book_description import BookDescription, get_book_file_path
 from pandas import DataFrame
-from settings import SETTINGS, ensure_folder
+from settings import SETTINGS
+from utils import ensure_folder
 
 from .data_cleaners.clean_data_frame import clean_data_frame
 from .data_source_description import TabulaDataSourceDescription

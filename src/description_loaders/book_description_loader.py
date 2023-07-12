@@ -2,7 +2,8 @@ import logging
 from pathlib import Path
 
 from description_models.book_description import BookDescription
-from settings import SETTINGS, ensure_folder
+from settings import SETTINGS
+from utils import ensure_folder
 
 from .file_type_loaders import get_supported_path, load_file_data
 

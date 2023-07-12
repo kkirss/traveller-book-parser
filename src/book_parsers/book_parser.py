@@ -1,8 +1,6 @@
 from collections.abc import Iterable
 import logging
 from pathlib import Path
-import textwrap
-from traceback import format_exception_only
 
 from description_loaders.book_description_loader import load_book_description
 from description_models.book_description import BookDescription
@@ -10,8 +8,9 @@ from description_models.collection_description import CollectionDescription
 from entity_collections import all_collection_parsers  # noqa: F401
 from entity_collections.parse_entities import parse_collection_entities
 from pydantic import ValidationError
-from settings import SETTINGS, ensure_folder
+from settings import SETTINGS
 from traveller_models.entity import Entity
+from utils import ensure_folder, get_indented_exception_text
 
 logger = logging.getLogger(__name__)
 
@@ -23,11 +22,6 @@ def get_book_paths() -> list[Path]:
     """
     ensure_folder(SETTINGS.books_path)
     return list(SETTINGS.books_path.glob("**/*.pdf"))
-
-
-def get_indented_exception_text(exception: Exception) -> str:
-    exception_text = "".join(format_exception_only(exception))
-    return textwrap.indent(exception_text, " " * 4)
 
 
 def parse_book_collection(
