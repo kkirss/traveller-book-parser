@@ -2,8 +2,9 @@ from decimal import Decimal
 from enum import Enum
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
+from traveller_models.base_entity import BaseEntity
 from traveller_models.entity_types import EntityType
 
 
@@ -14,7 +15,7 @@ class ItemType(str, Enum):
     weapon = "weapon"
 
 
-class BaseItem(BaseModel):
+class BaseItem(BaseEntity):
     entity_type: Literal[EntityType.ITEM] = EntityType.ITEM
     item_type: ItemType
 

@@ -1,11 +1,12 @@
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
+from traveller_models.base_entity import BaseEntity
 from traveller_models.entity_types import EntityType
 
 
-class BaseSkill(BaseModel):
+class BaseSkill(BaseEntity):
     entity_type: Literal[EntityType.SKILL] = EntityType.SKILL
 
     name: str = Field(repr=True)
