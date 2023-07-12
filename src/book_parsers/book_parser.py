@@ -62,6 +62,11 @@ def parse_book(path: Path) -> list[Entity]:
             collection_description.entity_fields,
         )
         all_entities.extend(entities)
+
+    logger.info("Parsed entities from book %s:", book_description.name)
+    for entity in all_entities:
+        logger.info("    %s", entity)
+
     return all_entities
 
 
