@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 
+import pandas
 from pydantic import Field, ValidationError
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -39,3 +40,15 @@ except ValidationError as e:
     print(e)
 else:
     logging.basicConfig(level=SETTINGS.log_level.value)
+
+
+def set_pandas_options():
+    pandas.set_option("display.max_columns", None)
+    pandas.set_option("display.expand_frame_repr", False)  # noqa: FBT003
+
+
+_SETUP_HAS_RUN = False
+
+if not _SETUP_HAS_RUN:
+    set_pandas_options()
+    _SETUP_HAS_RUN = True
