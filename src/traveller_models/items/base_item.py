@@ -1,12 +1,16 @@
 from decimal import Decimal
 from enum import Enum
-from typing import Any, Literal
+from typing import Literal
 
 from pydantic import Field, field_validator
 
 from traveller_models.base_entity import BaseEntity
 from traveller_models.entity_types import EntityType
-from traveller_models.validators import dash_is_zero, remove_asterisk
+from traveller_models.validators import (
+    dash_is_zero,
+    remove_asterisk,
+    remove_credits_prefix,
+)
 
 
 class ItemType(str, Enum):
@@ -35,18 +39,5 @@ class BaseItem(BaseEntity):
 
     base_price_zero = field_validator("base_price",
                                       mode="before")(dash_is_zero)
-
-    @field_validator("base_price", mode="before")
-    def base_price_credits(
-        cls: type["BaseItem"],  # noqa: N805
-        value: Any,  # noqa: ANN401
-    ) -> Any:  # noqa: ANN401
-        if isinstance(value, str):
-            if value.startswith("MCr"):
-                value = value.removeprefix("MCr")
-                value = float(value) * 1000000
-            elif value.startswith("Cr"):
-                value = value.removeprefix("Cr")
-
-            return value
-        return value
+    base_price_credits = field_validator("base_price",
+                                         mode="before")(remove_credits_prefix)
