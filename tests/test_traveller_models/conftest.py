@@ -15,7 +15,7 @@ def characteristic_input_data() -> dict[str, Any]:
 def melee_weapon_input_data() -> dict[str, Any]:
     return {
         "item_type": "Weapon",
-        "weapon_type": "Melee",
+        "weapon_type": "melee",
         "name": "Dagger",
         "tech_level": 4,
         "weight": 0,

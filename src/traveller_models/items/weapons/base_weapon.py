@@ -12,8 +12,8 @@ WeaponRangeMelee = Literal["Melee"]
 
 
 class WeaponType(str, Enum):
-    melee = "Melee"
-    ranged = "Ranged"
+    melee = "melee"
+    ranged = "ranged"
 
 
 class BaseWeapon(BaseItem):
