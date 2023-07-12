@@ -1,9 +1,10 @@
 from enum import Enum
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, field_validator
 
 from traveller_models.items.base_item import BaseItem, ItemType
+from traveller_models.validators import dash_is_none
 
 from .traits.weapon_trait import WeaponTrait
 
@@ -20,6 +21,9 @@ class BaseWeapon(BaseItem):
     item_type: Literal[ItemType.weapon] = ItemType.weapon
     weapon_type: WeaponType
 
-    range: WeaponRangeMelee | int
+    range: WeaponRangeMelee | int | None
     damage: str
-    traits: list[WeaponTrait] = Field(default_factory=list)
+    traits: list[WeaponTrait] | None = Field(default_factory=list)
+
+    # Validators
+    range_none = field_validator("range", mode="before")(dash_is_none)
