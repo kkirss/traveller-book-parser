@@ -26,3 +26,4 @@ class WeaponTraitType(str, Enum):
 
 class BaseWeaponTrait(BaseModel):
     weapon_trait_type: WeaponTraitType
+    amount: int | None = None
