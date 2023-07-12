@@ -8,4 +8,4 @@ class RangedWeapon(BaseWeapon):
     range: int | None
 
     magazine_size: int | None = None
-    magazine_base_cost: int | None = None  # In Credits
+    magazine_base_price: int | None = None  # In Credits

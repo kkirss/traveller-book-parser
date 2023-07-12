@@ -17,6 +17,6 @@ COLUMN_TO_FIELD: dict[str, str] = {
     "RANGE": "range",
     # Ranged weapons
     "MAGAZINE": "magazine_size",
-    "MAGAZINE COST": "magazine_base_cost",
-    "POWER PACK COST": "magazine_base_cost",
+    "MAGAZINE COST": "magazine_base_price",
+    "POWER PACK COST": "magazine_base_price",
 }
