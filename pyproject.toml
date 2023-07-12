@@ -16,7 +16,6 @@ select = [
     "FBT",
     "B",
     "A",
-    "COM",
     "C4",
     "ISC",
     "G",
