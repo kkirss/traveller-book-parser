@@ -37,6 +37,7 @@ ignore = [
     "D1",  # Missing docstrings
     "D203",  # https://beta.ruff.rs/docs/rules/one-blank-line-before-class/
     "D213",  # https://beta.ruff.rs/docs/rules/multi-line-summary-second-line/
+    "E501",  # https://beta.ruff.rs/docs/rules/line-too-long/
 ]
 
 #fix = true
