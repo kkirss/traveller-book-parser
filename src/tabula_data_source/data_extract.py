@@ -15,12 +15,17 @@ TABULA_CACHE_FOLDER = "tabula_data"
 def get_tabula_cache_path(
     book_code_name: str,
     page: int,
+    tabula_data_source: TabulaDataSourceDescription,
 ) -> Path:
     tabula_cache_path = SETTINGS.cache_path / TABULA_CACHE_FOLDER
     ensure_folder(tabula_cache_path)
 
-    file_name = f"{book_code_name}-{page}.json"
-    return tabula_cache_path / file_name
+    cache_name = f"{book_code_name}-{page}"
+    if tabula_data_source.extraction_method is not None:
+        cache_name = f"{cache_name}-{tabula_data_source.extraction_method}"
+    if tabula_data_source.area is not None:
+        cache_name = f"{cache_name}-{int(tabula_data_source.area[0])}"
+    return tabula_cache_path / f"{cache_name}.json"
 
 
 def _get_book_page_tabula_data(
@@ -29,7 +34,9 @@ def _get_book_page_tabula_data(
     tabula_data_source: TabulaDataSourceDescription,
 ) -> list[DataFrame]:
     book_path = get_book_file_path(book_code_name)
-    tabula_cache_path = get_tabula_cache_path(book_code_name, page)
+    tabula_cache_path = get_tabula_cache_path(
+        book_code_name, page, tabula_data_source
+    )
 
     if not tabula_cache_path.exists():
         export_tabula_data_file(
