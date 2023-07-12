@@ -8,10 +8,10 @@ from traveller_models.entity_types import EntityType
 
 
 class ItemType(str, Enum):
-    armour = "Armour"
-    augment = "Augment"
-    tool = "Tool"
-    weapon = "Weapon"
+    armour = "armour"
+    augment = "augment"
+    tool = "tool"
+    weapon = "weapon"
 
 
 class BaseItem(BaseModel):

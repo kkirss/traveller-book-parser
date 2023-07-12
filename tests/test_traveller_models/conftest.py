@@ -14,7 +14,7 @@ def characteristic_input_data() -> dict[str, Any]:
 @pytest.fixture
 def melee_weapon_input_data() -> dict[str, Any]:
     return {
-        "item_type": "Weapon",
+        "item_type": "weapon",
         "weapon_type": "melee",
         "name": "Dagger",
         "tech_level": 4,
@@ -27,7 +27,7 @@ def melee_weapon_input_data() -> dict[str, Any]:
 @pytest.fixture
 def armour_input_data() -> dict[str, Any]:
     return {
-        "item_type": "Armour",
+        "item_type": "armour",
         "name": "Cloth Armour",
         "tech_level": 8,
         "weight": 5,
