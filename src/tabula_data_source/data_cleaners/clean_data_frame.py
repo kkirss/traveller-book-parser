@@ -2,6 +2,7 @@ import logging
 
 from pandas import DataFrame
 
+from .collapse_almost_empty_rows import collapse_almost_empty_rows
 from .line_separators import (
     replace_few_returns_with_spaces,
     spread_returns_to_multiple_rows,
@@ -18,6 +19,12 @@ def clean_data_frame(input_data_frame: DataFrame) -> DataFrame:
 
     while True:
         if (new_data_frame := remove_unnamed_columns(data_frame)) is not None:
+            data_frame = new_data_frame
+            continue
+
+        if (
+            new_data_frame := collapse_almost_empty_rows(data_frame)
+        ) is not None:
             data_frame = new_data_frame
             continue
 
