@@ -15,4 +15,5 @@ class CollectionDescription(BaseModel):
         "Note: These are not validated.",
         default_factory=dict,
     )
+    check_amount: int | None = None
     data_source_description: DataSourceDescription

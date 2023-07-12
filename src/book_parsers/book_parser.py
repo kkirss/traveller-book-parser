@@ -34,6 +34,18 @@ def parse_book_collection(
     )
 
 
+def _check_collection_amount(
+    entity_count: int,
+    collection_description: CollectionDescription,
+):
+    check_amount = collection_description.check_amount
+    if check_amount is not None and check_amount != entity_count:
+        logger.warning(
+            "Expected to find %i items in collection but found %i instead: %s",
+            check_amount, entity_count, collection_description
+        )
+
+
 def parse_book(path: Path) -> list[Entity]:
     book_code_name = path.stem
     try:
@@ -61,6 +73,9 @@ def parse_book(path: Path) -> list[Entity]:
             collection_description.entity_type,
             collection_description.entity_fields,
         )
+        entities = list(entities)
+        _check_collection_amount(len(entities), collection_description)
+
         all_entities.extend(entities)
 
     logger.info("Parsed entities from book %s:", book_description.name)
