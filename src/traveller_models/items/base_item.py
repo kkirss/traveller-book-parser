@@ -37,7 +37,7 @@ class BaseItem(BaseEntity):
     weight_asterisk = field_validator("weight", mode="before")(remove_asterisk)
     weight_zero = field_validator("weight", mode="before")(dash_is_zero)
 
-    base_price_zero = field_validator("base_price",
-                                      mode="before")(dash_is_zero)
-    base_price_credits = field_validator("base_price",
-                                         mode="before")(remove_credits_prefix)
+    base_price_zero = field_validator("base_price", mode="before")(dash_is_zero)
+    base_price_credits = field_validator("base_price", mode="before")(
+        remove_credits_prefix
+    )

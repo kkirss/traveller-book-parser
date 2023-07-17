@@ -11,15 +11,17 @@ from .luck import Luck
 from .social_standing import SocialStanding
 from .strength import Strength
 
-Characteristic = Annotated[Strength
-                           | Dexterity
-                           | Endurance
-                           | Intellect
-                           | Education
-                           | SocialStanding
-                           | Influence
-                           | Luck,
-                           Field(discriminator="characteristic_type")]
+Characteristic = Annotated[
+    Strength
+    | Dexterity
+    | Endurance
+    | Intellect
+    | Education
+    | SocialStanding
+    | Influence
+    | Luck,
+    Field(discriminator="characteristic_type"),
+]
 
 
 def get_characteristic_model(**kwargs: dict[str, Any]) -> Characteristic:

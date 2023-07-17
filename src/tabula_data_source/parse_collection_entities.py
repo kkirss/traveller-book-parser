@@ -49,8 +49,7 @@ def parse_tabula_collection_entities(
 
         if is_missing_tech_level(entity_dict):
             logger.warning(
-                "Found entity with missing tech level, skipping: %s",
-                entity_dict
+                "Found entity with missing tech level, skipping: %s", entity_dict
             )
             continue
 

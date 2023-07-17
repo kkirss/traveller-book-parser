@@ -45,7 +45,7 @@ def get_supported_path(paths: list[Path]) -> Path:
         case _:
             path = next(filter(is_supported_file_type, paths), None)
             if path:
-                logger.info('Found multiple supported files. Using %s', path)
+                logger.info("Found multiple supported files. Using %s", path)
                 return path
             else:
                 file_types = ",".join({path.suffix for path in paths})

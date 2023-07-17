@@ -21,9 +21,7 @@ def traits_from_list(value: Any) -> list[WeaponTrait]:  # noqa: ANN401
                 try:
                     trait_type = WeaponTraitType(trait_name)
                 except ValueError:
-                    logger.warning(
-                        "Found invalid trait type, skipping: %s", trait_name
-                    )
+                    logger.warning("Found invalid trait type, skipping: %s", trait_name)
                     continue
                 trait = get_trait_model(
                     weapon_trait_type=trait_type,

@@ -15,13 +15,13 @@ def _get_type_protection_from_protection(
     field_name: str,
     damage_type: str,
 ) -> Callable:
-
     def type_protection_from_protection(
         cls: type["Armour"],  # noqa: ARG001
         data: dict[str, Any],
     ) -> dict[str, Any]:
         if (
-            data.get(field_name, None) is None and "protection" in data
+            data.get(field_name, None) is None
+            and "protection" in data
             and isinstance(data["protection"], str)
         ):
             protection: str = data["protection"]
@@ -60,25 +60,22 @@ class Armour(BaseItem):
     plasma_protection_from_protection = model_validator(mode="before")(
         _get_type_protection_from_protection("protection_plasma", "plasma")
     )
-    psionics_protection_from_protection = model_validator(
-        mode="before"
-    )(_get_type_protection_from_protection("protection_psionics", "psionics"))
+    psionics_protection_from_protection = model_validator(mode="before")(
+        _get_type_protection_from_protection("protection_psionics", "psionics")
+    )
 
     @field_validator("protection", mode="before")
     def protection_characteristic_boost(
-        cls: type["Armour"],  # noqa: N805
-        value: Any  # noqa: ANN401
+        cls: type["Armour"], value: Any  # noqa: N805,ANN401
     ) -> Any:  # noqa: ANN401
-        if isinstance(value,
-                      str) and (match := _CHAR_BOOST_REGEX.match(value)):
+        if isinstance(value, str) and (match := _CHAR_BOOST_REGEX.match(value)):
             # TODO: Make use of the characteristic boost
             # characteristic_boost_amount = match.group(2)
             # boost_characteristic = match.group(3)
             return match.group(1)
         return value
 
-    protection_zero = field_validator("protection",
-                                      mode="before")(dash_is_zero)
+    protection_zero = field_validator("protection", mode="before")(dash_is_zero)
     radiation_protection_zero = field_validator(
         "radiation_protection",
         mode="before",

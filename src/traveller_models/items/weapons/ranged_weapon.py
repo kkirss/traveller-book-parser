@@ -20,8 +20,7 @@ class RangedWeapon(BaseWeapon):
 
     @field_validator("magazine_size", mode="before")
     def magazine_size_range_max(
-        cls: type["RangedWeapon"],  # noqa: N805
-        value: Any  # noqa: ANN401
+        cls: type["RangedWeapon"], value: Any  # noqa: N805,ANN401
     ) -> Any:  # noqa: ANN401
         if isinstance(value, str):
             for dash in DASH_VALUES:
@@ -29,12 +28,11 @@ class RangedWeapon(BaseWeapon):
                     return value.split(dash)[-1]
         return value
 
-    magazine_size_dash = field_validator("magazine_size",
-                                         mode="before")(dash_is_none)
+    magazine_size_dash = field_validator("magazine_size", mode="before")(dash_is_none)
 
-    magazine_base_price_zero = field_validator(
-        "magazine_base_price", mode="before"
-    )(dash_is_zero)
-    magazine_base_price_credits = field_validator(
-        "magazine_base_price", mode="before"
-    )(remove_credits_prefix)
+    magazine_base_price_zero = field_validator("magazine_base_price", mode="before")(
+        dash_is_zero
+    )
+    magazine_base_price_credits = field_validator("magazine_base_price", mode="before")(
+        remove_credits_prefix
+    )

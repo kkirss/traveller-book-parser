@@ -10,9 +10,7 @@ SEPARATOR = "\r"  # Tabula uses return character as line separator
 
 
 def _get_cells_with_return_count(series: Series | Index) -> int:
-    return sum(
-        (isinstance(value, str)) and (SEPARATOR in value) for value in series
-    )
+    return sum((isinstance(value, str)) and (SEPARATOR in value) for value in series)
 
 
 def _replace_return_with_space(value: Any) -> Any:  # noqa: ANN401
@@ -58,10 +56,7 @@ def _get_spread_by_return_rows_for_row(
     for loc_index in range(return_count + 1):
         new_list = []
         for column_index, value in enumerate(row):
-            if (
-                column_return_counts[column_index] > 0
-                and isinstance(value, str)
-            ):
+            if column_return_counts[column_index] > 0 and isinstance(value, str):
                 value = value.split(SEPARATOR)[loc_index]
 
             new_list.append(value)
@@ -101,7 +96,8 @@ def spread_returns_to_multiple_rows(
                 continue
             elif len(unique_return_counts) > 1:
                 logger.warning(
-                    "Found row with mixed number of return characters (%s), skipping: %s",
+                    "Found row with mixed number of return characters (%s),"
+                    " skipping: %s",
                     unique_return_counts,
                     row,
                 )

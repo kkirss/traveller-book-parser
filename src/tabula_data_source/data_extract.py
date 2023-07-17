@@ -34,9 +34,7 @@ def _get_book_page_tabula_data(
     tabula_data_source: TabulaDataSourceDescription,
 ) -> list[DataFrame]:
     book_path = get_book_file_path(book_code_name)
-    tabula_cache_path = get_tabula_cache_path(
-        book_code_name, page, tabula_data_source
-    )
+    tabula_cache_path = get_tabula_cache_path(book_code_name, page, tabula_data_source)
 
     if not tabula_cache_path.exists():
         export_tabula_data_file(

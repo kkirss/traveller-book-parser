@@ -22,15 +22,11 @@ def clean_data_frame(input_data_frame: DataFrame) -> DataFrame:
             data_frame = new_data_frame
             continue
 
-        if (
-            new_data_frame := collapse_almost_empty_rows(data_frame)
-        ) is not None:
+        if (new_data_frame := collapse_almost_empty_rows(data_frame)) is not None:
             data_frame = new_data_frame
             continue
 
-        if (
-            new_data_frame := spread_returns_to_multiple_rows(data_frame)
-        ) is not None:
+        if (new_data_frame := spread_returns_to_multiple_rows(data_frame)) is not None:
             data_frame = new_data_frame
             continue
 

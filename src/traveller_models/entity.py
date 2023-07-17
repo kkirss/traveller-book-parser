@@ -7,9 +7,7 @@ from .items.item import Item
 from .skills.skill import Skill
 
 Entity = Annotated[
-    Characteristic
-    | Item
-    | Skill,
+    Characteristic | Item | Skill,
     Field(discriminator="entity_type"),
 ]
 

@@ -33,12 +33,12 @@ class BaseWeaponTrait(BaseModel):
 
     @field_validator("amount", mode="before")
     def amount_infinite(
-        cls: type["BaseWeaponTrait"],  # noqa: N805
-        value: Any  # noqa: ANN401
+        cls: type["BaseWeaponTrait"], value: Any  # noqa: N805,ANN401
     ) -> Any:  # noqa: ANN401
         if isinstance(value, str) and value == "∞":
             return None
         return value
 
-    amount_separators = field_validator("amount", mode="before"
-                                        )(remove_comma_separators)
+    amount_separators = field_validator("amount", mode="before")(
+        remove_comma_separators
+    )

@@ -29,8 +29,8 @@ class BaseWeapon(BaseItem):
     # Validators
     range_none = field_validator("range", mode="before")(dash_is_none)
 
-    traits_from_list = field_validator("traits",
-                                       mode="before")(traits_from_list)
-    traits_string_to_list = field_validator("traits", mode="before"
-                                            )(comma_separated_string_to_list)
+    traits_from_list = field_validator("traits", mode="before")(traits_from_list)
+    traits_string_to_list = field_validator("traits", mode="before")(
+        comma_separated_string_to_list
+    )
     traits_none = field_validator("traits", mode="before")(dash_is_none)

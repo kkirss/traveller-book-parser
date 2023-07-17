@@ -42,7 +42,9 @@ def _check_collection_amount(
     if check_amount is not None and check_amount != entity_count:
         logger.warning(
             "Expected to find %i items in collection but found %i instead: %s",
-            check_amount, entity_count, collection_description
+            check_amount,
+            entity_count,
+            collection_description,
         )
 
 
