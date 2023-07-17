@@ -2,6 +2,10 @@
 name = "traveller-book-parser"
 requires-python = ">=3.11"
 
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
 [tool.ruff]
 select = [
     "F",
@@ -48,7 +52,3 @@ suppress-none-returning = true
 [tool.ruff.isort]
 force-sort-within-sections = true
 split-on-trailing-comma = false
-
-[tool.yapf]
-dedent_closing_brackets = true
-space_between_ending_comma_and_closing_bracket = false

@@ -6,5 +6,5 @@ tabula-py~=2.7
 
 # Development
 ruff~=0.0.277
-yapf~=0.40
+black[d]~=23.7
 pytest~=7.4
