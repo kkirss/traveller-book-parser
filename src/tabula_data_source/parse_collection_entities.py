@@ -10,6 +10,7 @@ from traveller_models.entity import Entity, get_entity_model
 from traveller_models.entity_types import EntityType
 from utils import get_indented_exception_text
 
+from .data_cleaners.missing_tech_level import is_missing_tech_level
 from .data_extract import extract_tabula_data_frame
 from .data_source_description import TabulaDataSourceDescription
 
@@ -45,6 +46,13 @@ def parse_tabula_collection_entities(
                 continue
 
             entity_dict[field_name] = value
+
+        if is_missing_tech_level(entity_dict):
+            logger.warning(
+                "Found entity with missing tech level, skipping: %s",
+                entity_dict
+            )
+            continue
 
         try:
             entity = get_entity_model(**entity_dict)
