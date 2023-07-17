@@ -5,8 +5,12 @@ from typing import Any, Literal
 from pydantic import Field, field_validator, model_validator
 
 from traveller_models.characteristics.characteristic import Characteristic
-from traveller_models.skills.skill import Skill, get_skill_model
-from traveller_models.validators import dash_is_zero, string_none_is_none
+from traveller_models.skills.skill import Skill
+from traveller_models.validators import (
+    dash_is_zero,
+    skill_from_name,
+    string_none_is_none,
+)
 
 from .base_item import BaseItem, ItemType
 
@@ -40,6 +44,15 @@ def _get_type_protection_from_protection(
 _CHAR_BOOST_REGEX = re.compile(r"(.+) \((.+) (.{3})\)")
 
 
+def characteristic_boost(value: Any) -> Any:  # noqa: ANN401
+    if isinstance(value, str) and (match := _CHAR_BOOST_REGEX.match(value)):
+        # TODO: Make use of the characteristic boost
+        # characteristic_boost_amount = match.group(2)
+        # boost_characteristic = match.group(3)
+        return match.group(1)
+    return value
+
+
 class Armour(BaseItem):
     item_type: Literal[ItemType.armour] = ItemType.armour
 
@@ -64,34 +77,18 @@ class Armour(BaseItem):
         _get_type_protection_from_protection("protection_psionics", "psionics")
     )
 
-    @field_validator("protection", mode="before")
-    def protection_characteristic_boost(
-        cls: type["Armour"], value: Any  # noqa: N805,ANN401
-    ) -> Any:  # noqa: ANN401
-        if isinstance(value, str) and (match := _CHAR_BOOST_REGEX.match(value)):
-            # TODO: Make use of the characteristic boost
-            # characteristic_boost_amount = match.group(2)
-            # boost_characteristic = match.group(3)
-            return match.group(1)
-        return value
-
+    protection_characteristic_boost = field_validator("protection", mode="before")(
+        characteristic_boost
+    )
     protection_zero = field_validator("protection", mode="before")(dash_is_zero)
     radiation_protection_zero = field_validator(
         "radiation_protection",
         mode="before",
     )(dash_is_zero)
 
-    @field_validator("required_skill", mode="before")
-    def required_skill_from_name(
-        cls: type["Armour"],  # noqa: N805
-        value: Any,  # noqa: ANN401
-    ) -> Skill | None:
-        if isinstance(value, str):
-            name, level = value.rsplit(" ", maxsplit=1)
-            skill = get_skill_model(name=name, level=level)
-            return skill
-        return value
-
+    required_skill_from_name = field_validator("required_skill", mode="before")(
+        skill_from_name
+    )
     required_skill_text_none = field_validator(
         "required_skill",
         mode="before",
