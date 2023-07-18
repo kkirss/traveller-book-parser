@@ -14,13 +14,12 @@ TABULA_CACHE_FOLDER = "tabula_data"
 
 def get_tabula_cache_path(
     book_code_name: str,
-    page: int,
     data_source_description: TabulaDataSourceDescription,
 ) -> Path:
     tabula_cache_path = SETTINGS.cache_path / TABULA_CACHE_FOLDER
     ensure_folder(tabula_cache_path)
 
-    cache_name = f"{book_code_name}-{page}"
+    cache_name = f"{book_code_name}-{data_source_description.page}"
     if data_source_description.extraction_method is not None:
         cache_name = f"{cache_name}-{data_source_description.extraction_method}"
     if data_source_description.area is not None:
@@ -30,19 +29,16 @@ def get_tabula_cache_path(
 
 def _get_book_page_tabula_data(
     book_code_name: str,
-    page: int,
     data_source_description: TabulaDataSourceDescription,
 ) -> list[DataFrame]:
     book_path = get_book_file_path(book_code_name)
-    tabula_cache_path = get_tabula_cache_path(
-        book_code_name, page, data_source_description
-    )
+    tabula_cache_path = get_tabula_cache_path(book_code_name, data_source_description)
 
     if not tabula_cache_path.exists():
         export_tabula_data_file(
             book_path,
             tabula_cache_path,
-            page,
+            pages=data_source_description.page,
             area=data_source_description.area,
             extraction_method=data_source_description.extraction_method,
         )
@@ -55,10 +51,8 @@ def extract_tabula_data_frame(
     data_source_description: TabulaDataSourceDescription,
 ) -> DataFrame:
     """Extract DataFrame for a table, using Tabula."""
-    page = book_description.pages_not_numbered + data_source_description.page
     page_dfs = _get_book_page_tabula_data(
         book_description.code_name,
-        page,
         data_source_description,
     )
     data_frame = page_dfs[data_source_description.page_table_index]

@@ -16,8 +16,6 @@ class BookDescription(BaseModel):
     name: str = Field(repr=True)
     code_name: str
 
-    pages_not_numbered: int = 0
-
     collection_descriptions: list[CollectionDescription]
 
     @property
