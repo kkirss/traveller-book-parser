@@ -15,34 +15,36 @@ TABULA_CACHE_FOLDER = "tabula_data"
 def get_tabula_cache_path(
     book_code_name: str,
     page: int,
-    tabula_data_source: TabulaDataSourceDescription,
+    data_source_description: TabulaDataSourceDescription,
 ) -> Path:
     tabula_cache_path = SETTINGS.cache_path / TABULA_CACHE_FOLDER
     ensure_folder(tabula_cache_path)
 
     cache_name = f"{book_code_name}-{page}"
-    if tabula_data_source.extraction_method is not None:
-        cache_name = f"{cache_name}-{tabula_data_source.extraction_method}"
-    if tabula_data_source.area is not None:
-        cache_name = f"{cache_name}-{int(tabula_data_source.area[0])}"
+    if data_source_description.extraction_method is not None:
+        cache_name = f"{cache_name}-{data_source_description.extraction_method}"
+    if data_source_description.area is not None:
+        cache_name = f"{cache_name}-{int(data_source_description.area[0])}"
     return tabula_cache_path / f"{cache_name}.json"
 
 
 def _get_book_page_tabula_data(
     book_code_name: str,
     page: int,
-    tabula_data_source: TabulaDataSourceDescription,
+    data_source_description: TabulaDataSourceDescription,
 ) -> list[DataFrame]:
     book_path = get_book_file_path(book_code_name)
-    tabula_cache_path = get_tabula_cache_path(book_code_name, page, tabula_data_source)
+    tabula_cache_path = get_tabula_cache_path(
+        book_code_name, page, data_source_description
+    )
 
     if not tabula_cache_path.exists():
         export_tabula_data_file(
             book_path,
             tabula_cache_path,
             page,
-            area=tabula_data_source.area,
-            extraction_method=tabula_data_source.extraction_method,
+            area=data_source_description.area,
+            extraction_method=data_source_description.extraction_method,
         )
 
     return read_tabula_data_file(tabula_cache_path)
@@ -50,15 +52,15 @@ def _get_book_page_tabula_data(
 
 def extract_tabula_data_frame(
     book_description: BookDescription,
-    tabula_data_source: TabulaDataSourceDescription,
+    data_source_description: TabulaDataSourceDescription,
 ) -> DataFrame:
     """Extract DataFrame for a table, using Tabula."""
-    page = book_description.pages_not_numbered + tabula_data_source.page
+    page = book_description.pages_not_numbered + data_source_description.page
     page_dfs = _get_book_page_tabula_data(
         book_description.code_name,
         page,
-        tabula_data_source,
+        data_source_description,
     )
-    data_frame = page_dfs[tabula_data_source.page_table_index]
+    data_frame = page_dfs[data_source_description.page_table_index]
     data_frame = clean_data_frame(data_frame)
     return data_frame
