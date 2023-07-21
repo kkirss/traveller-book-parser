@@ -33,6 +33,11 @@ class Settings(BaseSettings):
         default_factory=lambda: PROJECT_PATH / "data" / "cache",
     )
 
+    pdf_to_html_executable: Path = Field(
+        description="Path to pdftohml (version 4.x) executable",
+        default_factory=lambda: Path("pdftohtml"),
+    )
+
 
 try:
     SETTINGS = Settings()

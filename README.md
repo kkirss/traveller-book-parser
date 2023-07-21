@@ -69,6 +69,20 @@ After parsing the books, we output the parsed entities into various formats.
 1. [Python 3.11+](https://www.python.org/downloads/)
 2. [Java](https://www.java.com/en/download/)
     * This is used by [Tabula](https://tabula.technology/) to extract tables from PDFs.
+3. pdftohtml (version 4.x) from [XpdfReader](https://www.xpdfreader.com/download.html)
+    * This is used to convert PDFs to HTML. To then be parsed further.
+    * <details>
+        <summary>Installing pdftohtml:</summary>
+
+        * It's available in package managers under the name `xpdf-tools` (e.g. in Scoop).
+        * It is pre-packaged with some Linux distributions (e.g. Ubuntu).
+        * You can [download it here](https://www.xpdfreader.com/download.html) 
+           (under "Download the Xpdf command line tools").
+
+        Note: If `pdftohtml` is not globally installed,
+         you can set `PDF_TO_HTML_EXECUTABLE` env var to the location of the executable.
+ 
+    </details>
 
 Note: The code is tested on Windows 11.
  But it should work fine on Linux and possibly Mac.
