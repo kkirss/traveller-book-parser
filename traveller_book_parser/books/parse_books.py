@@ -7,7 +7,7 @@ from pydantic import ValidationError
 from traveller_book_parser.entity_collections import (
     all_collection_parsers,  # noqa: F401
 )
-from traveller_book_parser.description_models.collection_description import (
+from traveller_book_parser.entity_collections.collection_description import (
     CollectionDescription,
 )
 from traveller_book_parser.entity_collections.parse_entities import (
