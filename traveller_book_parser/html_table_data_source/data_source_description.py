@@ -1,6 +1,6 @@
 from typing import Literal
 
-from traveller_book_parser.html_data_source.data_source_description import (
+from traveller_book_parser.data_sources.html.data_source_description import (
     HTMLDataSourceDescription,
 )
 

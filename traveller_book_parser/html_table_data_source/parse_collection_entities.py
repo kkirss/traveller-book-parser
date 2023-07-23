@@ -5,8 +5,8 @@ from traveller_book_parser.books.book_description import BookDescription
 from traveller_book_parser.entity_collections.parse_entities import (
     parse_collection_entities,
 )
-from traveller_book_parser.html_data_source.data_extract import export_book_html_files
-from traveller_book_parser.html_data_source.data_source_description import (
+from traveller_book_parser.data_sources.html.data_extract import export_book_html_files
+from traveller_book_parser.data_sources.html.data_source_description import (
     HTMLDataSourceDescription,
 )
 from traveller_book_parser.traveller_models.entity import Entity
