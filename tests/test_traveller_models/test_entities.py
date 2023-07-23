@@ -1,11 +1,13 @@
 from decimal import Decimal
 from typing import Any
 
-from traveller_models.entity import get_entity_model
-from traveller_models.entity_types import EntityType
-from traveller_models.items.base_item import ItemType
-from traveller_models.items.weapons.base_weapon import WeaponType
-from traveller_models.items.weapons.melee_weapon import MeleeWeapon
+from traveller_book_parser.traveller_models.entity import get_entity_model
+from traveller_book_parser.traveller_models.entity_types import EntityType
+from traveller_book_parser.traveller_models.items.base_item import ItemType
+from traveller_book_parser.traveller_models.items.weapons.base_weapon import WeaponType
+from traveller_book_parser.traveller_models.items.weapons.melee_weapon import (
+    MeleeWeapon,
+)
 
 
 def test_entity_item_weapon_melee(melee_weapon_input_data: dict[str, Any]):

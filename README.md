@@ -92,8 +92,7 @@ Note: The code is tested on Windows 11.
 1. Clone this repository.
 2. Set up a virtual environment (optional but recommended).
 3. Install dependencies: `pip install -r requirements.txt`
-4. Add `./src` to your PYTHONPATH.
-5. Run the script: `python main.py`
+4. Run the script: `python main.py`
 
 There is a `run.ps1` PowerShell script that does everything above.
 
@@ -104,7 +103,7 @@ TODO: Add a CLI
 The script can be configured using environment variables.
 (You can create a `.env` file in the root directory to set these as well.)
 
-See `src/settings/settings.py` for a list of all settings.
+See `traveller_book_parser/settings/settings.py` for a list of all settings.
 
 TODO: Add docs on the settings.
 

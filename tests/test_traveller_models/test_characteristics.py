@@ -1,8 +1,12 @@
 from typing import Any
 
-from traveller_models.characteristics.base_characteristic import CharacteristicType
-from traveller_models.characteristics.characteristic import get_characteristic_model
-from traveller_models.characteristics.strength import Strength
+from traveller_book_parser.traveller_models.characteristics.base_characteristic import (
+    CharacteristicType,
+)
+from traveller_book_parser.traveller_models.characteristics.characteristic import (
+    get_characteristic_model,
+)
+from traveller_book_parser.traveller_models.characteristics.strength import Strength
 
 
 def test_characteristic(characteristic_input_data: dict[str, Any]):
