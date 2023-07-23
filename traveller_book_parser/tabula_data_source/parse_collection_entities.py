@@ -4,8 +4,8 @@ from typing import Any
 
 from pydantic import ValidationError
 
-from traveller_book_parser.book_publishers.column_names import get_column_field_name
-from traveller_book_parser.description_models.book_description import BookDescription
+from traveller_book_parser.books.book_description import BookDescription
+from traveller_book_parser.books.publishers.column_names import get_column_field_name
 from traveller_book_parser.entity_collections.parse_entities import (
     parse_collection_entities,
 )

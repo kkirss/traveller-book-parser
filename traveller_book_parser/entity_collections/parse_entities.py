@@ -3,10 +3,10 @@ from typing import Any
 
 from plum import dispatch
 
+from traveller_book_parser.books.book_description import BookDescription
 from traveller_book_parser.description_models.base_data_source_description import (
     BaseDataSourceDescription,
 )
-from traveller_book_parser.description_models.book_description import BookDescription
 from traveller_book_parser.traveller_models.entity import Entity
 from traveller_book_parser.traveller_models.entity_types import EntityType
 

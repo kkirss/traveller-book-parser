@@ -2,9 +2,10 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 
+from traveller_book_parser.description_models.collection_description import (
+    CollectionDescription,
+)
 from traveller_book_parser.settings import SETTINGS
-
-from .collection_description import CollectionDescription
 
 
 def get_book_file_path(code_name: str) -> Path:

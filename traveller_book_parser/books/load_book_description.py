@@ -1,11 +1,14 @@
 import logging
 from pathlib import Path
 
-from traveller_book_parser.description_models.book_description import BookDescription
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.utils import ensure_folder
+from traveller_book_parser.utils.file_type_loaders import (
+    get_supported_path,
+    load_file_data,
+)
 
-from .file_type_loaders import get_supported_path, load_file_data
+from .book_description import BookDescription
 
 logger = logging.getLogger(__name__)
 

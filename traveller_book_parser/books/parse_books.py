@@ -4,15 +4,11 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from traveller_book_parser.description_loaders.book_description_loader import (
-    load_book_description,
-)
-from traveller_book_parser.description_models.book_description import BookDescription
-from traveller_book_parser.description_models.collection_description import (
-    CollectionDescription,
-)
 from traveller_book_parser.entity_collections import (
     all_collection_parsers,  # noqa: F401
+)
+from traveller_book_parser.description_models.collection_description import (
+    CollectionDescription,
 )
 from traveller_book_parser.entity_collections.parse_entities import (
     parse_collection_entities,
@@ -20,6 +16,9 @@ from traveller_book_parser.entity_collections.parse_entities import (
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.traveller_models.entity import Entity
 from traveller_book_parser.utils import ensure_folder, get_indented_exception_text
+
+from .book_description import BookDescription
+from .load_book_description import load_book_description
 
 logger = logging.getLogger(__name__)
 

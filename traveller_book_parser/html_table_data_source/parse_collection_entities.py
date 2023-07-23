@@ -1,7 +1,7 @@
 from collections.abc import Iterable
 from typing import Any
 
-from traveller_book_parser.description_models.book_description import BookDescription
+from traveller_book_parser.books.book_description import BookDescription
 from traveller_book_parser.entity_collections.parse_entities import (
     parse_collection_entities,
 )

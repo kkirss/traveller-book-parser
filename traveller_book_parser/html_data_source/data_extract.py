@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 
-from traveller_book_parser.description_models.book_description import (
+from traveller_book_parser.books.book_description import (
     BookDescription,
     get_book_file_path,
 )
