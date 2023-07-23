@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import Field
 
-from traveller_book_parser.description_models.base_data_source_description import (
+from traveller_book_parser.data_sources.base_data_source_description import (
     BaseDataSourceDescription,
 )
 

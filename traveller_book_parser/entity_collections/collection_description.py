@@ -2,7 +2,7 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
-from traveller_book_parser.description_models.data_source_description import (
+from traveller_book_parser.data_sources.data_source_description import (
     DataSourceDescription,
 )
 from traveller_book_parser.traveller_models.entity_types import EntityType
