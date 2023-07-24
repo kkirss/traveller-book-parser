@@ -92,11 +92,10 @@ Note: The code is tested on Windows 11.
 
 1. Clone this repository.
 2. Install dependencies using poetry: `poetry install`
-3. Run the script: `poetry run python main.py`
+3. Run the CLI to see available commands: `poetry run traveller-book-parser`
+   * You can also run `poetry shell` to start a new sub-shell. And then run the CLI with `traveller-book-parser`.
 
-There is a `run.ps1` PowerShell script that does everything above.
-
-TODO: Add a CLI
+There is a `cli.ps1` PowerShell script that does everything above (passing any arguments to the CLI).
 
 ### Configuration
 
