@@ -1,3 +1,4 @@
+from enum import Enum
 import logging
 from pathlib import Path
 
@@ -5,9 +6,16 @@ import pandas
 from pydantic import Field, ValidationError
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from .log_level import LogLevel
+PROJECT_PATH = Path(__file__).parent.parent
 
-PROJECT_PATH = Path(__file__).parent.parent.parent
+
+class LogLevel(str, Enum):
+    CRITICAL = "CRITICAL"
+    ERROR = "ERROR"
+    WARNING = "WARNING"
+    INFO = "INFO"
+    DEBUG = "DEBUG"
+    NOTSET = "NOTSET"
 
 
 class Settings(BaseSettings):
