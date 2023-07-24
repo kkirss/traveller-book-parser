@@ -67,9 +67,10 @@ After parsing the books, we output the parsed entities into various formats.
 ### Requirements
 
 1. [Python 3.11+](https://www.python.org/downloads/)
-2. [Java](https://www.java.com/en/download/)
+2. [Poetry](https://python-poetry.org/docs/)
+3. [Java](https://www.java.com/en/download/)
     * This is used by [Tabula](https://tabula.technology/) to extract tables from PDFs.
-3. pdftohtml (version 4.x) from [XpdfReader](https://www.xpdfreader.com/download.html)
+4. pdftohtml (version 4.x) from [XpdfReader](https://www.xpdfreader.com/download.html)
     * This is used to convert PDFs to HTML. To then be parsed further.
     * <details>
         <summary>Installing pdftohtml:</summary>
@@ -90,9 +91,8 @@ Note: The code is tested on Windows 11.
 ### Running
 
 1. Clone this repository.
-2. Set up a virtual environment (optional but recommended).
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run the script: `python main.py`
+2. Install dependencies using poetry: `poetry install`
+3. Run the script: `poetry run python main.py`
 
 There is a `run.ps1` PowerShell script that does everything above.
 

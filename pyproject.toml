@@ -2,6 +2,48 @@
 name = "traveller-book-parser"
 requires-python = ">=3.11"
 
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+name = "traveller-book-parser"
+version = "0.1.0"
+description = "Parse Traveller books into other formats."
+authors = [
+    "kkirss <kristofer.kirss@hotmail.com>",
+]
+readme = "README.md"
+homepage = "https://github.com/kkirss/traveller-book-parser"
+repository = "https://github.com/kkirss/traveller-book-parser"
+keywords = ["traveller", "traveller-rpg", "tabula", "pydantic", "pdf"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Console",
+    "Framework :: Pydantic :: 2",
+    "Framework :: Pytest",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Games/Entertainment :: Role-Playing",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+packages = [{include = "traveller_book_parser"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.0.3"
+plum-dispatch = "^2.1.1"
+pydantic = "^2.0.3"
+pydantic-settings = "^2.0.2"
+tabula-py = "^2.7.0"
+
+[tool.poetry.dev-dependencies]
+ruff = "^0.0.280"
+black = {extras = ["d"], version = "^23.7.0"}
+pytest = "^7.4.0"
+
+
 [tool.black]
 line-length = 88
 target-version = ["py311"]
