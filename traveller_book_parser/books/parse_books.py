@@ -32,6 +32,15 @@ def get_book_paths() -> list[Path]:
     return list(SETTINGS.books_path.glob("**/*.pdf"))
 
 
+def get_book_code_names() -> list[str]:
+    """Get code names of books to parse.
+
+    Note: Currently only supporting .pdf files
+    """
+    paths = get_book_paths()
+    return [path.stem for path in paths]
+
+
 def parse_book_collection(
     book_description: BookDescription,
     collection_description: CollectionDescription,
@@ -56,8 +65,7 @@ def _check_collection_amount(
         )
 
 
-def parse_book(path: Path) -> list[Entity]:
-    book_code_name = path.stem
+def parse_book(book_code_name: str) -> list[Entity]:
     try:
         book_description = load_book_description(book_code_name)
     except (FileNotFoundError, ValueError, ValidationError) as e:
@@ -98,8 +106,8 @@ def parse_book(path: Path) -> list[Entity]:
 
 
 def parse_all_books() -> list[Entity]:
-    paths = get_book_paths()
-    if not paths:
+    book_code_names = get_book_code_names()
+    if not book_code_names:
         logger.error(
             "Did not find any books in `books_path`: %s",
             SETTINGS.books_path,
@@ -107,7 +115,7 @@ def parse_all_books() -> list[Entity]:
         return []
 
     all_entities = []
-    for path in paths:
-        entities = parse_book(path)
+    for book_code_name in book_code_names:
+        entities = parse_book(book_code_name)
         all_entities.extend(entities)
     return all_entities
