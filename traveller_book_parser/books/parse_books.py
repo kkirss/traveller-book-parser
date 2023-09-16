@@ -88,9 +88,11 @@ def parse_book(path: Path) -> list[Entity]:
 
         all_entities.extend(entities)
 
-    logger.info("Parsed entities from book %s:", book_description.name)
+    logger.info(
+        "Parsed %i entities from book %s", len(all_entities), book_description.name
+    )
     for entity in all_entities:
-        logger.info("    %s", entity)
+        logger.debug("    %s", entity)
 
     return all_entities
 
