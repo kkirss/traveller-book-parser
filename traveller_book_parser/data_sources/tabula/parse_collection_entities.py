@@ -11,7 +11,6 @@ from traveller_book_parser.entity_collections.parse_entities import (
 )
 from traveller_book_parser.traveller_models.entity import Entity, get_entity_model
 from traveller_book_parser.traveller_models.entity_types import EntityType
-from traveller_book_parser.utils import get_indented_exception_text
 
 from .data_cleaners.missing_tech_level import is_missing_tech_level
 from .data_extract import extract_tabula_data_frame
@@ -58,11 +57,8 @@ def parse_tabula_collection_entities(
 
         try:
             entity = get_entity_model(**entity_dict)
-        except ValidationError as e:
-            logger.error(
-                "Failed to create entity:\n%s",
-                get_indented_exception_text(e),
-            )
+        except ValidationError:
+            logger.exception("Failed to create entity from %s", entity_dict)
             continue
 
         logger.debug("Parsed entity: %s", entity)

@@ -3,8 +3,10 @@ import logging
 from pathlib import Path
 
 import pandas
-from pydantic import Field, ValidationError
+import pydantic
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from rich.logging import RichHandler
 
 PROJECT_PATH = Path(__file__).parent.parent
 
@@ -47,21 +49,29 @@ class Settings(BaseSettings):
     )
 
 
-try:
-    SETTINGS = Settings()
-except ValidationError as e:
-    print(e)
-else:
-    logging.basicConfig(level=SETTINGS.log_level.value)
+def configure_logging():
+    logging.basicConfig(
+        level=LogLevel.NOTSET.value,
+        format="%(message)s",
+        handlers=[
+            RichHandler(
+                show_time=False,
+                show_path=False,
+                rich_tracebacks=True,
+                tracebacks_suppress=[pydantic],
+            )
+        ],
+    )
 
 
-def set_pandas_options():
+def configure_pandas_display():
     pandas.set_option("display.max_columns", None)
     pandas.set_option("display.expand_frame_repr", False)  # noqa: FBT003
 
 
-_SETUP_HAS_RUN = False
+configure_pandas_display()
+configure_logging()
 
-if not _SETUP_HAS_RUN:
-    set_pandas_options()
-    _SETUP_HAS_RUN = True
+SETTINGS = Settings()
+
+logging.root.setLevel(SETTINGS.log_level.value)
