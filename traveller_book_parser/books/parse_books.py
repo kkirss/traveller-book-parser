@@ -94,28 +94,25 @@ def parse_book(book_code_name: str) -> list[Entity]:
     logger.info("Parsing book %s", book_description.name)
     logger.debug("Parsing book with description %s", book_description)
 
-    all_entities = []
+    book_entities = []
     for collection_description in book_description.collection_descriptions:
         logger.debug(
             "Parsing collection with description %s",
             collection_description,
         )
-        entities = parse_book_collection(
+        collection_entities = parse_book_collection(
             book_description,
             collection_description,
         )
-        entities = list(entities)
-        _check_collection_amount(len(entities), collection_description)
+        collection_entities = list(collection_entities)
+        _check_collection_amount(len(collection_entities), collection_description)
 
-        all_entities.extend(entities)
+        book_entities.extend(collection_entities)
 
     logger.info(
-        "Parsed %i entities from book %s", len(all_entities), book_description.name
+        "Parsed %i entities from book %s", len(book_entities), book_description.name
     )
-    for entity in all_entities:
-        logger.debug("    %s", entity)
-
-    return all_entities
+    return book_entities
 
 
 def parse_all_books() -> list[Entity]:
