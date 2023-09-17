@@ -15,7 +15,11 @@ from traveller_book_parser.entity_instrumentation.instrument_entity import (
     instrument_entity,
 )
 from traveller_book_parser.settings import SETTINGS
+from traveller_book_parser.traveller_database.update_database import (
+    add_collection_entities_to_database,
+)
 from traveller_book_parser.traveller_models.entity import Entity
+from traveller_book_parser.traveller_models.traveller_database import TravellerDatabase
 from traveller_book_parser.utils import ensure_folder, get_indented_exception_text
 
 from .book_description import BookDescription
@@ -81,7 +85,7 @@ def _check_collection_amount(
         )
 
 
-def parse_book(book_code_name: str) -> list[Entity]:
+def parse_book_entities(database: TravellerDatabase, book_code_name: str) -> None:
     try:
         book_description = load_book_description(book_code_name)
     except (FileNotFoundError, ValueError, ValidationError) as e:
@@ -90,12 +94,12 @@ def parse_book(book_code_name: str) -> list[Entity]:
             book_code_name,
             get_indented_exception_text(e),
         )
-        return []
+        return
 
     logger.info("Parsing book %s", book_description.name)
     logger.debug("Parsing book with description %s", book_description)
 
-    book_entities = []
+    book_entities_count = 0
     for collection_description in book_description.collection_descriptions:
         logger.debug(
             "Parsing collection with description %s",
@@ -106,31 +110,28 @@ def parse_book(book_code_name: str) -> list[Entity]:
             collection_description,
         )
         collection_entities = list(collection_entities)
+        book_entities_count += len(collection_entities)
         _check_collection_amount(len(collection_entities), collection_description)
 
-        book_entities.extend(collection_entities)
+        add_collection_entities_to_database(database, collection_entities)
 
     logger.info(
-        "Parsed %i entities from book %s", len(book_entities), book_description.name
+        "Parsed %i entities from book %s", book_entities_count, book_description.name
     )
-    return book_entities
 
 
-def parse_books(book_code_names: list[str]) -> list[Entity]:
-    all_entities = []
+def parse_books(database: TravellerDatabase, book_code_names: list[str]) -> None:
     for book_code_name in book_code_names:
-        entities = parse_book(book_code_name)
-        all_entities.extend(entities)
-    return all_entities
+        parse_book_entities(database, book_code_name)
 
 
-def parse_all_books() -> list[Entity]:
+def parse_all_books(database: TravellerDatabase) -> None:
     book_code_names = get_book_code_names()
-    if not book_code_names:
+
+    if book_code_names:
+        parse_books(database, book_code_names)
+    else:
         logger.error(
             "Did not find any books in `books_path`: %s",
             SETTINGS.books_path,
         )
-        return []
-
-    return parse_books(book_code_names)
