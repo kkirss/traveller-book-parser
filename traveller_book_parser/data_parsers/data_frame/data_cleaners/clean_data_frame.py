@@ -40,7 +40,9 @@ def clean_data_frame(input_data_frame: DataFrame) -> DataFrame:
             log_cleaned_data_frame(data_frame)
             continue
 
-        data_frame = replace_few_returns_with_spaces(data_frame)
-        log_cleaned_data_frame(data_frame)
+        if (new_data_frame := replace_few_returns_with_spaces(data_frame)) is not None:
+            data_frame = new_data_frame
+            log_cleaned_data_frame(data_frame)
+            continue
 
         return data_frame

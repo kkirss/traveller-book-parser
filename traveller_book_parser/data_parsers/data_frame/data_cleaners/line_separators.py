@@ -19,22 +19,27 @@ def _replace_return_with_space(value: Any) -> Any:  # noqa: ANN401
     return value
 
 
-def replace_few_returns_with_spaces(input_data_frame: DataFrame) -> DataFrame:
+def replace_few_returns_with_spaces(input_data_frame: DataFrame) -> DataFrame | None:
     data_frame = input_data_frame
     columns = data_frame.columns
+    has_updates = False
 
     values_with_return = _get_cells_with_return_count(columns)
     if 0 < values_with_return < len(columns) / 2:
         values = list(map(_replace_return_with_space, columns))
         data_frame.columns = values
+        has_updates = True
 
     for row_index, row in data_frame.iterrows():
         values_with_return = _get_cells_with_return_count(row)
         if 0 < values_with_return < len(row) / 2:
             values = list(map(_replace_return_with_space, row))
             data_frame.iloc[row_index] = values
+            has_updates = True
 
-    return data_frame
+    if has_updates:
+        return data_frame
+    return None
 
 
 def _get_return_counts_per_index(series: Series) -> dict[int, int]:
