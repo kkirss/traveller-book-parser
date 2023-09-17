@@ -4,17 +4,15 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
+from traveller_book_parser.data_parsers import all_data_parsers  # noqa: F401
 from traveller_book_parser.data_parsers.entity_instrument.instrument_entity import (
     instrument_entity,
 )
-from traveller_book_parser.entity_collections import (
-    all_collection_parsers,  # noqa: F401
-)
+from traveller_book_parser.data_parsers.parse_data_entities import parse_data_entities
+from traveller_book_parser.data_sources import all_data_extractors  # noqa: F401
+from traveller_book_parser.data_sources.extract_source_data import extract_source_data
 from traveller_book_parser.entity_collections.collection_description import (
     CollectionDescription,
-)
-from traveller_book_parser.entity_collections.parse_entities import (
-    parse_collection_entities,
 )
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.traveller_models.entity import Entity
@@ -48,14 +46,22 @@ def parse_book_collection(
     book_description: BookDescription,
     collection_description: CollectionDescription,
 ) -> Iterable[Entity]:
-    entities = parse_collection_entities(
+    data_container = extract_source_data(
         book_description,
         collection_description.data_source_description,
+    )
+    entities = parse_data_entities(
+        data_container,
         collection_description.entity_type,
         collection_description.entity_fields,
     )
+
     for entity in entities:
-        entity = instrument_entity(entity, book_description, collection_description)
+        entity = instrument_entity(
+            entity,
+            book_description,
+            collection_description,
+        )
         logger.debug("Parsed entity: %s", entity)
         yield entity
 

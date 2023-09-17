@@ -2,27 +2,29 @@ from collections.abc import Iterable
 import logging
 from typing import Any
 
-from pandas import DataFrame
 from pydantic import ValidationError
 
 from traveller_book_parser.books.publishers.column_names import get_column_field_name
 from traveller_book_parser.data_parsers.data_cleaners.missing_tech_level import (
     is_missing_tech_level,
 )
+from traveller_book_parser.data_parsers.parse_data_entities import parse_data_entities
 from traveller_book_parser.traveller_models.entity import Entity, get_entity_model
 from traveller_book_parser.traveller_models.entity_types import EntityType
 
 from .data_cleaners.clean_data_frame import clean_data_frame
+from .data_container import DataFrameDataContainer
 
 logger = logging.getLogger(__name__)
 
 
-def parse_entities(
-    input_data_frame: DataFrame,
+@parse_data_entities.dispatch
+def parse_data_frame_entities(
+    data_container: DataFrameDataContainer,
     entity_type: EntityType,
     entity_fields: dict[str, Any],
 ) -> Iterable[Entity]:
-    data_frame = input_data_frame
+    data_frame = data_container.data
     data_frame = clean_data_frame(data_frame)
 
     previous_entity = None
