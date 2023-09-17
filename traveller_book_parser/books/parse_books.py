@@ -62,7 +62,8 @@ def parse_book_collection(
             book_description,
             collection_description,
         )
-        logger.debug("Parsed entity: %s", entity)
+        if SETTINGS.log_parsed_entities:
+            logger.debug("Parsed entity: %s", entity)
         yield entity
 
 

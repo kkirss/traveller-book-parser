@@ -28,6 +28,10 @@ class Settings(BaseSettings):
     )
 
     log_level: LogLevel = LogLevel.INFO
+    log_parsed_entities: bool = Field(
+        description="Whether to log parsed entities. Note: These are logged at DEBUG level.",
+        default=False,
+    )
 
     books_path: Path = Field(
         description="Folder path where books are loaded from",
