@@ -24,7 +24,6 @@ class BaseItem(BaseEntity):
     entity_type: Literal[EntityType.ITEM] = EntityType.ITEM
     item_type: ItemType
 
-    name: str = Field(repr=True)
     description: str = ""
 
     tech_level: int = Field(repr=True, ge=0)

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .entity_types import EntityType
 
@@ -8,4 +8,5 @@ from .entity_types import EntityType
 class BaseEntity(BaseModel):
     entity_type: EntityType
 
+    name: str = Field(repr=True)
     image_path: Path | None = None

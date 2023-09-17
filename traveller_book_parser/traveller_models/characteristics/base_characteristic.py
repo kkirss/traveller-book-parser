@@ -1,7 +1,7 @@
 from enum import Enum
-from typing import ClassVar, Literal
+from typing import Any, ClassVar, Literal
 
-from pydantic import Field, computed_field
+from pydantic import Field, model_validator
 
 from traveller_book_parser.traveller_models.base_entity import BaseEntity
 from traveller_book_parser.traveller_models.entity_types import EntityType
@@ -28,7 +28,12 @@ class BaseCharacteristic(BaseEntity):
 
     NAME: ClassVar[str] = NotImplemented
 
-    @computed_field
-    @property
-    def name(self) -> str:
-        return self.NAME
+    @model_validator(mode="before")
+    @classmethod
+    def set_name_from_class(
+        cls: type["BaseCharacteristic"],
+        data: Any,  # noqa: ANN401
+    ) -> Any:  # noqa: ANN401
+        if isinstance(data, dict):
+            data["name"] = cls.NAME
+        return data
