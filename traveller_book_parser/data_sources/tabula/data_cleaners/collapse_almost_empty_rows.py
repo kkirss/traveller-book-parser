@@ -2,6 +2,8 @@ import logging
 
 from pandas import DataFrame, Series
 
+from .merge_first_row_with_columns import merge_first_row_with_columns
+
 logger = logging.getLogger(__name__)
 
 
@@ -20,6 +22,11 @@ def collapse_almost_empty_rows(input_data_frame: DataFrame) -> DataFrame | None:
     if not _has_almost_empty_rows(data_frame):
         return None
 
+    first_row = data_frame.iloc[0]
+    if _is_almost_empty_row(first_row):
+        data_frame = merge_first_row_with_columns(data_frame)
+        return data_frame
+
     new_rows = []
 
     for _, row in data_frame.iterrows():
@@ -27,6 +34,7 @@ def collapse_almost_empty_rows(input_data_frame: DataFrame) -> DataFrame | None:
             try:
                 previous_row = new_rows.pop()
             except IndexError:
+                # This should be prevented by the above first_row check
                 logger.error(
                     "Found almost empty row as the first row, skipping clean:\n%s", row
                 )
