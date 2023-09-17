@@ -15,6 +15,8 @@ logger = logging.getLogger(__name__)
 def clean_data_frame(input_data_frame: DataFrame) -> DataFrame:
     data_frame = input_data_frame
 
+    # logger.debug("Cleaning data frame:\n%s", data_frame)
+
     data_frame = data_frame.fillna("")
 
     while True:
