@@ -11,6 +11,9 @@ from traveller_book_parser.data_sources.extract_source_data import extract_sourc
 from traveller_book_parser.entity_collections.collection_description import (
     CollectionDescription,
 )
+from traveller_book_parser.entity_collections.parse_collection_name import (
+    parse_collection_name,
+)
 from traveller_book_parser.entity_instrumentation.instrument_entity import (
     instrument_entity,
 )
@@ -19,8 +22,14 @@ from traveller_book_parser.traveller_database.books import add_book_to_database
 from traveller_book_parser.traveller_database.entities import (
     add_collection_entities_to_database,
 )
+from traveller_book_parser.traveller_database.entity_source_collections import (
+    add_entity_source_collection_to_database,
+)
 from traveller_book_parser.traveller_models.book import Book
 from traveller_book_parser.traveller_models.entity import Entity
+from traveller_book_parser.traveller_models.entity_source_collection import (
+    EntitySourceCollection,
+)
 from traveller_book_parser.traveller_models.traveller_database import TravellerDatabase
 from traveller_book_parser.utils import ensure_folder, get_indented_exception_text
 
@@ -48,7 +57,7 @@ def get_book_code_names() -> list[str]:
     return [path.stem for path in paths]
 
 
-def parse_book_collection(
+def parse_book_collection_entities(
     book_description: BookDescription,
     collection_description: CollectionDescription,
 ) -> Iterable[Entity]:
@@ -87,7 +96,7 @@ def _check_collection_amount(
         )
 
 
-def parse_book_entities(database: TravellerDatabase, book_code_name: str) -> None:
+def parse_book(database: TravellerDatabase, book_code_name: str) -> None:
     try:
         book_description = load_book_description(book_code_name)
     except (FileNotFoundError, ValueError, ValidationError) as e:
@@ -114,7 +123,19 @@ def parse_book_entities(database: TravellerDatabase, book_code_name: str) -> Non
             "Parsing collection with description %s",
             collection_description,
         )
-        collection_entities = parse_book_collection(
+
+        entity_source_collection = EntitySourceCollection(
+            name=parse_collection_name(book_description, collection_description),
+        )
+
+        if SETTINGS.log_parsed_entities:
+            logger.debug(
+                "Parsed entity source collection: %s", entity_source_collection
+            )
+
+        add_entity_source_collection_to_database(database, entity_source_collection)
+
+        collection_entities = parse_book_collection_entities(
             book_description,
             collection_description,
         )
@@ -131,7 +152,7 @@ def parse_book_entities(database: TravellerDatabase, book_code_name: str) -> Non
 
 def parse_books(database: TravellerDatabase, book_code_names: list[str]) -> None:
     for book_code_name in book_code_names:
-        parse_book_entities(database, book_code_name)
+        parse_book(database, book_code_name)
 
 
 def parse_all_books(database: TravellerDatabase) -> None:

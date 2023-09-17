@@ -18,6 +18,16 @@ class EntityInstrument(BaseModel):
 class CollectionDescription(BaseModel):
     """Description of a collection of entities."""
 
+    name: str | None = None
+    name_page: int | None = Field(
+        description="Page number where the collection name is found (defaults to data source page, if available).",
+        default=None,
+    )
+    name_nth_largest_font: int = Field(
+        description="Text with the Nth largest font is used as the collection name.",
+        default=1,
+    )
+
     entity_type: EntityType
     entity_fields: dict[str, Any] = Field(
         description=(
