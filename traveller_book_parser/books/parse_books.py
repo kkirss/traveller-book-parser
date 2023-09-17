@@ -115,6 +115,14 @@ def parse_book(book_code_name: str) -> list[Entity]:
     return book_entities
 
 
+def parse_books(book_code_names: list[str]) -> list[Entity]:
+    all_entities = []
+    for book_code_name in book_code_names:
+        entities = parse_book(book_code_name)
+        all_entities.extend(entities)
+    return all_entities
+
+
 def parse_all_books() -> list[Entity]:
     book_code_names = get_book_code_names()
     if not book_code_names:
@@ -124,8 +132,4 @@ def parse_all_books() -> list[Entity]:
         )
         return []
 
-    all_entities = []
-    for book_code_name in book_code_names:
-        entities = parse_book(book_code_name)
-        all_entities.extend(entities)
-    return all_entities
+    return parse_books(book_code_names)
