@@ -12,5 +12,5 @@ Entity = Annotated[
 ]
 
 
-def get_entity_model(**kwargs: dict[str, Any]) -> Entity:
+def get_entity_model(**kwargs: Any) -> Entity:  # noqa: ANN401
     return RootModel[Entity](**kwargs).root

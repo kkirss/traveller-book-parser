@@ -24,5 +24,5 @@ Characteristic = Annotated[
 ]
 
 
-def get_characteristic_model(**kwargs: dict[str, Any]) -> Characteristic:
+def get_characteristic_model(**kwargs: Any) -> Characteristic:  # noqa: ANN401
     return RootModel[Characteristic](**kwargs).root

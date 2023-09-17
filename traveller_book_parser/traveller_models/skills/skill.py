@@ -7,5 +7,5 @@ from .base_skill import BaseSkill
 Skill = BaseSkill
 
 
-def get_skill_model(**kwargs: dict[str, Any]) -> Skill:
+def get_skill_model(**kwargs: Any) -> Skill:  # noqa: ANN401
     return RootModel[Skill](**kwargs).root
