@@ -42,6 +42,10 @@ class Settings(BaseSettings):
         description="Path for temporary files",
         default_factory=lambda: PROJECT_PATH / "data" / "cache",
     )
+    images_path: Path = Field(
+        description="Path for image files",
+        default_factory=lambda: PROJECT_PATH / "data" / "cache" / "images",
+    )
 
     pdf_to_html_executable: Path = Field(
         description="Path to pdftohml (version 4.x) executable",

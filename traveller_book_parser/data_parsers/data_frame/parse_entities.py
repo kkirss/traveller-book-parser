@@ -68,8 +68,6 @@ def parse_entities(
                 continue
             entity.name = previous_entity.name
 
-        logger.debug("Parsed entity: %s", entity)
-
         previous_entity = entity
         yield entity
 

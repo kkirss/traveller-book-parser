@@ -4,6 +4,9 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
+from traveller_book_parser.data_parsers.entity_instrument.instrument_entity import (
+    instrument_entity,
+)
 from traveller_book_parser.entity_collections import (
     all_collection_parsers,  # noqa: F401
 )
@@ -45,10 +48,16 @@ def parse_book_collection(
     book_description: BookDescription,
     collection_description: CollectionDescription,
 ) -> Iterable[Entity]:
-    return parse_collection_entities(
+    entities = parse_collection_entities(
         book_description,
-        collection_description,
+        collection_description.data_source_description,
+        collection_description.entity_type,
+        collection_description.entity_fields,
     )
+    for entity in entities:
+        entity = instrument_entity(entity, book_description, collection_description)
+        logger.debug("Parsed entity: %s", entity)
+        yield entity
 
 
 def _check_collection_amount(
@@ -85,11 +94,9 @@ def parse_book(book_code_name: str) -> list[Entity]:
             "Parsing collection with description %s",
             collection_description,
         )
-        entities = parse_collection_entities(
+        entities = parse_book_collection(
             book_description,
-            collection_description.data_source_description,
-            collection_description.entity_type,
-            collection_description.entity_fields,
+            collection_description,
         )
         entities = list(entities)
         _check_collection_amount(len(entities), collection_description)
