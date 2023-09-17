@@ -9,7 +9,6 @@ from traveller_book_parser.books.book_description import (
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.utils import ensure_folder
 
-from .data_cleaners.clean_data_frame import clean_data_frame
 from .data_source_description import TabulaDataSourceDescription
 from .tabula_integration import export_tabula_data_file, read_tabula_data_file
 
@@ -60,5 +59,4 @@ def extract_tabula_data_frame(
         data_source_description,
     )
     data_frame = page_dfs[data_source_description.page_table_index]
-    data_frame = clean_data_frame(data_frame)
     return data_frame
