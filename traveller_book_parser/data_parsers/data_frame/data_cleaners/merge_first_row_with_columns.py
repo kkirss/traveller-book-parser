@@ -1,3 +1,5 @@
+from collections.abc import Hashable
+
 from pandas import DataFrame
 
 
@@ -12,5 +14,10 @@ def merge_first_row_with_columns(input_data_frame: DataFrame) -> DataFrame | Non
     ]
 
     data_frame.columns = new_columns
-    data_frame = data_frame.drop(index=data_frame.index[0])
+
+    drop_index = data_frame.index[0]
+    if not isinstance(drop_index, Hashable):
+        raise ValueError("No index to drop")
+
+    data_frame = data_frame.drop(index=drop_index)
     return data_frame

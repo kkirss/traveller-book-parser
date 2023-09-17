@@ -3,7 +3,7 @@ import copy
 import json
 import logging
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, TypedDict
 
 import pandas
 import tabula
@@ -31,6 +31,11 @@ def read_tabula_data_file(
     )
 
 
+class TabulaKwargs(TypedDict, total=False):
+    lattice: bool
+    stream: bool
+
+
 def export_tabula_data_file(
     book_pdf_path: Path,
     export_path: Path,
@@ -38,13 +43,13 @@ def export_tabula_data_file(
     area: Iterable[float] | None = None,
     extraction_method: ExtractionMethod = None,
 ) -> None:
-    kwargs = {}
+    kwargs: TabulaKwargs = {}
     if extraction_method == "lattice":
         kwargs = {"lattice": True}
     elif extraction_method == "stream":
         kwargs = {"stream": True}
 
-    tabula.convert_into(
+    tabula.io.convert_into(
         book_pdf_path,
         str(export_path),
         output_format="json",

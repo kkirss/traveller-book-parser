@@ -1,8 +1,11 @@
-from contextlib import AbstractContextManager, contextmanager
+from collections.abc import Generator
+from contextlib import contextmanager
 import logging
 from pathlib import Path
+from typing import Any, cast
 
 import pdfplumber
+from pdfplumber.page import Page
 
 from traveller_book_parser.data_sources.pdfplumber.data_source_description import (
     TableSettingsDict,
@@ -16,7 +19,7 @@ PDFPlumberTable = list[list[str | None]]
 def get_pdfplumber_page(
     pdf_path: Path,
     page_number: int,
-) -> pdfplumber.pdf.Page:
+) -> Page:
     pdf = pdfplumber.open(pdf_path, pages=[page_number])
     return pdf.pages[0]
 
@@ -24,7 +27,7 @@ def get_pdfplumber_page(
 @contextmanager
 def open_pdfplumber_page(
     pdf_path: Path, page_number: int
-) -> AbstractContextManager[pdfplumber.pdf.Page]:
+) -> Generator[Page, None, None]:
     with pdfplumber.open(pdf_path, pages=[page_number]) as pdf:
         yield pdf.pages[0]
 
@@ -35,9 +38,12 @@ def get_pdfplumber_table(
     table_index: int = 0,
     table_settings: TableSettingsDict | None = None,
 ) -> PDFPlumberTable:
+    if table_settings is None:
+        table_settings = {}
+
     with open_pdfplumber_page(pdf_path, page_number) as page:
         page.to_image()
-        tables = page.extract_tables(table_settings)
+        tables = page.extract_tables(cast(dict[str, Any], table_settings))
         try:
             return tables[table_index]
         except IndexError as e:
