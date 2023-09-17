@@ -1,4 +1,3 @@
-import logging
 from pathlib import Path
 
 from pandas import DataFrame
@@ -16,8 +15,6 @@ from traveller_book_parser.utils import ensure_folder
 
 from .data_source_description import TabulaDataSourceDescription
 from .tabula_integration import export_tabula_data_file, read_tabula_data_file
-
-logger = logging.getLogger(__name__)
 
 TABULA_CACHE_FOLDER = "tabula_data"
 
@@ -78,8 +75,6 @@ def extract_tabula_data(
         book_description,
         data_source_description,
     )
-    logger.debug("Parsing entities from tabula data frame:\n%s", data_frame)
-
     return DataFrameDataContainer(
         data=data_frame,
         data_source_description=data_source_description,

@@ -1,5 +1,3 @@
-import logging
-
 from pandas import DataFrame
 
 from traveller_book_parser.books.book_description import (
@@ -13,8 +11,6 @@ from traveller_book_parser.data_sources.extract_source_data import extract_sourc
 
 from .data_source_description import PDFPlumberDataSourceDescription
 from .pdfplumber_integration import get_pdfplumber_table
-
-logger = logging.getLogger(__name__)
 
 
 def extract_pdfplumber_data_frame(
@@ -42,8 +38,6 @@ def extract_pdfplumber_data(
         book_description,
         data_source_description,
     )
-    logger.debug("Parsing entities from pdfplumber data frame:\n%s", data_frame)
-
     return DataFrameDataContainer(
         data=data_frame,
         data_source_description=data_source_description,

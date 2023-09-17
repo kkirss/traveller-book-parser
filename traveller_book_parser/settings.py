@@ -32,6 +32,10 @@ class Settings(BaseSettings):
         description="Whether to log parsed entities. Note: These are logged at DEBUG level.",
         default=False,
     )
+    log_intermediate_data: bool = Field(
+        description="Whether to log intermediate data. Note: These are logged at DEBUG level.",
+        default=False,
+    )
 
     books_path: Path = Field(
         description="Folder path where books are loaded from",

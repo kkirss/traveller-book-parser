@@ -9,6 +9,7 @@ from traveller_book_parser.data_parsers.data_cleaners.missing_tech_level import 
     is_missing_tech_level,
 )
 from traveller_book_parser.data_parsers.parse_data_entities import parse_data_entities
+from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.traveller_models.entity import Entity, get_entity_model
 from traveller_book_parser.traveller_models.entity_types import EntityType
 
@@ -25,6 +26,10 @@ def parse_data_frame_entities(
     entity_fields: dict[str, Any],
 ) -> Iterable[Entity]:
     data_frame = data_container.data
+
+    if SETTINGS.log_intermediate_data:
+        logger.debug("Parsing entities from data frame:\n%s", data_frame)
+
     data_frame = clean_data_frame(data_frame)
 
     previous_entity = None
