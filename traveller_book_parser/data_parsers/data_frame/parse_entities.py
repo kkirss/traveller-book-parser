@@ -25,6 +25,7 @@ def parse_entities(
     data_frame = input_data_frame
     data_frame = clean_data_frame(data_frame)
 
+    previous_entity = None
     unknown_columns = set()
     for _, row in data_frame.iterrows():
         entity_dict = {
@@ -54,7 +55,22 @@ def parse_entities(
             logger.exception("Failed to create entity from %s", entity_dict)
             continue
 
+        if entity.name == "":
+            if previous_entity is None:
+                logger.warning(
+                    "Found first entity with empty name, skipping: %s", entity_dict
+                )
+                continue
+            if previous_entity.name == "":
+                logger.warning(
+                    "Found two entities with empty names, skipping: %s", entity_dict
+                )
+                continue
+            entity.name = previous_entity.name
+
         logger.debug("Parsed entity: %s", entity)
+
+        previous_entity = entity
         yield entity
 
     for unknown_column in unknown_columns:
