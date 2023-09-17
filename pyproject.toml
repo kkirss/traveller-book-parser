@@ -49,12 +49,17 @@ ruff = "^0.0.290"
 black = {extras = ["d"], version = "^23.9.1"}
 ipywidgets = "^8.1.1"
 jupyterlab = "^4.0.6"
+pyright = "^1.1.327"
 pytest = "^7.4.0"
 
 
 [tool.black]
 line-length = 88
 target-version = ["py311"]
+
+[tool.pyright]
+include = ["traveller_book_parser"]
+reportUnnecessaryTypeIgnoreComment = true
 
 [tool.ruff]
 select = [
