@@ -15,9 +15,11 @@ from traveller_book_parser.entity_instrumentation.instrument_entity import (
     instrument_entity,
 )
 from traveller_book_parser.settings import SETTINGS
-from traveller_book_parser.traveller_database.update_database import (
+from traveller_book_parser.traveller_database.books import add_book_to_database
+from traveller_book_parser.traveller_database.entities import (
     add_collection_entities_to_database,
 )
+from traveller_book_parser.traveller_models.book import Book
 from traveller_book_parser.traveller_models.entity import Entity
 from traveller_book_parser.traveller_models.traveller_database import TravellerDatabase
 from traveller_book_parser.utils import ensure_folder, get_indented_exception_text
@@ -98,6 +100,13 @@ def parse_book_entities(database: TravellerDatabase, book_code_name: str) -> Non
 
     logger.info("Parsing book %s", book_description.name)
     logger.debug("Parsing book with description %s", book_description)
+
+    book = Book(name=book_description.name)
+
+    if SETTINGS.log_parsed_entities:
+        logger.debug("Parsed book: %s", book)
+
+    add_book_to_database(database, book)
 
     book_entities_count = 0
     for collection_description in book_description.collection_descriptions:

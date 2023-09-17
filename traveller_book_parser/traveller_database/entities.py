@@ -6,4 +6,5 @@ def add_collection_entities_to_database(
     database: TravellerDatabase,
     entities: list[Entity],
 ) -> None:
+    """Add collection entities to a database."""
     database.all_entities.extend(entities)
