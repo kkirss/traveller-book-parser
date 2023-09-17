@@ -69,9 +69,19 @@ def configure_pandas_display():
     pandas.set_option("display.expand_frame_repr", False)  # noqa: FBT003
 
 
+def set_log_level(log_level: LogLevel):
+    logging.root.setLevel(log_level.value)
+
+    if log_level == LogLevel.DEBUG:
+        # Skip pdfminer debug logging as it's too verbose
+        logging.getLogger("pdfminer").setLevel(logging.INFO)
+    else:
+        raise ValueError()
+
+
 configure_pandas_display()
 configure_logging()
 
 SETTINGS = Settings()
 
-logging.root.setLevel(SETTINGS.log_level.value)
+set_log_level(SETTINGS.log_level)
