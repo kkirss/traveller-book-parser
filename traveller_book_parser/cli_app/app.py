@@ -9,7 +9,7 @@ app = typer.Typer(
 
 
 app.command("parse-book", no_args_is_help=True)(parse_book_cli)
-app.command("parse-books")(parse_all_books_cli)
+app.command("parse")(parse_all_books_cli)
 
 
 def run_cli():
