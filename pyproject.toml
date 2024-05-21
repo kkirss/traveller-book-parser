@@ -1,6 +1,6 @@
 [project]
 name = "traveller-book-parser"
-requires-python = ">=3.11"
+requires-python = "~=3.11"
 
 [build-system]
 requires = ["poetry-core"]
@@ -34,7 +34,7 @@ packages = [{include = "traveller_book_parser"}]
 traveller-book-parser = "traveller_book_parser.cli:run_cli"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "~3.11"
 pandas = "^2.0.3"
 pdfplumber = "^0.10.2"
 plum-dispatch = "^2.2.1"
