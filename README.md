@@ -110,3 +110,19 @@ TODO: Add docs on the settings.
 
 This project is open to contributions.
 Feel free to open an issue or pull request.
+
+## Development
+
+### Linting
+
+To run linters, run:
+```shell
+poetry run black .; poetry run ruff --fix .; poetry run pyright .
+```
+
+### Testing
+
+To run tests, run:
+```shell
+poetry run pytest
+```
