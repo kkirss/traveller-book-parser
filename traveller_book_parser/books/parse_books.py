@@ -17,6 +17,7 @@ from traveller_book_parser.entity_collections.parse_collection_name import (
 from traveller_book_parser.entity_instrumentation.instrument_entity import (
     instrument_entity,
 )
+from traveller_book_parser.output_generators import all_output_generators  # noqa: F401
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.traveller_database.books import add_book_to_database
 from traveller_book_parser.traveller_database.entities import (
