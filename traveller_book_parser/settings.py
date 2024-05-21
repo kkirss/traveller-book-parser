@@ -87,8 +87,6 @@ def set_log_level(log_level: LogLevel):
     if log_level == LogLevel.DEBUG:
         # Skip pdfminer debug logging as it's too verbose
         logging.getLogger("pdfminer").setLevel(logging.INFO)
-    else:
-        raise ValueError()
 
 
 configure_pandas_display()
