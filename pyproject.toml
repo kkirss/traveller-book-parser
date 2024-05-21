@@ -45,12 +45,12 @@ typer = "0.9.0"
 rich = "13.5.2"
 
 [tool.poetry.dev-dependencies]
-ruff = "0.0.290"
-black = {extras = ["d"], version = "23.9.1"}
-ipywidgets = "8.1.1"
-jupyterlab = "4.0.6"
-pyright = "1.1.327"
-pytest = "7.4.0"
+ruff = "0.4.4"
+black = {extras = ["d"], version = "24.4.2"}
+ipywidgets = "8.1.2"
+jupyterlab = "4.2.0"
+pyright = "1.1.363"
+pytest = "8.2.1"
 
 
 [tool.black]
@@ -60,8 +60,9 @@ target-version = ["py311"]
 [tool.pyright]
 include = ["traveller_book_parser"]
 reportUnnecessaryTypeIgnoreComment = true
+reportIncompatibleVariableOverride = false
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
     "F",
     "E",
@@ -100,10 +101,10 @@ ignore = [
 
 #fix = true
 
-[tool.ruff.flake8-annotations]
+[tool.ruff.lint.flake8-annotations]
 suppress-none-returning = true
 
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-sort-within-sections = true
 split-on-trailing-comma = false

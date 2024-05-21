@@ -117,7 +117,7 @@ Feel free to open an issue or pull request.
 
 To run linters, run:
 ```shell
-poetry run black .; poetry run ruff --fix .; poetry run pyright .
+poetry run black .; poetry run ruff check --fix .; poetry run pyright .
 ```
 
 ### Testing

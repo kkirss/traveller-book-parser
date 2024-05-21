@@ -28,7 +28,7 @@ class BaseCharacteristic(BaseEntity):
 
     NAME: ClassVar[str] = NotImplemented
 
-    @model_validator(mode="before")
+    @model_validator(mode="before")  # pyright: ignore [reportArgumentType]
     @classmethod
     def set_name_from_class(
         cls: type["BaseCharacteristic"],

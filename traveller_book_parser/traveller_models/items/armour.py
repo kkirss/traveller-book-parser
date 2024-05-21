@@ -26,7 +26,7 @@ def _get_type_protection_from_protection(
         data: dict[str, Any],
     ) -> dict[str, Any]:
         if (
-            data.get(field_name, None) is None
+            data.get(field_name) is None
             and "protection" in data
             and isinstance(data["protection"], str)
         ):

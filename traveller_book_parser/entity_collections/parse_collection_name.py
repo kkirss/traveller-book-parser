@@ -19,7 +19,9 @@ def get_collection_name_page(collection_description: CollectionDescription) -> i
     data_source_description = collection_description.data_source_description
 
     if hasattr(data_source_description, "page"):
-        return data_source_description.page  # pyright: ignore [reportGeneralTypeIssues]
+        return (
+            data_source_description.page  # pyright: ignore [reportAttributeAccessIssue]
+        )
 
     raise NotImplementedError(
         f"Guessing collection name is not supported for this data source: {data_source_description}"

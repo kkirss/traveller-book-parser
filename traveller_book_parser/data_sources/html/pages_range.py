@@ -10,6 +10,7 @@ def get_pages_range_list(pages: str) -> RangeList:
         `1` -> [(1, 1)]
         `1-3` -> [(1, 3)]
         `1-3,5` -> [(1, 3), (5, 5)]
+
     """
     pages_range_list = []
     for range_str in pages.split(","):
