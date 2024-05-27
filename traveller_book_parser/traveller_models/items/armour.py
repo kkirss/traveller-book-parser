@@ -62,6 +62,7 @@ class Armour(BaseItem):
 
     radiation_protection: int = 0
     required_skill: Skill | None = None
+    slots_count: int | None = None
 
     characteristic_bonuses: dict[str, int] = Field(default_factory=dict)
 
