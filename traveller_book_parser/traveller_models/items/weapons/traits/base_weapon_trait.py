@@ -26,6 +26,7 @@ class WeaponTraitType(str, Enum):
     smart = "Smart"
     smasher = "Smasher"
     stun = "Stun"
+    special = "Special"
     zero_g = "Zero-G"
 
 
