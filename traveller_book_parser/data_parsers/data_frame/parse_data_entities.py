@@ -19,6 +19,26 @@ from .data_container import DataFrameDataContainer
 logger = logging.getLogger(__name__)
 
 
+def set_deep(
+    obj: dict[str, Any], key: str, value: Any  # noqa: ANN401
+) -> dict[str, Any]:
+    """Set a value in a nested dictionary.
+
+    Example:
+    -------
+    set_deep({}, "a.b", 2) -> {"a": {"b": 2}}
+
+    """
+    sub_obj = obj
+    sub_key = key
+
+    for sub_key in key.split(".")[:-1]:
+        sub_obj = sub_obj.setdefault(sub_key, {})
+
+    sub_obj[sub_key] = value
+    return obj
+
+
 @parse_data_entities.dispatch
 def parse_data_frame_entities(
     data_container: DataFrameDataContainer,
@@ -48,7 +68,7 @@ def parse_data_frame_entities(
                 unknown_columns.add(column)
                 continue
 
-            entity_dict[field_name] = value
+            set_deep(entity_dict, field_name, value)
 
         if is_missing_tech_level(entity_dict):
             logger.warning(

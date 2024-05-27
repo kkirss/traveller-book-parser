@@ -4,9 +4,6 @@ from typing import Any, Literal
 
 from pydantic import Field, field_validator, model_validator
 
-from traveller_book_parser.traveller_models.characteristics.characteristic import (
-    Characteristic,
-)
 from traveller_book_parser.traveller_models.skills.skill import Skill
 from traveller_book_parser.traveller_models.validators import (
     dash_is_zero,
@@ -66,7 +63,7 @@ class Armour(BaseItem):
     radiation_protection: int = 0
     required_skill: Skill | None = None
 
-    characteristic_bonuses: list[Characteristic] = Field(default_factory=list)
+    characteristic_bonuses: dict[str, int] = Field(default_factory=dict)
 
     # Validators
     laser_protection_from_protection = model_validator(mode="before")(

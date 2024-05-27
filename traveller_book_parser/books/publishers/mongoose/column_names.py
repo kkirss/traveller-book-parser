@@ -11,6 +11,8 @@ COLUMN_TO_FIELD: dict[str, str] = {
     "PROTECTION": "protection",
     "REQUIRED SKILL": "required_skill",
     "RAD": "radiation_protection",
+    "DEX": "characteristic_bonuses.DEX",
+    "STR": "characteristic_bonuses.STR",
     # Weapons
     "WEAPON": "name",
     "DAMAGE": "damage",
