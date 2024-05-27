@@ -1,7 +1,8 @@
-from collections.abc import Iterable
+from collections.abc import Callable, Hashable, Iterable
 import logging
 from typing import Any
 
+from pandas import Series
 from pydantic import ValidationError
 
 from traveller_book_parser.books.publishers.column_names import get_column_field_name
@@ -39,6 +40,31 @@ def set_deep(
     return obj
 
 
+def construct_entity_dict_from_row(
+    row: Iterable[tuple[Hashable, Series]],
+    entity_type: EntityType,
+    entity_fields: dict[str, Any],
+    add_unknown_column: Callable[[str], None],
+) -> dict[str, Any]:
+    entity_dict = {
+        "entity_type": entity_type,
+        **entity_fields,
+    }
+    entity_dict.items()
+    for column, value in row:
+        if not isinstance(column, str):
+            continue
+        try:
+            field_name = get_column_field_name(column)
+        except KeyError:
+            add_unknown_column(column)
+            continue
+
+        set_deep(entity_dict, field_name, value)
+
+    return entity_dict
+
+
 @parse_data_entities.dispatch
 def parse_data_frame_entities(
     data_container: DataFrameDataContainer,
@@ -55,20 +81,9 @@ def parse_data_frame_entities(
     previous_entity = None
     unknown_columns = set()
     for _, row in data_frame.iterrows():
-        entity_dict = {
-            "entity_type": entity_type,
-            **entity_fields,
-        }
-        for column, value in row.items():
-            if not isinstance(column, str):
-                continue
-            try:
-                field_name = get_column_field_name(column)
-            except KeyError:
-                unknown_columns.add(column)
-                continue
-
-            set_deep(entity_dict, field_name, value)
+        entity_dict = construct_entity_dict_from_row(
+            row.items(), entity_type, entity_fields, unknown_columns.add
+        )
 
         if is_missing_tech_level(entity_dict):
             logger.warning(
