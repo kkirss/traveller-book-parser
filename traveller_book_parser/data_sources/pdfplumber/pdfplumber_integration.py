@@ -62,14 +62,6 @@ TABLE_SETTINGS_DEFAULTS: TableSettingsDict = {
 }
 
 
-def get_pdfplumber_page(
-    pdf_path: Path,
-    page_number: int,
-) -> Page:
-    pdf = pdfplumber.open(pdf_path, pages=[page_number])
-    return pdf.pages[0]
-
-
 @contextmanager
 def open_pdfplumber_page(
     pdf_path: Path, page_number: int
