@@ -18,6 +18,14 @@ def _get_type_protection_from_protection(
     field_name: str,
     damage_type: str,
 ) -> Callable:
+    """Get model validator to split protection to base and typed fields.
+
+    >>> _get_type_protection_from_protection("protection_laser", "laser")(Armour, {"protection": "5 (10 vs. laser)"})
+    {'protection': '5', 'protection_laser': '10'}
+    >>> _get_type_protection_from_protection("protection_laser", "laser")(Armour, {"protection": "5 (10 vs. plasma)"})
+    {'protection': '5 (10 vs. plasma)', 'protection_laser': '5'}
+    """
+
     def type_protection_from_protection(
         cls: type["Armour"],  # noqa: ARG001
         data: dict[str, Any],
