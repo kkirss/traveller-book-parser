@@ -82,10 +82,12 @@ def spread_returns_to_multiple_rows(
 
     Example:
     -------
-    DataFrame([["a", "foo\rbar", "first\rsecond"],
-               ["b", "", ""]])
-    -> DataFrame([["a", "foo", "first"],
-                  ["b", "bar", "second"]])
+    >>> spread_returns_to_multiple_rows(DataFrame([
+    ...     ["a", "foo\rbar", "first\rsecond"],
+    ... ]))
+       0    1       2
+    0  a  foo   first
+    1  a  bar  second
     """
     data_frame = input_data_frame
 

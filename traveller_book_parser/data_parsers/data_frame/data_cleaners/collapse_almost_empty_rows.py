@@ -29,10 +29,12 @@ def collapse_almost_empty_rows(input_data_frame: DataFrame) -> DataFrame | None:
 
     Example:
     -------
-    DataFrame([["a", "", ""],
-               ["b", "", ""],
-               ["c", "foo", "hello"]])
-    -> DataFrame([["a b c", "foo", "hello"]])
+    >>> collapse_almost_empty_rows(DataFrame([
+    ...     ["a", "foo", "hello"],
+    ...     ["b", "", ""],
+    ...     ["c", "", ""]]))
+           0    1      2
+    0  a b c  foo  hello
     """
     data_frame = input_data_frame
     if not _has_almost_empty_rows(data_frame):
