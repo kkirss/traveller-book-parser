@@ -8,4 +8,5 @@ COLUMN_TO_FIELD: dict[str, str] = {
 
 
 def get_column_field_name(column_name: str) -> str:
+    """Get traveller model field name from column name."""
     return COLUMN_TO_FIELD[column_name]

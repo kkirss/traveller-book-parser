@@ -14,11 +14,13 @@ logger = logging.getLogger(__name__)
 
 
 def get_book_paths(book_code_name: str) -> list[Path]:
+    """Get paths of books to parse."""
     ensure_folder(SETTINGS.book_descriptions_path)
     return list(SETTINGS.book_descriptions_path.glob(f"**/{book_code_name}.*"))
 
 
 def get_book_description_path(book_code_name: str) -> Path:
+    """Get path of book description file."""
     paths = get_book_paths(book_code_name)
 
     if not paths:
@@ -30,6 +32,7 @@ def get_book_description_path(book_code_name: str) -> Path:
 
 
 def load_book_description(book_code_name: str) -> BookDescription:
+    """Load the description of a book."""
     path = get_book_description_path(book_code_name)
     data = load_file_data(path)
     book_description = BookDescription(**data)

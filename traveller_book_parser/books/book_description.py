@@ -9,6 +9,7 @@ from traveller_book_parser.settings import SETTINGS
 
 
 def get_book_file_path(code_name: str) -> Path:
+    """Get path of book file."""
     return SETTINGS.books_path / f"{code_name}.pdf"
 
 

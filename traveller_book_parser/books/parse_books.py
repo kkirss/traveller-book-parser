@@ -62,6 +62,7 @@ def parse_book_collection_entities(
     book_description: BookDescription,
     collection_description: CollectionDescription,
 ) -> Iterable[Entity]:
+    """Parse a collection of entities from a book."""
     data_container = extract_source_data(
         book_description,
         collection_description.data_source_description,
@@ -87,6 +88,7 @@ def _check_collection_amount(
     entity_count: int,
     collection_description: CollectionDescription,
 ):
+    """Check that the number of entities in a collection is as expected."""
     check_amount = collection_description.check_amount
     if check_amount is not None and check_amount != entity_count:
         logger.warning(
@@ -98,6 +100,7 @@ def _check_collection_amount(
 
 
 def parse_book(database: TravellerDatabase, book_code_name: str) -> None:
+    """Parse a book into a database."""
     try:
         book_description = load_book_description(book_code_name)
     except (FileNotFoundError, ValueError, ValidationError) as e:
@@ -152,11 +155,13 @@ def parse_book(database: TravellerDatabase, book_code_name: str) -> None:
 
 
 def parse_books(database: TravellerDatabase, book_code_names: list[str]) -> None:
+    """Parse books into a database."""
     for book_code_name in book_code_names:
         parse_book(database, book_code_name)
 
 
 def parse_all_books(database: TravellerDatabase) -> None:
+    """Parse all books into a database."""
     book_code_names = get_book_code_names()
 
     if book_code_names:
