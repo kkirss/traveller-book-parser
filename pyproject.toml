@@ -84,7 +84,6 @@ ignore = [
     # TODO: Check and possibly enable following:
     "TRY",
     "EM",
-    "RET",
 ]
 
 [tool.ruff.lint.per-file-ignores]

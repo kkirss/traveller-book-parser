@@ -62,8 +62,7 @@ def extract_tabula_data_frame(
         book_description.code_name,
         data_source_description,
     )
-    data_frame = page_dfs[data_source_description.page_table_index]
-    return data_frame
+    return page_dfs[data_source_description.page_table_index]
 
 
 @extract_source_data.dispatch

@@ -25,8 +25,7 @@ def extract_pdfplumber_data_frame(
         table_index=data_source_description.page_table_index,
         table_settings=data_source_description.table_settings,
     )
-    data_frame = DataFrame(table[1:], columns=Series(table[0]))
-    return data_frame
+    return DataFrame(table[1:], columns=Series(table[0]))
 
 
 @extract_source_data.dispatch

@@ -11,6 +11,5 @@ def skill_from_name(value: Any) -> Skill | None:  # noqa: ANN401
     """
     if isinstance(value, str):
         name, level = value.rsplit(" ", maxsplit=1)
-        skill = create_skill(name=name, level=level)
-        return skill
+        return create_skill(name=name, level=level)
     return value

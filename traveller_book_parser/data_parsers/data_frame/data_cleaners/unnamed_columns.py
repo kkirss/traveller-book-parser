@@ -34,6 +34,5 @@ def remove_unnamed_columns(input_data_frame: DataFrame) -> DataFrame | None:
 
     if unnamed_columns_count > (len(columns) / 2):
         data_frame.columns = columns
-        data_frame = merge_first_row_with_columns(data_frame)
-        return data_frame
+        return merge_first_row_with_columns(data_frame)
     return None

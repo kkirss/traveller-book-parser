@@ -42,8 +42,7 @@ def collapse_almost_empty_rows(input_data_frame: DataFrame) -> DataFrame | None:
 
     first_row = data_frame.iloc[0]
     if _is_almost_empty_row(first_row):
-        data_frame = merge_first_row_with_columns(data_frame)
-        return data_frame
+        return merge_first_row_with_columns(data_frame)
 
     new_rows = []
 

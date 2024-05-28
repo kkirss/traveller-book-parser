@@ -51,8 +51,8 @@ def get_supported_path(paths: list[Path]) -> Path:
             if path:
                 logger.info("Found multiple supported files. Using %s", path)
                 return path
-            else:
-                file_types = ",".join({path.suffix for path in paths})
-                raise ValueError(
-                    f"Loading data from '{file_types}' file-types is not supported.",
-                )
+
+            file_types = ",".join({path.suffix for path in paths})
+            raise ValueError(
+                f"Loading data from '{file_types}' file-types is not supported.",
+            )

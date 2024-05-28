@@ -35,5 +35,4 @@ def load_book_description(book_code_name: str) -> BookDescription:
     """Load the description of a book."""
     path = get_book_description_path(book_code_name)
     data = load_file_data(path)
-    book_description = BookDescription(**data)
-    return book_description
+    return BookDescription(**data)

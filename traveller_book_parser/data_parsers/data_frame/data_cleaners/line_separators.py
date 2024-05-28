@@ -119,7 +119,8 @@ def spread_returns_to_multiple_rows(
                     ),
                 )
                 continue
-            elif len(unique_return_counts) > 1:
+
+            if len(unique_return_counts) > 1:
                 logger.warning(
                     "Found row with mixed number of return characters (%s),"
                     " skipping: %s",

@@ -19,8 +19,7 @@ def _get_book_html_cache_folder(book_code_name: str) -> Path:
     html_cache_path = SETTINGS.cache_path / HTML_CACHE_FOLDER
     ensure_folder(html_cache_path)
 
-    book_html_cache_folder = html_cache_path / book_code_name
-    return book_html_cache_folder
+    return html_cache_path / book_code_name
 
 
 def export_book_html_files(book_description: BookDescription):

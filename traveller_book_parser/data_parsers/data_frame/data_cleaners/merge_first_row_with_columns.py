@@ -30,5 +30,4 @@ def merge_first_row_with_columns(input_data_frame: DataFrame) -> DataFrame | Non
     ):
         raise ValueError("No index to drop")
 
-    data_frame = data_frame.drop(index=drop_index)
-    return data_frame
+    return data_frame.drop(index=drop_index)

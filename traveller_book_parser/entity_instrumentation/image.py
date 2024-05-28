@@ -140,9 +140,7 @@ def find_pdf_text_closest_image_and_distance(
 
 def export_image(image: LTImage, output_dir_path: Path) -> str:
     """Export an image from a pdfminer LTImage."""
-    image_writer = ImageWriter(str(output_dir_path))
-    file_name = image_writer.export_image(image)
-    return file_name
+    return ImageWriter(str(output_dir_path)).export_image(image)
 
 
 def export_entity_image(
