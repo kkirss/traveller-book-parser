@@ -13,4 +13,5 @@ app.command("parse")(parse_all_books_cli)
 
 
 def run_cli():
+    """Run CLI."""
     app()

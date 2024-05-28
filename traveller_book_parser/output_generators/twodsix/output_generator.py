@@ -3,5 +3,5 @@ from traveller_book_parser.output_generators.base_output_generator import (
 )
 
 
-class TwodsixOutputGenerator(BaseOutputGenerator):
+class TwodsixOutputGenerator(BaseOutputGenerator):  # noqa: D101
     pass

@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 def load_json_data(path: Path) -> dict[str, Any]:
+    """Load data from a JSON file."""
     with path.open("r", encoding="utf-8") as file:
         return json.load(file)
 
@@ -18,6 +19,7 @@ FILE_TYPE_LOADERS: dict[str, Callable[[Path], dict[str, Any]]] = {
 
 
 def load_file_data(path: Path) -> dict[str, Any]:
+    """Load data from a file."""
     try:
         file_type_loader = FILE_TYPE_LOADERS[path.suffix]
     except KeyError as e:
@@ -29,10 +31,12 @@ def load_file_data(path: Path) -> dict[str, Any]:
 
 
 def is_supported_file_type(path: Path) -> bool:
+    """Check if file type is supported."""
     return path.suffix in FILE_TYPE_LOADERS
 
 
 def get_supported_path(paths: list[Path]) -> Path:
+    """Get the first supported path from a list of paths."""
     match paths:
         case []:
             raise ValueError("No paths found")

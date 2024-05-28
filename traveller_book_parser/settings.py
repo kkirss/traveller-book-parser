@@ -12,6 +12,8 @@ PROJECT_PATH = Path(__file__).parent.parent
 
 
 class LogLevel(str, Enum):
+    """Logging level."""
+
     CRITICAL = "CRITICAL"
     ERROR = "ERROR"
     WARNING = "WARNING"
@@ -21,6 +23,8 @@ class LogLevel(str, Enum):
 
 
 class Settings(BaseSettings):
+    """Settings for the application."""
+
     model_config = SettingsConfigDict(
         env_file=PROJECT_PATH / ".env",
         env_file_encoding="utf-8",
@@ -62,6 +66,7 @@ class Settings(BaseSettings):
 
 
 def configure_logging():
+    """Configure logging to use rich for formatting."""
     logging.basicConfig(
         level=LogLevel.NOTSET.value,
         format="%(message)s",
@@ -77,11 +82,13 @@ def configure_logging():
 
 
 def configure_pandas_display():
+    """Configure pandas display options to show all columns."""
     pandas.set_option("display.max_columns", None)
     pandas.set_option("display.expand_frame_repr", False)  # noqa: FBT003
 
 
 def set_log_level(log_level: LogLevel):
+    """Set log level from settings."""
     logging.root.setLevel(log_level.value)
 
     if log_level == LogLevel.DEBUG:

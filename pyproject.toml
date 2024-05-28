@@ -102,14 +102,9 @@ ignore = [
 "tests/**" = ["D1"]
 # TODO: Add docstrings
 "traveller_book_parser/books/**" = ["D1"]
-"traveller_book_parser/cli_app/**" = ["D1"]
 "traveller_book_parser/data_parsers/**" = ["D1"]
 "traveller_book_parser/data_sources/**" = ["D1"]
-"traveller_book_parser/output_generators/**" = ["D1"]
-"traveller_book_parser/settings.py" = ["D1"]
-"traveller_book_parser/traveller_database/**" = ["D1"]
 "traveller_book_parser/traveller_models/**" = ["D1"]
-"traveller_book_parser/utils/**" = ["D1"]
 
 
 [tool.ruff.lint.flake8-annotations]

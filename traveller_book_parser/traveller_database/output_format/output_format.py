@@ -8,6 +8,8 @@ from .none import format_database_none
 
 
 class DatabaseOutputFormat(str, Enum):
+    """Database output format."""
+
     json = "json"
     none = "none"
 
@@ -23,4 +25,5 @@ DATABASE_OUTPUT_FORMATTERS: dict[DatabaseOutputFormat, DatabaseOutputFormatter] 
 def format_output(
     database: TravellerDatabase, output_format: DatabaseOutputFormat
 ) -> str:
+    """Format database for output."""
     return DATABASE_OUTPUT_FORMATTERS[output_format](database)
