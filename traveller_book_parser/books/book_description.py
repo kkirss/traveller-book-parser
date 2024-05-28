@@ -19,7 +19,3 @@ class BookDescription(BaseModel):
     code_name: str
 
     collection_descriptions: list[CollectionDescription]
-
-    @property
-    def file_path(self) -> Path:
-        return get_book_file_path(self.code_name)
