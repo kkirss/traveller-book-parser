@@ -88,7 +88,6 @@ def get_pdfplumber_table(
         table_settings = {}
 
     with open_pdfplumber_page(pdf_path, page_number) as page:
-        page.to_image()
         tables = page.extract_tables(cast(dict[str, Any], table_settings))
         try:
             return tables[table_index]
