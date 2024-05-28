@@ -52,7 +52,7 @@ def collapse_almost_empty_rows(input_data_frame: DataFrame) -> DataFrame | None:
                 previous_row = new_rows.pop()
             except IndexError:
                 # This should be prevented by the above first_row check
-                logger.error(
+                logger.warning(
                     "Found almost empty row as the first row, skipping clean:\n%s", row
                 )
                 return None

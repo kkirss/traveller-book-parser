@@ -28,6 +28,6 @@ def merge_first_row_with_columns(input_data_frame: DataFrame) -> DataFrame | Non
     if not isinstance(
         drop_index, Hashable  # pyright: ignore [reportGeneralTypeIssues]
     ):
-        raise ValueError("No index to drop")
+        raise TypeError("No index to drop")
 
     return data_frame.drop(index=drop_index)

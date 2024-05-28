@@ -81,9 +81,10 @@ ignore = [
     "FIX",  # Comments with "TO DO" etc.
     "TD002",  # Missing author in TO DO
     "TD003",  # Missing issue link in TO DO
-    # TODO: Check and possibly enable following:
-    "TRY",
-    "EM",
+    "EM101",  # Exception must not use a string literal, assign to variable first
+    "EM102",  # Exception must not use an f-string literal, assign to variable first
+    # TODO: Enable following:
+    "TRY003",  # Avoid specifying long messages outside the exception class
 ]
 
 [tool.ruff.lint.per-file-ignores]
