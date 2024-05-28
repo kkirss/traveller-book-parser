@@ -1,4 +1,4 @@
-from pandas import DataFrame
+from pandas import DataFrame, Series
 
 from traveller_book_parser.books.book_description import (
     BookDescription,
@@ -25,7 +25,7 @@ def extract_pdfplumber_data_frame(
         table_index=data_source_description.page_table_index,
         table_settings=data_source_description.table_settings,
     )
-    data_frame = DataFrame(table[1:], columns=table[0])
+    data_frame = DataFrame(table[1:], columns=Series(table[0]))
     return data_frame
 
 
