@@ -43,7 +43,7 @@ def _get_type_protection_from_protection(
 _CHAR_BOOST_REGEX = re.compile(r"(.+) \((.+) (.{3})\)")
 
 
-def characteristic_boost(value: Any) -> Any:  # noqa: ANN401
+def characteristic_boost(value: Any) -> Any:  # noqa: ANN401, D103
     if isinstance(value, str) and (match := _CHAR_BOOST_REGEX.match(value)):
         # TODO: Make use of the characteristic boost
         # characteristic_boost_amount = match.group(2)
@@ -53,6 +53,8 @@ def characteristic_boost(value: Any) -> Any:  # noqa: ANN401
 
 
 class Armour(BaseItem):
+    """Armour."""
+
     item_type: Literal[ItemType.armour] = ItemType.armour
 
     protection: int

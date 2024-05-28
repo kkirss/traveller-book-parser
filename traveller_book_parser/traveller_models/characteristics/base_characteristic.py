@@ -8,6 +8,8 @@ from traveller_book_parser.traveller_models.entity_types import EntityType
 
 
 class CharacteristicType(str, Enum):
+    """Characteristic type."""
+
     STR = "STR"
     DEX = "DEX"
     END = "END"
@@ -21,6 +23,8 @@ class CharacteristicType(str, Enum):
 
 
 class BaseCharacteristic(BaseEntity):
+    """Characteristic with optional level."""
+
     entity_type: Literal[EntityType.CHARACTERISTIC] = EntityType.CHARACTERISTIC
     characteristic_type: CharacteristicType = Field(repr=True)
 

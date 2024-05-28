@@ -1,7 +1,7 @@
 from .credits_price import remove_credits_prefix
 from .dashes import dash_is_none, dash_is_zero
 from .infinite import infinite_is_none
-from .numeric_separators import remove_comma_separators
+from .numeric_separators import remove_commas
 from .remove_asterisk import remove_asterisk
 from .skill_from_name import skill_from_name
 from .string_none import string_none_is_none
@@ -13,7 +13,7 @@ __all__ = [
     "dash_is_zero",
     "dash_is_none",
     "infinite_is_none",
-    "remove_comma_separators",
+    "remove_commas",
     "remove_asterisk",
     "skill_from_name",
     "string_none_is_none",

@@ -6,4 +6,5 @@ WeaponTrait = BaseWeaponTrait
 
 
 def get_trait_model(**kwargs: Any) -> WeaponTrait:  # noqa: ANN401
+    """Create WeaponTrait model instance."""
     return WeaponTrait(**kwargs)

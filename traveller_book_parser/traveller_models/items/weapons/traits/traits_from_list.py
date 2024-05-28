@@ -8,6 +8,13 @@ logger = logging.getLogger(__name__)
 
 
 def traits_from_list(value: Any) -> list[WeaponTrait]:  # noqa: ANN401
+    """Create list of weapon traits from list of strings.
+
+    Example:
+    -------
+    >>> traits_from_list(["Bulky", "Auto 5"])
+    [BaseWeaponTrait(weapon_trait_type=<WeaponTraitType.bulky: 'Bulky'>, amount=None), BaseWeaponTrait(weapon_trait_type=<WeaponTraitType.auto: 'Auto'>, amount=5)]
+    """
     if isinstance(value, list):
         traits = []
         for element in value:

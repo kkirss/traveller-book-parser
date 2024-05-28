@@ -14,6 +14,8 @@ from traveller_book_parser.traveller_models.validators import (
 
 
 class ItemType(str, Enum):
+    """Item type."""
+
     armour = "armour"
     augment = "augment"
     tool = "tool"
@@ -21,6 +23,8 @@ class ItemType(str, Enum):
 
 
 class BaseItem(BaseEntity):
+    """Item."""
+
     entity_type: Literal[EntityType.ITEM] = EntityType.ITEM
     item_type: ItemType
 

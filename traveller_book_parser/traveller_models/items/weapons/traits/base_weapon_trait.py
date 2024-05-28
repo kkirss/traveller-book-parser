@@ -4,11 +4,13 @@ from pydantic import BaseModel, field_validator
 
 from traveller_book_parser.traveller_models.validators import (
     infinite_is_none,
-    remove_comma_separators,
+    remove_commas,
 )
 
 
 class WeaponTraitType(str, Enum):
+    """Weapon trait type."""
+
     armor_piercing = "AP"
     artillery = "Artillery"
     auto = "Auto"
@@ -31,10 +33,10 @@ class WeaponTraitType(str, Enum):
 
 
 class BaseWeaponTrait(BaseModel):
+    """Trait of a weapon with optional amount."""
+
     weapon_trait_type: WeaponTraitType
     amount: int | None = None
 
     amount_infinite_is_none = field_validator("amount", mode="before")(infinite_is_none)
-    amount_separators = field_validator("amount", mode="before")(
-        remove_comma_separators
-    )
+    amount_separators = field_validator("amount", mode="before")(remove_commas)

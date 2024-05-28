@@ -16,6 +16,8 @@ UNLIMITED_LITERAL = Literal["Unlimited"]
 
 
 class RangedWeapon(BaseWeapon):
+    """Ranged weapon."""
+
     weapon_type: Literal[WeaponType.ranged] = WeaponType.ranged
     range: int | None
 

@@ -8,7 +8,7 @@ from traveller_book_parser.data_sources.data_source_description import (
 
 
 class BaseDataContainer(BaseModel):
-    """Base class for data containers."""
+    """Container for data from a data source."""
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
