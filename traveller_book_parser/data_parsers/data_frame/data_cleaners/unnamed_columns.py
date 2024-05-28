@@ -9,7 +9,20 @@ def is_unnamed_column(column: str) -> bool:
 
 
 def remove_unnamed_columns(input_data_frame: DataFrame) -> DataFrame | None:
-    """Remove unnamed columns from a data frame."""
+    """Remove unnamed columns from a data frame.
+
+    Example:
+    -------
+    >>> remove_unnamed_columns(DataFrame([
+    ...     ["foo", "bar", "world"],
+    ...     ["x", "y", "z"],
+    ...     ], columns=["Unnamed: 1", "", "c"]))
+      foo bar c world
+    1   x   y       z
+    >>> remove_unnamed_columns(DataFrame([
+    ...     ["foo", "bar", "hello"],
+    ...     ], columns=["Unnamed: 1", "b", "c"]))
+    """
     data_frame = input_data_frame
     columns = data_frame.columns.to_list()
 
