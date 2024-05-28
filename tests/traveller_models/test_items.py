@@ -3,7 +3,7 @@ from typing import Any
 
 from traveller_book_parser.traveller_models.items.armour import Armour
 from traveller_book_parser.traveller_models.items.base_item import ItemType
-from traveller_book_parser.traveller_models.items.item import get_item_model
+from traveller_book_parser.traveller_models.items.item import create_item
 from traveller_book_parser.traveller_models.items.weapons.base_weapon import WeaponType
 from traveller_book_parser.traveller_models.items.weapons.melee_weapon import (
     MeleeWeapon,
@@ -11,7 +11,7 @@ from traveller_book_parser.traveller_models.items.weapons.melee_weapon import (
 
 
 def test_item_weapon_melee(melee_weapon_input_data: dict[str, Any]):
-    model = get_item_model(**melee_weapon_input_data)
+    model = create_item(**melee_weapon_input_data)
 
     assert {
         **melee_weapon_input_data,
@@ -23,7 +23,7 @@ def test_item_weapon_melee(melee_weapon_input_data: dict[str, Any]):
 
 
 def test_item_armour(armour_input_data: dict[str, Any]):
-    model = get_item_model(**armour_input_data)
+    model = create_item(**armour_input_data)
 
     assert {
         **armour_input_data,

@@ -1,7 +1,7 @@
 from decimal import Decimal
 from typing import Any
 
-from traveller_book_parser.traveller_models.entity import get_entity_model
+from traveller_book_parser.traveller_models.entity import create_entity
 from traveller_book_parser.traveller_models.entity_types import EntityType
 from traveller_book_parser.traveller_models.items.base_item import ItemType
 from traveller_book_parser.traveller_models.items.weapons.base_weapon import WeaponType
@@ -11,7 +11,7 @@ from traveller_book_parser.traveller_models.items.weapons.melee_weapon import (
 
 
 def test_entity_item_weapon_melee(melee_weapon_input_data: dict[str, Any]):
-    model = get_entity_model(
+    model = create_entity(
         **{
             "entity_type": "item",
             **melee_weapon_input_data,

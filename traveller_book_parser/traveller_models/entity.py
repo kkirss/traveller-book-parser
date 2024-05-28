@@ -12,6 +12,6 @@ Entity = Annotated[
 ]
 
 
-def get_entity_model(**kwargs: Any) -> Entity:  # noqa: ANN401
+def create_entity(**kwargs: Any) -> Entity:  # noqa: ANN401
     """Create Entity model instance."""
     return RootModel[Entity](**kwargs).root

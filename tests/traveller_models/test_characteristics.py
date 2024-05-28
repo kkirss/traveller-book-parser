@@ -4,13 +4,13 @@ from traveller_book_parser.traveller_models.characteristics.base_characteristic 
     CharacteristicType,
 )
 from traveller_book_parser.traveller_models.characteristics.characteristic import (
-    get_characteristic_model,
+    create_characteristic,
 )
 from traveller_book_parser.traveller_models.characteristics.strength import Strength
 
 
 def test_characteristic(characteristic_input_data: dict[str, Any]):
-    model = get_characteristic_model(**characteristic_input_data)
+    model = create_characteristic(**characteristic_input_data)
 
     assert {
         **characteristic_input_data,

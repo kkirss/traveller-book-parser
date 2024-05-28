@@ -24,6 +24,6 @@ Characteristic = Annotated[
 ]
 
 
-def get_characteristic_model(**kwargs: Any) -> Characteristic:  # noqa: ANN401
+def create_characteristic(**kwargs: Any) -> Characteristic:  # noqa: ANN401
     """Create Characteristic model instance."""
     return RootModel[Characteristic](**kwargs).root

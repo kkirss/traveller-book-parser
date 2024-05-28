@@ -11,7 +11,7 @@ from traveller_book_parser.data_parsers.data_cleaners.missing_tech_level import 
 )
 from traveller_book_parser.data_parsers.parse_data_entities import parse_data_entities
 from traveller_book_parser.settings import SETTINGS
-from traveller_book_parser.traveller_models.entity import Entity, get_entity_model
+from traveller_book_parser.traveller_models.entity import Entity, create_entity
 from traveller_book_parser.traveller_models.entity_types import EntityType
 
 from .data_cleaners.clean_data_frame import clean_data_frame
@@ -94,7 +94,7 @@ def parse_data_frame_entities(
             continue
 
         try:
-            entity = get_entity_model(**entity_dict)
+            entity = create_entity(**entity_dict)
         except ValidationError:
             logger.exception("Failed to create entity from %s", entity_dict)
             continue
