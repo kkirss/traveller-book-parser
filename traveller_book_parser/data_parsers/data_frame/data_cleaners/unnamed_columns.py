@@ -4,10 +4,12 @@ from .merge_first_row_with_columns import merge_first_row_with_columns
 
 
 def is_unnamed_column(column: str) -> bool:
+    """Check if a column is unnamed."""
     return isinstance(column, int) or "Unnamed: " in column or column == ""
 
 
 def remove_unnamed_columns(input_data_frame: DataFrame) -> DataFrame | None:
+    """Remove unnamed columns from a data frame."""
     data_frame = input_data_frame
     columns = data_frame.columns.to_list()
 

@@ -28,7 +28,6 @@ def set_deep(
     Example:
     -------
     set_deep({}, "a.b", 2) -> {"a": {"b": 2}}
-
     """
     sub_obj = obj
     sub_key = key
@@ -46,6 +45,7 @@ def construct_entity_dict_from_row(
     entity_fields: dict[str, Any],
     add_unknown_column: Callable[[str], None],
 ) -> dict[str, Any]:
+    """Construct a dictionary from a row of a data frame."""
     entity_dict = {
         "entity_type": entity_type,
         **entity_fields,
@@ -71,6 +71,7 @@ def parse_data_frame_entities(
     entity_type: EntityType,
     entity_fields: dict[str, Any],
 ) -> Iterable[Entity]:
+    """Parse a collection of entities from a data frame."""
     data_frame = data_container.data
 
     if SETTINGS.log_intermediate_data:

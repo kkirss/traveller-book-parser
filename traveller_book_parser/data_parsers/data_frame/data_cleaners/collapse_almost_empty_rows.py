@@ -18,6 +18,22 @@ def _has_almost_empty_rows(data_frame: DataFrame) -> bool:
 
 
 def collapse_almost_empty_rows(input_data_frame: DataFrame) -> DataFrame | None:
+    """Collapse almost empty rows into full rows in a data frame.
+
+    Each almost empty row is merged into the previous row.
+    Merging of values is done as concatenation with a space separator.
+
+    Returns None if:
+    - there are no almost empty rows in the data frame.
+    - the first row is almost empty.
+
+    Example:
+    -------
+    DataFrame([["a", "", ""],
+               ["b", "", ""],
+               ["c", "foo", "hello"]])
+    -> DataFrame([["a b c", "foo", "hello"]])
+    """
     data_frame = input_data_frame
     if not _has_almost_empty_rows(data_frame):
         return None

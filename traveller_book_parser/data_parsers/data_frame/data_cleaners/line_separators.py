@@ -20,6 +20,11 @@ def _replace_return_with_space(value: Any) -> Any:  # noqa: ANN401
 
 
 def replace_few_returns_with_spaces(input_data_frame: DataFrame) -> DataFrame | None:
+    """Replace return characters with spaces in a data frame.
+
+    Returns are replaced if they occur in less than half of the cells.
+    This is done because Tabula uses return character as line separator.
+    """
     data_frame = input_data_frame
     columns = data_frame.columns
     has_updates = False
@@ -71,6 +76,17 @@ def _get_spread_by_return_rows_for_row(
 def spread_returns_to_multiple_rows(
     input_data_frame: DataFrame,
 ) -> DataFrame | None:
+    r"""Spread rows with most cells containing return characters to multiple rows.
+
+    This is done because Tabula uses return character as line separator.
+
+    Example:
+    -------
+    DataFrame([["a", "foo\rbar", "first\rsecond"],
+               ["b", "", ""]])
+    -> DataFrame([["a", "foo", "first"],
+                  ["b", "bar", "second"]])
+    """
     data_frame = input_data_frame
 
     if not any(
