@@ -19,4 +19,5 @@ class HTMLDataSourceDescription(BaseDataSourceDescription):
 
     @property
     def pages_range_list(self) -> RangeList:
+        """List of page ranges."""
         return get_pages_range_list(self.pages)

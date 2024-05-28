@@ -19,7 +19,7 @@ from .tabula_integration import export_tabula_data_file, read_tabula_data_file
 TABULA_CACHE_FOLDER = "tabula_data"
 
 
-def get_tabula_cache_path(
+def _get_tabula_cache_path(
     book_code_name: str,
     data_source_description: TabulaDataSourceDescription,
 ) -> Path:
@@ -39,7 +39,7 @@ def _get_book_page_tabula_data(
     data_source_description: TabulaDataSourceDescription,
 ) -> list[DataFrame]:
     book_path = get_book_file_path(book_code_name)
-    tabula_cache_path = get_tabula_cache_path(book_code_name, data_source_description)
+    tabula_cache_path = _get_tabula_cache_path(book_code_name, data_source_description)
 
     if not tabula_cache_path.exists():
         export_tabula_data_file(
@@ -71,6 +71,7 @@ def extract_tabula_data(
     book_description: BookDescription,
     data_source_description: TabulaDataSourceDescription,
 ) -> DataFrameDataContainer:
+    """Extract DataFrame for a table, using Tabula."""
     data_frame = extract_tabula_data_frame(
         book_description,
         data_source_description,

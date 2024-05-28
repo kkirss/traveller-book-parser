@@ -66,6 +66,7 @@ TABLE_SETTINGS_DEFAULTS: TableSettingsDict = {
 def open_pdfplumber_page(
     pdf_path: Path, page_number: int
 ) -> Generator[Page, None, None]:
+    """Get page from a PDF file using pdfplumber."""
     with pdfplumber.open(pdf_path, pages=[page_number]) as pdf:
         yield pdf.pages[0]
 
@@ -76,6 +77,7 @@ def get_pdfplumber_table(
     table_index: int = 0,
     table_settings: TableSettingsDict | None = None,
 ) -> PDFPlumberTable:
+    """Get table from a PDF file using pdfplumber."""
     if table_settings is None:
         table_settings = {}
 

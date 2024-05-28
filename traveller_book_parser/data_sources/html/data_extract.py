@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 HTML_CACHE_FOLDER = "html_data"
 
 
-def get_book_html_cache_folder(book_code_name: str) -> Path:
+def _get_book_html_cache_folder(book_code_name: str) -> Path:
     html_cache_path = SETTINGS.cache_path / HTML_CACHE_FOLDER
     ensure_folder(html_cache_path)
 
@@ -24,8 +24,9 @@ def get_book_html_cache_folder(book_code_name: str) -> Path:
 
 
 def export_book_html_files(book_description: BookDescription):
+    """Export html files for a book."""
     book_pdf_path = get_book_file_path(book_description.code_name)
-    book_html_cache_folder = get_book_html_cache_folder(book_description.code_name)
+    book_html_cache_folder = _get_book_html_cache_folder(book_description.code_name)
 
     if not are_html_files_exported(book_html_cache_folder):
         logger.debug("Generating book html for %s", book_description.code_name)
@@ -34,7 +35,7 @@ def export_book_html_files(book_description: BookDescription):
 
 
 def _get_page_html_file_path(book_code_name: str, page: int) -> Path:
-    book_html_cache_folder = get_book_html_cache_folder(book_code_name)
+    book_html_cache_folder = _get_book_html_cache_folder(book_code_name)
     return book_html_cache_folder / f"page{page}.html"
 
 

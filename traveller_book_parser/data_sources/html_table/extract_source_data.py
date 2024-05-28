@@ -14,6 +14,7 @@ def extract_html_table_data(
     book_description: BookDescription,
     data_source_description: HTMLDataSourceDescription,  # noqa: ARG001
 ) -> Iterable[Entity]:
+    """Extract DataFrame for a table, using pdftohtml."""
     export_book_html_files(book_description)
     # TODO: Parse the HTML files
     return []

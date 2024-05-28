@@ -30,4 +30,5 @@ class TabulaDataSourceDescription(BaseDataSourceDescription):
 
     @property
     def page_table_index(self) -> int:
+        """Zero-based index of the table on the page."""
         return self.page_table_number - 1

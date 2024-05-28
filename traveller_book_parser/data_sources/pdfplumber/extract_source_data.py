@@ -34,6 +34,7 @@ def extract_pdfplumber_data(
     book_description: BookDescription,
     data_source_description: PDFPlumberDataSourceDescription,
 ) -> DataFrameDataContainer:
+    """Extract DataFrame for a table, using pdfplumber."""
     data_frame = extract_pdfplumber_data_frame(
         book_description,
         data_source_description,

@@ -19,6 +19,7 @@ def read_tabula_data_file(
     path: Path,
     pandas_options: dict[str, Any] | None = None,
 ) -> list[pandas.DataFrame]:
+    """Read tabula internal JSON formatted data from a file."""
     if pandas_options is None:
         pandas_options = copy.deepcopy(TABULA_PANDAS_OPTIONS)
 
@@ -32,6 +33,8 @@ def read_tabula_data_file(
 
 
 class TabulaKwargs(TypedDict, total=False):
+    """Arguments for Tabula parsing."""
+
     lattice: bool
     stream: bool
 
@@ -43,6 +46,7 @@ def export_tabula_data_file(
     area: Iterable[float] | None = None,
     extraction_method: ExtractionMethod = None,
 ) -> None:
+    """Parse tables from a PDF file using Tabula and export them to a JSON file."""
     kwargs: TabulaKwargs = {}
     if extraction_method == "lattice":
         kwargs = {"lattice": True}
