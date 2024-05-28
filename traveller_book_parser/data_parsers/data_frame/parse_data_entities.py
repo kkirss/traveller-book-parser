@@ -27,15 +27,16 @@ def set_deep(
 
     Example:
     -------
-    set_deep({}, "a.b", 2) -> {"a": {"b": 2}}
+    >>> set_deep({"foo": "bar"}, "a.b.c", 2)
+    {'foo': 'bar', 'a': {'b': {'c': 2}}}
     """
-    sub_obj = obj
-    sub_key = key
+    inner_obj = obj
+    [*nested_keys, last_key] = key.split(".")
 
-    for sub_key in key.split(".")[:-1]:
-        sub_obj = sub_obj.setdefault(sub_key, {})
+    for sub_key in nested_keys:
+        inner_obj = inner_obj.setdefault(sub_key, {})
 
-    sub_obj[sub_key] = value
+    inner_obj[last_key] = value
     return obj
 
 
