@@ -36,7 +36,7 @@ traveller-book-parser = "traveller_book_parser.cli:run_cli"
 [tool.poetry.dependencies]
 python = "~3.11"
 pandas = "2.2.2"
-pdfplumber = "0.10.2"
+pdfplumber = "0.11.0"
 plum-dispatch = "2.2.1"
 pydantic = "2.7.1"
 pydantic-settings = "2.2.1"
