@@ -86,8 +86,6 @@ ignore = [
     "FIX",
     "ERA",
     "ICN",
-    "SLF",
-    "SLF",
 ]
 
 [tool.ruff.lint.per-file-ignores]

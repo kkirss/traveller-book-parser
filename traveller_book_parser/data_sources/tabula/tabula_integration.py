@@ -26,7 +26,7 @@ def read_tabula_data_file(
     with path.open("r", encoding="utf-8") as f:
         raw_json = json.load(f)
 
-    return tabula.io._extract_from(
+    return tabula.io._extract_from(  # noqa: SLF001
         raw_json,
         pandas_options=pandas_options,
     )
