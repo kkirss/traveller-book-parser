@@ -10,7 +10,7 @@ import tabula
 
 logger = logging.getLogger(__name__)
 
-ExtractionMethod = Literal["lattice"] | Literal["stream"] | None
+ExtractionMethod = Literal["lattice", "stream"] | None
 
 TABULA_PANDAS_OPTIONS = {}
 

@@ -10,4 +10,4 @@ def generate_twodsix_data(
     traveller_database: TravellerDatabase,  # noqa: ARG001
 ) -> None:
     """Generate twodsix data from a database."""
-    raise NotImplementedError()
+    raise NotImplementedError

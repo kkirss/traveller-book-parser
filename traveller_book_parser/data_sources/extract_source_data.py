@@ -12,4 +12,4 @@ def extract_source_data(
     data_source_description: BaseDataSourceDescription,  # noqa: ARG001
 ) -> BaseDataContainer:
     """Parse data from a collection."""
-    raise NotImplementedError()
+    raise NotImplementedError

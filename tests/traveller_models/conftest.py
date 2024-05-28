@@ -3,7 +3,7 @@ from typing import Any
 import pytest
 
 
-@pytest.fixture
+@pytest.fixture()
 def characteristic_input_data() -> dict[str, Any]:
     return {
         "characteristic_type": "STR",
@@ -11,7 +11,7 @@ def characteristic_input_data() -> dict[str, Any]:
     }
 
 
-@pytest.fixture
+@pytest.fixture()
 def melee_weapon_input_data() -> dict[str, Any]:
     return {
         "item_type": "weapon",
@@ -24,7 +24,7 @@ def melee_weapon_input_data() -> dict[str, Any]:
     }
 
 
-@pytest.fixture
+@pytest.fixture()
 def armour_input_data() -> dict[str, Any]:
     return {
         "item_type": "armour",

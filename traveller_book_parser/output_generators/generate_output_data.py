@@ -12,4 +12,4 @@ def generate_output_data(
     traveller_database: TravellerDatabase,  # noqa: ARG001
 ) -> None:
     """Generate output data from a database."""
-    raise NotImplementedError()
+    raise NotImplementedError

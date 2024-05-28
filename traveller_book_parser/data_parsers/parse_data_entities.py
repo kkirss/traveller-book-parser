@@ -16,4 +16,4 @@ def parse_data_entities(
     entity_fields: dict[str, Any],  # noqa: ARG001
 ) -> Iterable[Entity]:
     """Parse a collection of entities from a data container."""
-    raise NotImplementedError()
+    raise NotImplementedError
