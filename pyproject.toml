@@ -85,7 +85,6 @@ ignore = [
     "TD",
     "FIX",
     "ERA",
-    "ICN",
 ]
 
 [tool.ruff.lint.per-file-ignores]

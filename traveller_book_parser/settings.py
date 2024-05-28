@@ -2,7 +2,7 @@ from enum import Enum
 import logging
 from pathlib import Path
 
-import pandas
+import pandas as pd
 import pydantic
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -83,8 +83,8 @@ def configure_logging():
 
 def configure_pandas_display():
     """Configure pandas display options to show all columns."""
-    pandas.set_option("display.max_columns", None)
-    pandas.set_option("display.expand_frame_repr", False)  # noqa: FBT003
+    pd.set_option("display.max_columns", None)
+    pd.set_option("display.expand_frame_repr", False)  # noqa: FBT003
 
 
 def set_log_level(log_level: LogLevel):

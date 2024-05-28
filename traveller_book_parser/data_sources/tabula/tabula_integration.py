@@ -5,7 +5,7 @@ import logging
 from pathlib import Path
 from typing import Any, Literal, TypedDict
 
-import pandas
+import pandas as pd
 import tabula
 
 logger = logging.getLogger(__name__)
@@ -18,7 +18,7 @@ TABULA_PANDAS_OPTIONS = {}
 def read_tabula_data_file(
     path: Path,
     pandas_options: dict[str, Any] | None = None,
-) -> list[pandas.DataFrame]:
+) -> list[pd.DataFrame]:
     """Read tabula internal JSON formatted data from a file."""
     if pandas_options is None:
         pandas_options = copy.deepcopy(TABULA_PANDAS_OPTIONS)
