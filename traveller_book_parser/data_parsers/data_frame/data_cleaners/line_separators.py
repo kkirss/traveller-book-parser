@@ -67,9 +67,11 @@ def _get_spread_by_return_rows_for_row(
         new_list = []
         for column_index, value in enumerate(row):
             if column_return_counts[column_index] > 0 and isinstance(value, str):
-                value = value.split(SEPARATOR)[loc_index]
+                new_value = value.split(SEPARATOR)[loc_index]
+            else:
+                new_value = value
 
-            new_list.append(value)
+            new_list.append(new_value)
         yield new_list
 
 

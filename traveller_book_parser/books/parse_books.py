@@ -74,14 +74,14 @@ def parse_book_collection_entities(
     )
 
     for entity in entities:
-        entity = instrument_entity(
+        instrumented_entity = instrument_entity(
             entity,
             book_description,
             collection_description,
         )
         if SETTINGS.log_parsed_entities:
-            logger.debug("Parsed entity: %s", entity)
-        yield entity
+            logger.debug("Parsed entity: %s", instrumented_entity)
+        yield instrumented_entity
 
 
 def _check_collection_amount(

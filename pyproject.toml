@@ -85,7 +85,6 @@ ignore = [
     "TRY",
     "EM",
     "RET",
-    "PLW",
 ]
 
 [tool.ruff.lint.per-file-ignores]
