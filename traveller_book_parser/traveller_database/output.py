@@ -12,4 +12,5 @@ def outputted_database(output_format: DatabaseOutputFormat):
 
     yield database
 
-    print(format_output(database, output_format))
+    # TODO: Take output IO as argument instead of using print
+    print(format_output(database, output_format))  # noqa: T201
