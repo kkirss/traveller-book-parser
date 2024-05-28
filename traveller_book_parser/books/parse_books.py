@@ -32,7 +32,7 @@ from traveller_book_parser.traveller_models.entity_source_collection import (
     EntitySourceCollection,
 )
 from traveller_book_parser.traveller_models.traveller_database import TravellerDatabase
-from traveller_book_parser.utils import ensure_folder, get_indented_exception_text
+from traveller_book_parser.utils import ensure_folder
 
 from .book_description import BookDescription
 from .load_book_description import load_book_description
@@ -103,11 +103,10 @@ def parse_book(database: TravellerDatabase, book_code_name: str) -> None:
     """Parse a book into a database."""
     try:
         book_description = load_book_description(book_code_name)
-    except (FileNotFoundError, ValueError, ValidationError) as e:
-        logger.error(
-            "Failed to load description for book %s:\n%s",
+    except (FileNotFoundError, ValueError, ValidationError):
+        logger.exception(
+            "Failed to load description for book %s:",
             book_code_name,
-            get_indented_exception_text(e),
         )
         return
 
