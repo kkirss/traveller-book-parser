@@ -5,31 +5,31 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from traveller_book_parser.data_parsers import all_data_parsers  # noqa: F401
-from traveller_book_parser.data_parsers.parse_data_entities import parse_data_entities
+from traveller_book_parser.data_parsers.parse_objects_data import parse_objects
 from traveller_book_parser.data_sources import all_data_extractors  # noqa: F401
 from traveller_book_parser.data_sources.extract_source_data import extract_source_data
-from traveller_book_parser.entity_collections.collection_description import (
+from traveller_book_parser.object_collections.collection_description import (
     CollectionDescription,
 )
-from traveller_book_parser.entity_collections.parse_collection_name import (
+from traveller_book_parser.object_collections.parse_collection_name import (
     parse_collection_name,
 )
-from traveller_book_parser.entity_instrumentation.instrument_entity import (
-    instrument_entity,
+from traveller_book_parser.object_instrumentation.instrument_object import (
+    instrument_object,
 )
 from traveller_book_parser.output_generators import all_output_generators  # noqa: F401
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.traveller_database.books import add_book_to_database
-from traveller_book_parser.traveller_database.entities import (
-    add_collection_entities_to_database,
+from traveller_book_parser.traveller_database.object_source_collections import (
+    add_object_source_collection_to_database,
 )
-from traveller_book_parser.traveller_database.entity_source_collections import (
-    add_entity_source_collection_to_database,
+from traveller_book_parser.traveller_database.objects import (
+    add_objects_in_collection_to_database,
 )
 from traveller_book_parser.traveller_models.book import Book
-from traveller_book_parser.traveller_models.entity import Entity
-from traveller_book_parser.traveller_models.entity_source_collection import (
-    EntitySourceCollection,
+from traveller_book_parser.traveller_models.trav_object import TravObject
+from traveller_book_parser.traveller_models.trav_object_source_collection import (
+    ObjectSourceCollection,
 )
 from traveller_book_parser.traveller_models.traveller_database import TravellerDatabase
 from traveller_book_parser.utils import ensure_folder
@@ -58,43 +58,43 @@ def get_book_code_names() -> list[str]:
     return [path.stem for path in paths]
 
 
-def parse_book_collection_entities(
+def parse_book_collection_objects(
     book_description: BookDescription,
     collection_description: CollectionDescription,
-) -> Iterable[Entity]:
-    """Parse a collection of entities from a book."""
+) -> Iterable[TravObject]:
+    """Parse a collection of objs from a book."""
     data_container = extract_source_data(
         book_description,
         collection_description.data_source_description,
     )
-    entities = parse_data_entities(
+    objs = parse_objects(
         data_container,
-        collection_description.entity_type,
-        collection_description.entity_fields,
+        collection_description.type,
+        collection_description.default_values,
     )
 
-    for entity in entities:
-        instrumented_entity = instrument_entity(
-            entity,
+    for obj in objs:
+        instrumented_obj = instrument_object(
+            obj,
             book_description,
             collection_description,
         )
-        if SETTINGS.log_parsed_entities:
-            logger.debug("Parsed entity: %s", instrumented_entity)
-        yield instrumented_entity
+        if SETTINGS.log_parsed_objects:
+            logger.debug("Parsed trav_obj: %s", instrumented_obj)
+        yield instrumented_obj
 
 
 def _check_collection_amount(
-    entity_count: int,
+    object_count: int,
     collection_description: CollectionDescription,
 ):
-    """Check that the number of entities in a collection is as expected."""
+    """Check that the number of objects in a collection is as expected."""
     check_amount = collection_description.check_amount
-    if check_amount is not None and check_amount != entity_count:
+    if check_amount is not None and check_amount != object_count:
         logger.warning(
             "Expected to find %i items in collection but found %i instead: %s",
             check_amount,
-            entity_count,
+            object_count,
             collection_description,
         )
 
@@ -115,41 +115,41 @@ def parse_book(database: TravellerDatabase, book_code_name: str) -> None:
 
     book = Book(name=book_description.name)
 
-    if SETTINGS.log_parsed_entities:
+    if SETTINGS.log_parsed_objects:
         logger.debug("Parsed book: %s", book)
 
     add_book_to_database(database, book)
 
-    book_entities_count = 0
+    book_objects_count = 0
     for collection_description in book_description.collection_descriptions:
         logger.debug(
             "Parsing collection with description %s",
             collection_description,
         )
 
-        entity_source_collection = EntitySourceCollection(
+        object_source_collection = ObjectSourceCollection(
             name=parse_collection_name(book_description, collection_description),
         )
 
-        if SETTINGS.log_parsed_entities:
+        if SETTINGS.log_parsed_objects:
             logger.debug(
-                "Parsed entity source collection: %s", entity_source_collection
+                "Parsed object source collection: %s", object_source_collection
             )
 
-        add_entity_source_collection_to_database(database, entity_source_collection)
+        add_object_source_collection_to_database(database, object_source_collection)
 
-        collection_entities = parse_book_collection_entities(
+        collection_objects = parse_book_collection_objects(
             book_description,
             collection_description,
         )
-        collection_entities = list(collection_entities)
-        book_entities_count += len(collection_entities)
-        _check_collection_amount(len(collection_entities), collection_description)
+        collection_objects = list(collection_objects)
+        book_objects_count += len(collection_objects)
+        _check_collection_amount(len(collection_objects), collection_description)
 
-        add_collection_entities_to_database(database, collection_entities)
+        add_objects_in_collection_to_database(database, collection_objects)
 
     logger.info(
-        "Parsed %i entities from book %s", book_entities_count, book_description.name
+        "Parsed %i objects from book %s", book_objects_count, book_description.name
     )
 
 

@@ -2,14 +2,14 @@ from typing import Literal
 
 from pydantic import Field
 
-from traveller_book_parser.traveller_models.base_entity import BaseEntity
-from traveller_book_parser.traveller_models.entity_types import EntityType
+from traveller_book_parser.traveller_models.trav_object_base import TravObjectBase
+from traveller_book_parser.traveller_models.trav_object_types import TravObjectType
 
 
-class BaseSkill(BaseEntity):
+class BaseSkill(TravObjectBase):
     """Skill with optional level."""
 
-    entity_type: Literal[EntityType.SKILL] = EntityType.SKILL
+    type: Literal[TravObjectType.SKILL] = TravObjectType.SKILL
 
     # None signifies not knowing a skill
     level: int | None = Field(repr=True)

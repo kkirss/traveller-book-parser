@@ -1,8 +1,8 @@
 from enum import Enum
 
 
-class EntityType(str, Enum):
-    """Entity type."""
+class TravObjectType(str, Enum):
+    """Type of traveller object."""
 
     CHARACTERISTIC = "characteristic"
     ITEM = "item"

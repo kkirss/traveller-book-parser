@@ -3,8 +3,8 @@ from typing import Any, Literal
 
 from pydantic import Field, model_validator
 
-from traveller_book_parser.traveller_models.base_entity import BaseEntity
-from traveller_book_parser.traveller_models.entity_types import EntityType
+from traveller_book_parser.traveller_models.trav_object_base import TravObjectBase
+from traveller_book_parser.traveller_models.trav_object_types import TravObjectType
 
 
 class CharacteristicType(str, Enum):
@@ -34,10 +34,10 @@ CHARACTERISTIC_NAMES: dict[CharacteristicType, str] = {
 }
 
 
-class Characteristic(BaseEntity):
+class Characteristic(TravObjectBase):
     """Characteristic with optional level."""
 
-    entity_type: Literal[EntityType.CHARACTERISTIC] = EntityType.CHARACTERISTIC
+    type: Literal[TravObjectType.CHARACTERISTIC] = TravObjectType.CHARACTERISTIC
     characteristic_type: CharacteristicType = Field(repr=True)
 
     level: int | None = Field(default=None, repr=True)
@@ -45,7 +45,7 @@ class Characteristic(BaseEntity):
     @model_validator(mode="before")
     @classmethod
     def set_default_name(
-        cls: type["Characteristic"],
+        cls: "type[Characteristic]",
         data: Any,  # noqa: ANN401
     ) -> Any:  # noqa: ANN401
         if "name" not in data and "characteristic_type" in data:

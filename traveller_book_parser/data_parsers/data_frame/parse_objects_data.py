@@ -9,10 +9,13 @@ from traveller_book_parser.books.publishers.column_names import get_column_field
 from traveller_book_parser.data_parsers.data_cleaners.missing_tech_level import (
     is_missing_tech_level,
 )
-from traveller_book_parser.data_parsers.parse_data_entities import parse_data_entities
+from traveller_book_parser.data_parsers.parse_objects_data import parse_objects
 from traveller_book_parser.settings import SETTINGS
-from traveller_book_parser.traveller_models.entity import Entity, create_entity
-from traveller_book_parser.traveller_models.entity_types import EntityType
+from traveller_book_parser.traveller_models.trav_object import (
+    TravObject,
+    create_trav_object,
+)
+from traveller_book_parser.traveller_models.trav_object_types import TravObjectType
 
 from .data_cleaners.clean_data_frame import clean_data_frame
 from .data_container import DataFrameDataContainer
@@ -40,18 +43,18 @@ def set_deep(
     return obj
 
 
-def construct_entity_dict_from_row(
+def construct_obj_dict_from_row(
     row: Iterable[tuple[Hashable, Series]],
-    entity_type: EntityType,
-    entity_fields: dict[str, Any],
+    _type: TravObjectType,
+    default_values: dict[str, Any],
     add_unknown_column: Callable[[str], None],
 ) -> dict[str, Any]:
     """Construct a dictionary from a row of a data frame."""
-    entity_dict = {
-        "entity_type": entity_type,
-        **entity_fields,
+    obj_dict = {
+        "type": _type,
+        **default_values,
     }
-    entity_dict.items()
+    obj_dict.items()
     for column, value in row:
         if not isinstance(column, str):
             continue
@@ -61,59 +64,59 @@ def construct_entity_dict_from_row(
             add_unknown_column(column)
             continue
 
-        set_deep(entity_dict, field_name, value)
+        set_deep(obj_dict, field_name, value)
 
-    return entity_dict
+    return obj_dict
 
 
-@parse_data_entities.dispatch
-def parse_data_frame_entities(
+@parse_objects.dispatch
+def parse_objects_data_frame(
     data_container: DataFrameDataContainer,
-    entity_type: EntityType,
-    entity_fields: dict[str, Any],
-) -> Iterable[Entity]:
-    """Parse a collection of entities from a data frame."""
+    _type: TravObjectType,
+    default_values: dict[str, Any],
+) -> Iterable[TravObject]:
+    """Parse a collection of objects from a data frame."""
     data_frame = data_container.data
 
     if SETTINGS.log_intermediate_data:
-        logger.debug("Parsing entities from data frame:\n%s", data_frame)
+        logger.debug("Parsing objects from data frame:\n%s", data_frame)
 
     data_frame = clean_data_frame(data_frame)
 
-    previous_entity = None
+    previous_obj = None
     unknown_columns = set()
     for _, row in data_frame.iterrows():
-        entity_dict = construct_entity_dict_from_row(
-            row.items(), entity_type, entity_fields, unknown_columns.add
+        obj_dict = construct_obj_dict_from_row(
+            row.items(), _type, default_values, unknown_columns.add
         )
 
-        if is_missing_tech_level(entity_dict):
+        if is_missing_tech_level(obj_dict):
             logger.warning(
-                "Found entity with missing tech level, skipping: %s", entity_dict
+                "Found object with missing tech level, skipping: %s", obj_dict
             )
             continue
 
         try:
-            entity = create_entity(**entity_dict)
+            obj = create_trav_object(**obj_dict)
         except ValidationError:
-            logger.exception("Failed to create entity from %s", entity_dict)
+            logger.exception("Failed to create trav_obj from %s", obj_dict)
             continue
 
-        if entity.name == "":
-            if previous_entity is None:
+        if obj.name == "":
+            if previous_obj is None:
                 logger.warning(
-                    "Found first entity with empty name, skipping: %s", entity_dict
+                    "Found first trav_obj with empty name, skipping: %s", obj_dict
                 )
                 continue
-            if previous_entity.name == "":
+            if previous_obj.name == "":
                 logger.warning(
-                    "Found two entities with empty names, skipping: %s", entity_dict
+                    "Found two objects with empty names, skipping: %s", obj_dict
                 )
                 continue
-            entity.name = previous_entity.name
+            obj.name = previous_obj.name
 
-        previous_entity = entity
-        yield entity
+        previous_obj = obj
+        yield obj
 
     for unknown_column in unknown_columns:
         logger.warning("Found unknown column: %s", unknown_column)

@@ -32,8 +32,8 @@ class Settings(BaseSettings):
     )
 
     log_level: LogLevel = LogLevel.INFO
-    log_parsed_entities: bool = Field(
-        description="Whether to log parsed entities. Note: These are logged at DEBUG level.",
+    log_parsed_objects: bool = Field(
+        description="Whether to log parsed objects. Note: These are logged at DEBUG level.",
         default=False,
     )
     log_intermediate_data: bool = Field(

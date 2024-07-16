@@ -1,4 +1,3 @@
-
 from traveller_book_parser.traveller_models.characteristics.characteristic import (
     CharacteristicType,
     create_characteristic,

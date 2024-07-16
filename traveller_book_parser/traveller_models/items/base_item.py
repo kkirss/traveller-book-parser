@@ -4,8 +4,8 @@ from typing import Literal
 
 from pydantic import Field, field_validator
 
-from traveller_book_parser.traveller_models.base_entity import BaseEntity
-from traveller_book_parser.traveller_models.entity_types import EntityType
+from traveller_book_parser.traveller_models.trav_object_base import TravObjectBase
+from traveller_book_parser.traveller_models.trav_object_types import TravObjectType
 from traveller_book_parser.traveller_models.validators import (
     dash_is_zero,
     remove_asterisk,
@@ -22,10 +22,10 @@ class ItemType(str, Enum):
     weapon = "weapon"
 
 
-class BaseItem(BaseEntity):
+class BaseItem(TravObjectBase):
     """Item."""
 
-    entity_type: Literal[EntityType.ITEM] = EntityType.ITEM
+    type: Literal[TravObjectType.ITEM] = TravObjectType.ITEM
     item_type: ItemType
 
     description: str = ""

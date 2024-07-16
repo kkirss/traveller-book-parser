@@ -5,18 +5,18 @@ from pydantic import BaseModel, Field
 from traveller_book_parser.data_sources.data_source_description import (
     DataSourceDescription,
 )
-from traveller_book_parser.traveller_models.entity_types import EntityType
+from traveller_book_parser.traveller_models.trav_object_types import TravObjectType
 
 
-class EntityInstrument(BaseModel):
-    """Instrumentation settings for entities."""
+class Instrument(BaseModel):
+    """Instrumentation settings for objects."""
 
     add_images: bool = False
     image_pages: list[int] = Field(default_factory=list)
 
 
 class CollectionDescription(BaseModel):
-    """Description of a collection of entities."""
+    """Description of a collection of objects."""
 
     name: str | None = None
     name_page: int | None = Field(
@@ -28,17 +28,18 @@ class CollectionDescription(BaseModel):
         default=1,
     )
 
-    entity_type: EntityType
-    entity_fields: dict[str, Any] = Field(
+    type: TravObjectType
+    default_values: dict[str, Any] = Field(
         description=(
-            "Default values for entity fields (for e.g. item_type). "
+            "Default values for trav_obj fields (for e.g. item_type). "
             "Note: These are not validated."
         ),
         default_factory=dict,
     )
-    entity_instrument: EntityInstrument = Field(
-        description="Instrumentation for parsing entities.",
-        default_factory=EntityInstrument,
+    instrument: Instrument = Field(
+        # TODO: Add examples
+        description="Instrument objects with additional data.",
+        default_factory=Instrument,
     )
     check_amount: int | None = None
     data_source_description: DataSourceDescription

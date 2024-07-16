@@ -6,12 +6,12 @@ from .characteristics.characteristic import Characteristic
 from .items.item import Item
 from .skills.skill import Skill
 
-Entity = Annotated[
+TravObject = Annotated[
     Characteristic | Item | Skill,
-    Field(discriminator="entity_type"),
+    Field(discriminator="type"),
 ]
 
 
-def create_entity(**kwargs: Any) -> Entity:  # noqa: ANN401
-    """Create Entity model instance."""
-    return RootModel[Entity](**kwargs).root
+def create_trav_object(**kwargs: Any) -> TravObject:  # noqa: ANN401
+    """Create TravObject model instance."""
+    return RootModel[TravObject](**kwargs).root

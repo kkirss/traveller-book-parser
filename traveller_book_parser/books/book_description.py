@@ -2,7 +2,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 
-from traveller_book_parser.entity_collections.collection_description import (
+from traveller_book_parser.object_collections.collection_description import (
     CollectionDescription,
 )
 from traveller_book_parser.settings import SETTINGS

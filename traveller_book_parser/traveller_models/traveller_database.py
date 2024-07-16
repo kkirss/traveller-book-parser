@@ -1,8 +1,8 @@
 from pydantic import BaseModel, Field
 
 from .book import Book
-from .entity import Entity
-from .entity_source_collection import EntitySourceCollection
+from .trav_object import TravObject
+from .trav_object_source_collection import ObjectSourceCollection
 
 
 class TravellerDatabase(BaseModel):
@@ -12,11 +12,11 @@ class TravellerDatabase(BaseModel):
         description="A list of all books.",
         default_factory=list,
     )
-    all_entity_source_collections: list[EntitySourceCollection] = Field(
-        description="A list of all entity source collections.",
+    all_object_source_collections: list[ObjectSourceCollection] = Field(
+        description="A list of all object source collections.",
         default_factory=list,
     )
-    all_entities: list[Entity] = Field(
-        description="A list of all entities.",
+    all_objects: list[TravObject] = Field(
+        description="A list of all objects.",
         default_factory=list,
     )

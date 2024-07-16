@@ -16,18 +16,18 @@ from traveller_book_parser.books.book_description import (
 from traveller_book_parser.data_sources.pdfplumber.pdfplumber_integration import (
     open_pdfplumber_page,
 )
-from traveller_book_parser.entity_collections.collection_description import (
+from traveller_book_parser.object_collections.collection_description import (
     CollectionDescription,
 )
 from traveller_book_parser.settings import SETTINGS
-from traveller_book_parser.traveller_models.entity import Entity
+from traveller_book_parser.traveller_models.trav_object import TravObject
 
 logger = logging.getLogger(__name__)
 
 
-def get_entity_image_path(entity: Entity) -> Path | None:
-    """Get the path to an entity's image, if it exists."""
-    matched_files = list(SETTINGS.images_path.glob(f"{entity.name}.*"))
+def get_obj_image_path(obj: TravObject) -> Path | None:
+    """Get the path to an objects image, if it exists."""
+    matched_files = list(SETTINGS.images_path.glob(f"{obj.name}.*"))
     if len(matched_files) == 0:
         return None
     return matched_files[0]
@@ -143,50 +143,50 @@ def export_image(image: LTImage, output_dir_path: Path) -> str:
     return ImageWriter(str(output_dir_path)).export_image(image)
 
 
-def export_entity_image(
-    entity: Entity, pdf_path: Path, page_numbers: list[int]
+def export_obj_image(
+    obj: TravObject, pdf_path: Path, page_numbers: list[int]
 ) -> Path | None:
-    """Export an image for an entity, using pdfplumber and pdfminer."""
+    """Export an image for an object, using pdfplumber and pdfminer."""
     closest_image = find_pdf_text_closest_image_and_distance(
-        entity.name, pdf_path, page_numbers
+        obj.name, pdf_path, page_numbers
     )
 
     if closest_image is None:
         return None
 
-    closest_image.name = entity.name
+    closest_image.name = obj.name
 
     export_image(closest_image, SETTINGS.images_path)
 
-    image_path = get_entity_image_path(entity)
+    image_path = get_obj_image_path(obj)
 
     if image_path is None:
-        raise ValueError("Failed to export image_path for entity %s", entity)
+        raise ValueError("Failed to export image_path for trav_obj %s", obj)
 
     return image_path
 
 
-def add_entity_image_path(
-    entity: Entity,
+def add_obj_image_path(
+    obj: TravObject,
     book_description: BookDescription,
     collection_description: CollectionDescription,
 ) -> None:
-    """Add an image path to an entity."""
-    image_path = get_entity_image_path(entity)
+    """Add an image path to an object."""
+    image_path = get_obj_image_path(obj)
 
     if image_path is None:
-        if len(collection_description.entity_instrument.image_pages) == 0:
+        if len(collection_description.instrument.image_pages) == 0:
             raise ValueError(
-                "Must specify image_pages in entity_instrument to add image_path to entity."
+                "Must specify image_pages in instrument to add image_path to trav_obj."
             )
 
-        image_path = export_entity_image(
-            entity,
+        image_path = export_obj_image(
+            obj,
             pdf_path=get_book_file_path(book_description.code_name),
-            page_numbers=collection_description.entity_instrument.image_pages,
+            page_numbers=collection_description.instrument.image_pages,
         )
 
     if image_path is not None:
-        entity.image_path = image_path
+        obj.image_path = image_path
     else:
-        logger.warning("Failed to find image_path for entity %s", entity)
+        logger.warning("Failed to find image_path for trav_obj %s", obj)

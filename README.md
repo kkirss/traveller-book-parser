@@ -44,9 +44,9 @@ This allows for greater flexibility:
 
 ### Parsing books
 
-First, we convert the content within books into a machine-readable format, in the form of "entities".
+First, we convert the content within books into a machine-readable format, in the form of "Traveller objects".
 
-TODO: Document the entity formats.
+TODO: Document the traveller object formats.
 
 #### Book descriptions
 
@@ -60,7 +60,7 @@ These are JSON files describing the book (see `book_descriptions` folder for exa
 
 TODO: This is not implemented yet.
 
-After parsing the books, we output the parsed entities into various formats. 
+After parsing the books, we output the parsed objects into various formats. 
 
 ## Usage
 
