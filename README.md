@@ -113,16 +113,18 @@ Feel free to open an issue or pull request.
 
 ## Development
 
+Install [just](https://github.com/casey/just?tab=readme-ov-file#installation) to run utility commands.
+
 ### Linting
 
 To run linters, run:
 ```shell
-poetry run black .; poetry run ruff check --fix .; poetry run pyright .
+just lint
 ```
 
 ### Testing
 
 To run tests, run:
 ```shell
-poetry run pytest
+just test
 ```
