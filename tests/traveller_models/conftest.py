@@ -4,14 +4,6 @@ import pytest
 
 
 @pytest.fixture()
-def characteristic_input_data() -> dict[str, Any]:
-    return {
-        "characteristic_type": "STR",
-        "level": 3,
-    }
-
-
-@pytest.fixture()
 def melee_weapon_input_data() -> dict[str, Any]:
     return {
         "item_type": "weapon",
