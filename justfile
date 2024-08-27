@@ -31,3 +31,5 @@ test_update: test_pytest_snapshots
 
 
 check: lint test
+
+check_update: lint test_update
