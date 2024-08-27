@@ -12,9 +12,14 @@ from traveller_book_parser.data_sources.tabula.data_source_description import (
     TabulaDataSourceDescription,
 )
 
+DataSourceDescriptionField = Field(
+    title="Data Source Description",
+    description="Description of a source of data (e.g. a table).",
+    discriminator="type",
+)
 DataSourceDescription = Annotated[
     HTMLTableDataSourceDescription
     | TabulaDataSourceDescription
     | PDFPlumberDataSourceDescription,
-    Field(discriminator="type"),
+    DataSourceDescriptionField,
 ]

@@ -18,6 +18,7 @@
             'title': 'Check Amount',
           }),
           'data_source_description': dict({
+            'description': 'Description of a source of data (e.g. a table).',
             'discriminator': dict({
               'mapping': dict({
                 'html-table': '#/$defs/HTMLTableDataSourceDescription',
