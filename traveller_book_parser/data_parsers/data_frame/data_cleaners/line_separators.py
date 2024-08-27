@@ -1,6 +1,6 @@
 from collections.abc import Iterable
 import logging
-from typing import Any
+from typing import Any, Optional
 
 from pandas import DataFrame, Index, Series
 
@@ -19,7 +19,7 @@ def _replace_return_with_space(value: Any) -> Any:  # noqa: ANN401
     return value
 
 
-def replace_few_returns_with_spaces(input_data_frame: DataFrame) -> DataFrame | None:
+def replace_few_returns_with_spaces(input_data_frame: DataFrame) -> Optional[DataFrame]:
     """Replace return characters with spaces in a data frame.
 
     Returns are replaced if they occur in less than half of the cells.
@@ -77,7 +77,7 @@ def _get_spread_by_return_rows_for_row(
 
 def spread_returns_to_multiple_rows(
     input_data_frame: DataFrame,
-) -> DataFrame | None:
+) -> Optional[DataFrame]:
     r"""Spread rows with most cells containing return characters to multiple rows.
 
     This is done because Tabula uses return character as line separator.

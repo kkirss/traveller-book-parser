@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Optional
 
 from pydantic import BaseModel, field_validator
 
@@ -36,7 +37,7 @@ class BaseWeaponTrait(BaseModel):
     """Trait of a weapon with optional amount."""
 
     weapon_trait_type: WeaponTraitType
-    amount: int | None = None
+    amount: Optional[int] = None
 
     amount_infinite_is_none = field_validator("amount", mode="before")(infinite_is_none)
     amount_separators = field_validator("amount", mode="before")(remove_commas)

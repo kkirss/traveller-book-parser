@@ -1,6 +1,6 @@
 from collections.abc import Callable
 import re
-from typing import Any, Literal
+from typing import Any, Literal, Optional
 
 from pydantic import Field, field_validator, model_validator
 
@@ -71,8 +71,8 @@ class Armour(BaseItem):
     protection_psionics: int = Field(default=None)
 
     radiation_protection: int = 0
-    required_skill: Skill | None = None
-    slots_count: int | None = None
+    required_skill: Optional[Skill] = None
+    slots_count: Optional[int] = None
 
     characteristic_bonuses: dict[str, int] = Field(default_factory=dict)
 

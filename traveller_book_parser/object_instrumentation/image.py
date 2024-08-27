@@ -2,7 +2,7 @@ import logging
 import math
 from operator import itemgetter
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 from pdfminer.image import ImageWriter
 from pdfminer.layout import LTFigure, LTImage
@@ -25,7 +25,7 @@ from traveller_book_parser.traveller_models.trav_object import TravObject
 logger = logging.getLogger(__name__)
 
 
-def get_obj_image_path(obj: TravObject) -> Path | None:
+def get_obj_image_path(obj: TravObject) -> Optional[Path]:
     """Get the path to an objects image, if it exists."""
     matched_files = list(SETTINGS.images_path.glob(f"{obj.name}.*"))
     if len(matched_files) == 0:
@@ -118,7 +118,7 @@ def find_page_text_closest_image_and_distance(
 
 def find_pdf_text_closest_image_and_distance(
     text: str, pdf_path: Path, page_numbers: list[int]
-) -> LTImage | None:
+) -> Optional[LTImage]:
     """Find the closest image to a text string in a pdf."""
     closest_images_and_distances: list[tuple[LTImage, float]] = []
 
@@ -145,7 +145,7 @@ def export_image(image: LTImage, output_dir_path: Path) -> str:
 
 def export_obj_image(
     obj: TravObject, pdf_path: Path, page_numbers: list[int]
-) -> Path | None:
+) -> Optional[Path]:
     """Export an image for an object, using pdfplumber and pdfminer."""
     closest_image = find_pdf_text_closest_image_and_distance(
         obj.name, pdf_path, page_numbers

@@ -1,4 +1,5 @@
 import logging
+from typing import Optional
 
 from pandas import DataFrame, Series
 
@@ -17,7 +18,7 @@ def _has_almost_empty_rows(data_frame: DataFrame) -> bool:
     return any(_is_almost_empty_row(row) for _, row in data_frame.iterrows())
 
 
-def collapse_almost_empty_rows(input_data_frame: DataFrame) -> DataFrame | None:
+def collapse_almost_empty_rows(input_data_frame: DataFrame) -> Optional[DataFrame]:
     """Collapse almost empty rows into full rows in a data frame.
 
     Each almost empty row is merged into the previous row.

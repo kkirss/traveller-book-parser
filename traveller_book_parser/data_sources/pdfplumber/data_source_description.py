@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import Field
 
@@ -23,7 +23,7 @@ class PDFPlumberDataSourceDescription(BaseDataSourceDescription):
         description="The sequential number of the table on the page.",
     )
 
-    table_settings: TableSettingsDict | None = Field(
+    table_settings: Optional[TableSettingsDict] = Field(
         default=None,
         description="Settings for table extraction, used by pdfplumber."
         "See https://github.com/jsvine/pdfplumber/blob/stable/README.md#table-extraction-settings",

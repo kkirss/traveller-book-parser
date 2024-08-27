@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 
 from pydantic import BaseModel, Field
 
@@ -18,8 +18,8 @@ class Instrument(BaseModel):
 class CollectionDescription(BaseModel):
     """Description of a collection of objects."""
 
-    name: str | None = None
-    name_page: int | None = Field(
+    name: Optional[str] = None
+    name_page: Optional[int] = Field(
         description="Page number where the collection name is found (defaults to data source page, if available).",
         default=None,
     )
@@ -41,5 +41,5 @@ class CollectionDescription(BaseModel):
         description="Instrument objects with additional data.",
         default_factory=Instrument,
     )
-    check_amount: int | None = None
+    check_amount: Optional[int] = None
     data_source_description: DataSourceDescription

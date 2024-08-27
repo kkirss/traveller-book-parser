@@ -3,7 +3,7 @@ import copy
 import json
 import logging
 from pathlib import Path
-from typing import Any, Literal, TypedDict
+from typing import Any, Literal, Optional, TypedDict
 
 import pandas as pd
 import tabula
@@ -17,7 +17,7 @@ TABULA_PANDAS_OPTIONS = {}
 
 def read_tabula_data_file(
     path: Path,
-    pandas_options: dict[str, Any] | None = None,
+    pandas_options: Optional[dict[str, Any]] = None,
 ) -> list[pd.DataFrame]:
     """Read tabula internal JSON formatted data from a file."""
     if pandas_options is None:
@@ -43,7 +43,7 @@ def export_tabula_data_file(
     book_pdf_path: Path,
     export_path: Path,
     pages: str | int | Iterable[int] | None,
-    area: Iterable[float] | None = None,
+    area: Optional[Iterable[float]] = None,
     extraction_method: ExtractionMethod = None,
 ) -> None:
     """Parse tables from a PDF file using Tabula and export them to a JSON file."""

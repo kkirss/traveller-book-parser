@@ -1,6 +1,6 @@
 from decimal import Decimal
 from enum import Enum
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import Field, field_validator
 
@@ -32,7 +32,7 @@ class BaseItem(TravObjectBase):
 
     tech_level: int = Field(repr=True, ge=0)
     weight: Decimal  # In kilograms
-    base_price: int | None = None  # In Credits
+    base_price: Optional[int] = None  # In Credits
 
     item_type: ItemType = Field(repr=True)
 

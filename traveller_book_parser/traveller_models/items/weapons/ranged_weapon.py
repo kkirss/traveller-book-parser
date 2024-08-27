@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import field_validator
 
@@ -19,10 +19,10 @@ class RangedWeapon(BaseWeapon):
     """Ranged weapon."""
 
     weapon_type: Literal[WeaponType.ranged] = WeaponType.ranged
-    range: int | None
+    range: Optional[int]
 
-    magazine_size: int | UNLIMITED_LITERAL | None = None
-    magazine_base_price: int | None = None  # In Credits
+    magazine_size: Optional[int | UNLIMITED_LITERAL] = None
+    magazine_base_price: Optional[int] = None  # In Credits
 
     magazine_size_range_max = field_validator("magazine_size", mode="before")(
         value_range_use_max

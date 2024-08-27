@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import Field, field_validator
 
@@ -29,7 +29,7 @@ class BaseWeapon(BaseItem):
     item_type: Literal[ItemType.weapon] = ItemType.weapon
     weapon_type: WeaponType
 
-    range: WeaponRangeMelee | int | None
+    range: WeaponRangeMelee | Optional[int]
     damage: str
     traits: list[WeaponTrait] | None = Field(default_factory=list)
 

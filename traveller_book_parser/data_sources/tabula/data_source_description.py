@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import Field
 
@@ -20,7 +20,7 @@ class TabulaDataSourceDescription(BaseDataSourceDescription):
         default=1,
         description="The sequential number of the table on the page.",
     )
-    extraction_method: Literal["lattice", "stream"] | None = None
+    extraction_method: Optional[Literal["lattice", "stream"]] = None
     # For getting the area, see:
     # https://github.com/tabulapdf/tabula-java/wiki/Using-the-command-line-tabula-extractor-tool#grab-coordinates-of-the-table-you-want
     area: list[float] | None = Field(

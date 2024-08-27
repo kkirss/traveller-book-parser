@@ -2,7 +2,7 @@ from collections.abc import Generator
 from contextlib import contextmanager
 import logging
 from pathlib import Path
-from typing import Any, Literal, cast
+from typing import Any, Literal, Optional, cast
 
 import pdfplumber
 from pdfplumber.page import Page
@@ -10,7 +10,7 @@ from typing_extensions import TypedDict
 
 logger = logging.getLogger(__name__)
 
-PDFPlumberTable = list[list[str | None]]
+PDFPlumberTable = list[list[Optional[str]]]
 
 
 TableStrategy = Literal["lines", "lines_strict", "text", "explicit"]
@@ -75,7 +75,7 @@ def get_pdfplumber_table(
     pdf_path: Path,
     page_number: int,
     table_index: int = 0,
-    table_settings: TableSettingsDict | None = None,
+    table_settings: Optional[TableSettingsDict] = None,
 ) -> PDFPlumberTable:
     """Get table from a PDF file using pdfplumber."""
     if table_settings is None:

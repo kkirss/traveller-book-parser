@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -11,4 +12,4 @@ class TravObjectBase(BaseModel):
     type: TravObjectType
 
     name: str = Field(repr=True)
-    image_path: Path | None = None
+    image_path: Optional[Path] = None

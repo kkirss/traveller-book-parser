@@ -1,9 +1,10 @@
 from collections.abc import Hashable
+from typing import Optional
 
 from pandas import DataFrame
 
 
-def merge_first_row_with_columns(input_data_frame: DataFrame) -> DataFrame | None:
+def merge_first_row_with_columns(input_data_frame: DataFrame) -> Optional[DataFrame]:
     """Merge the first row of a data frame with the columns.
 
     >>> merge_first_row_with_columns(DataFrame([

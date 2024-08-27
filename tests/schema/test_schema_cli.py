@@ -1,13 +1,13 @@
 import json
 from pathlib import Path
 
-import pytest
 from syrupy.assertion import SnapshotAssertion
 from typer.testing import CliRunner
 
 from traveller_book_parser.cli_app.app import app
 
 runner = CliRunner()
+
 
 def test_schema_trav_object_cli(snapshot: SnapshotAssertion, tmp_path: Path):
     # Arrange
@@ -27,6 +27,7 @@ def test_schema_trav_object_cli(snapshot: SnapshotAssertion, tmp_path: Path):
     # Compare the schema with the snapshot
     assert schema == snapshot
 
+
 def test_schema_traveller_database_cli(snapshot: SnapshotAssertion, tmp_path: Path):
     # Arrange
     command = ["schema", "TravellerDatabase"]
@@ -44,6 +45,7 @@ def test_schema_traveller_database_cli(snapshot: SnapshotAssertion, tmp_path: Pa
 
     # Compare the schema with the snapshot
     assert schema == snapshot
+
 
 def test_schema_book_description_cli(snapshot: SnapshotAssertion, tmp_path: Path):
     # Arrange

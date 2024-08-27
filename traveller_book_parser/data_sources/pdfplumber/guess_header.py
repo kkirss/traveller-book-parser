@@ -1,6 +1,6 @@
 from operator import itemgetter
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 from .pdfplumber_integration import open_pdfplumber_page
 
@@ -18,8 +18,8 @@ def guess_page_header(
     pdf_path: Path,
     page_number: int,
     nth_largest_font_text: int = 1,
-    extract_text_lines_options: ExtractTextLinesOptions | None = None,
-) -> str | None:
+    extract_text_lines_options: Optional[ExtractTextLinesOptions] = None,
+) -> Optional[str]:
     """Guess the header of a page in a pdf."""
     if extract_text_lines_options is None:
         extract_text_lines_options = EXTRACT_TEXT_LINES_OPTIONS_DEFAULT

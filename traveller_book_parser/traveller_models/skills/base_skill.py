@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import Field
 
@@ -12,4 +12,4 @@ class BaseSkill(TravObjectBase):
     type: Literal[TravObjectType.SKILL] = TravObjectType.SKILL
 
     # None signifies not knowing a skill
-    level: int | None = Field(repr=True)
+    level: Optional[int] = Field(repr=True)

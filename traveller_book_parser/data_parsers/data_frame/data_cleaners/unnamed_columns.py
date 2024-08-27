@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pandas import DataFrame
 
 from .merge_first_row_with_columns import merge_first_row_with_columns
@@ -8,7 +10,7 @@ def is_unnamed_column(column: str) -> bool:
     return isinstance(column, int) or "Unnamed: " in column or column == ""
 
 
-def remove_unnamed_columns(input_data_frame: DataFrame) -> DataFrame | None:
+def remove_unnamed_columns(input_data_frame: DataFrame) -> Optional[DataFrame]:
     """Remove unnamed columns from a data frame.
 
     Example:

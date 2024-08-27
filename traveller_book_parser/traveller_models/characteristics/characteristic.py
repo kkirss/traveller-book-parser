@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any, Literal
+from typing import Any, Literal, Optional
 
 from pydantic import Field, model_validator
 
@@ -40,7 +40,7 @@ class Characteristic(TravObjectBase):
     type: Literal[TravObjectType.CHARACTERISTIC] = TravObjectType.CHARACTERISTIC
     characteristic_type: CharacteristicType = Field(repr=True)
 
-    level: int | None = Field(default=None, repr=True)
+    level: Optional[int] = Field(default=None, repr=True)
 
     @model_validator(mode="before")
     @classmethod
