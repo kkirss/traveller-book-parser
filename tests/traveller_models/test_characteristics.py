@@ -14,6 +14,7 @@ def test_characteristic():
     assert {
         "characteristic_type": input_data["characteristic_type"],
         "name": input_data["name"],
+        "trav_id": "characteristic:Strength",
     } == model.model_dump(exclude_unset=True)
 
     assert model.characteristic_type == input_data["characteristic_type"]
@@ -30,6 +31,7 @@ def test_characteristic_custom_name():
     assert {
         "characteristic_type": input_data["characteristic_type"],
         "name": input_data["name"],
+        "trav_id": "characteristic:Custom Name",
     } == model.model_dump(exclude_unset=True)
 
     assert model.characteristic_type == input_data["characteristic_type"]
@@ -45,6 +47,7 @@ def test_characteristic_default_name_dex():
     assert {
         "characteristic_type": input_data["characteristic_type"],
         "name": "Dexterity",
+        "trav_id": "characteristic:Dexterity",
     } == model.model_dump(exclude_unset=True)
 
     assert model.characteristic_type == input_data["characteristic_type"]

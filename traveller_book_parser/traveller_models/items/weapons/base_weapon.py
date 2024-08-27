@@ -41,3 +41,6 @@ class BaseWeapon(BaseItem):
         comma_separated_string_to_list
     )
     traits_none = field_validator("traits", mode="before")(dash_is_none)
+
+    def _get_trav_id_pieces(self) -> list[str | int | None]:
+        return [*super()._get_trav_id_pieces(), self.weapon_type.value]

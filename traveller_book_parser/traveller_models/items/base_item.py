@@ -40,3 +40,11 @@ class BaseItem(TravObjectBase):
     base_price_credits = field_validator("base_price", mode="before")(
         remove_credits_prefix
     )
+
+    def _get_trav_id_pieces(self) -> list[str | int | None]:
+        return [
+            *super()._get_trav_id_pieces(),
+            "TL",
+            self.tech_level,
+            self.item_type.value,
+        ]

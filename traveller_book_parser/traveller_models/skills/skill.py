@@ -16,6 +16,9 @@ class Skill(TravObjectBase):
     # None signifies not knowing a skill
     level: Optional[int] = Field(repr=True)
 
+    def _get_trav_id_pieces(self) -> list[str | int | None]:
+        return [*super()._get_trav_id_pieces(), self.level]
+
 
 def create_skill(**kwargs: Any) -> Skill:  # noqa: ANN401
     """Create Skill model instance."""
