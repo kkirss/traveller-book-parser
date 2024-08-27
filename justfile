@@ -13,8 +13,11 @@ lint_ruff:
 lint_pyright:
     poetry run pyright .
 
+lint_schema_gen:
+    poetry run traveller-book-parser schema all
+
 # Lint files for quality & type issues (with autofix)
-lint: lint_black lint_pyright lint_ruff
+lint: lint_black lint_pyright lint_ruff lint_schema_gen
 
 
 test_pytest:
