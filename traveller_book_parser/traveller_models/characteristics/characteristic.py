@@ -37,7 +37,7 @@ CHARACTERISTIC_NAMES: dict[CharacteristicType, str] = {
 class Characteristic(TravObjectBase):
     """Characteristic with optional level."""
 
-    type: Literal[TravObjectType.CHARACTERISTIC] = TravObjectType.CHARACTERISTIC
+    type: Literal[TravObjectType.CHARACTERISTIC] = Field(repr=False, default=TravObjectType.CHARACTERISTIC)
     characteristic_type: CharacteristicType = Field(repr=True)
 
     level: Optional[int] = Field(default=None, repr=True)

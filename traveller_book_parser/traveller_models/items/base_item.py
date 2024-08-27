@@ -25,7 +25,7 @@ class ItemType(str, Enum):
 class BaseItem(TravObjectBase):
     """Item."""
 
-    type: Literal[TravObjectType.ITEM] = TravObjectType.ITEM
+    type: Literal[TravObjectType.ITEM] = Field(repr=False, default=TravObjectType.ITEM)
     item_type: ItemType = Field(repr=True)
 
     tech_level: int = Field(repr=True, ge=0)

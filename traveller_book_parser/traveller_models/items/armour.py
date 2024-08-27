@@ -63,7 +63,7 @@ def characteristic_boost(value: Any) -> Any:  # noqa: ANN401, D103
 class Armour(BaseItem):
     """Armour."""
 
-    item_type: Literal[ItemType.armour] = ItemType.armour
+    item_type: Literal[ItemType.armour] = Field(repr=False, default=ItemType.armour)
 
     protection: int
     protection_laser: int = Field(default=None)

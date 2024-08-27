@@ -26,7 +26,7 @@ class WeaponType(str, Enum):
 class BaseWeapon(BaseItem):
     """Weapon."""
 
-    item_type: Literal[ItemType.weapon] = ItemType.weapon
+    item_type: Literal[ItemType.weapon] = Field(repr=False, default=ItemType.weapon)
     weapon_type: WeaponType
 
     range: WeaponRangeMelee | Optional[int]
