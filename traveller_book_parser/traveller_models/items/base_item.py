@@ -28,8 +28,6 @@ class BaseItem(TravObjectBase):
     type: Literal[TravObjectType.ITEM] = TravObjectType.ITEM
     item_type: ItemType = Field(repr=True)
 
-    description: str = ""
-
     tech_level: int = Field(repr=True, ge=0)
     weight: Decimal  # In kilograms
     base_price: Optional[int] = None  # In Credits

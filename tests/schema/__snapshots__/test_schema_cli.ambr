@@ -503,6 +503,11 @@
       'BaseSkill': dict({
         'description': 'Skill with optional level.',
         'properties': dict({
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
           'image_path': dict({
             'anyOf': list([
               dict({
@@ -578,6 +583,11 @@
         'properties': dict({
           'characteristic_type': dict({
             '$ref': '#/$defs/CharacteristicType',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
           }),
           'image_path': dict({
             'anyOf': list([
@@ -1209,6 +1219,11 @@
       'BaseSkill': dict({
         'description': 'Skill with optional level.',
         'properties': dict({
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
           'image_path': dict({
             'anyOf': list([
               dict({
@@ -1298,6 +1313,11 @@
         'properties': dict({
           'characteristic_type': dict({
             '$ref': '#/$defs/CharacteristicType',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
           }),
           'image_path': dict({
             'anyOf': list([

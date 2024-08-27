@@ -12,4 +12,6 @@ class TravObjectBase(BaseModel):
     type: TravObjectType
 
     name: str = Field(repr=True)
+    description: str = Field(repr=False, default="")
+
     image_path: Optional[Path] = None
