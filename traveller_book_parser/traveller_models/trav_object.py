@@ -1,25 +1,36 @@
 from typing import Annotated, Any
 
-from pydantic import Field, RootModel
+from pydantic import Field, RootModel, BaseModel
 
 from .characteristics.characteristic import Characteristic
 from .items.item import Item
 from .skills.skill import Skill
 
+
+TRAV_OBJ_DESCRIPTION = """A traveller-related object.
+
+The `type: TravObjectType` signifies different types of traveller objects:
+    * `characteristic` - An attribute of a character (e.g. strength).
+    * `item` - An item (e.g. sword, phone, book).
+    * `skill` - A skill (e.g. athletics, pilot, science).
+"""
+
+TravObjectField = Field(
+    discriminator="type",
+    title="TravObject",
+    description=TRAV_OBJ_DESCRIPTION,
+)
 TravObject = Annotated[
     Characteristic | Item | Skill,
-    Field(discriminator="type"),
+    TravObjectField,
 ]
 
+class TravObjectRoot(RootModel[TravObject]):  # noqa: D101
+    ...
 
-class TravObjectRoot(RootModel[TravObject]):
-    """A traveller-related object.
 
-    The `type: TravObjectType` signifies different types of traveller objects:
-        * `characteristic` - An attribute of a character (e.g. strength).
-        * `item` - An item (e.g. sword, phone, book).
-        * `skill` - A skill (e.g. athletics, pilot, science).
-    """
+TravObject.__doc__ = TRAV_OBJ_DESCRIPTION
+TravObjectRoot.__doc__ = TRAV_OBJ_DESCRIPTION
 
 
 def create_trav_object(**kwargs: Any) -> TravObject:  # noqa: ANN401

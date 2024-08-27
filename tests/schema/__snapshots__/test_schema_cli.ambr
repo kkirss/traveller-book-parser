@@ -941,6 +941,7 @@
           * `characteristic` - An attribute of a character (e.g. strength).
           * `item` - An item (e.g. sword, phone, book).
           * `skill` - A skill (e.g. athletics, pilot, science).
+  
     ''',
     'discriminator': dict({
       'mapping': dict({
@@ -1051,7 +1052,7 @@
         '$ref': '#/$defs/BaseSkill',
       }),
     ]),
-    'title': 'TravObjectRoot',
+    'title': 'TravObject',
   })
 # ---
 # name: test_schema_traveller_database_cli
@@ -1676,6 +1677,15 @@
       'all_objects': dict({
         'description': 'A list of all objects.',
         'items': dict({
+          'description': '''
+            A traveller-related object.
+            
+            The `type: TravObjectType` signifies different types of traveller objects:
+                * `characteristic` - An attribute of a character (e.g. strength).
+                * `item` - An item (e.g. sword, phone, book).
+                * `skill` - A skill (e.g. athletics, pilot, science).
+  
+          ''',
           'discriminator': dict({
             'mapping': dict({
               'characteristic': '#/$defs/Characteristic',
@@ -1785,6 +1795,7 @@
               '$ref': '#/$defs/BaseSkill',
             }),
           ]),
+          'title': 'TravObject',
         }),
         'title': 'All Objects',
         'type': 'array',
