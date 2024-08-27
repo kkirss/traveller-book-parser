@@ -1,6 +1,6 @@
 from typing import Literal, Optional
 
-from pydantic import field_validator, Field
+from pydantic import Field, field_validator
 
 from traveller_book_parser.traveller_models.validators import (
     dash_is_none,
@@ -18,7 +18,9 @@ UNLIMITED_LITERAL = Literal["Unlimited"]
 class RangedWeapon(BaseWeapon):
     """Ranged weapon."""
 
-    weapon_type: Literal[WeaponType.ranged] = Field(repr=False, default=WeaponType.ranged)
+    weapon_type: Literal[WeaponType.ranged] = Field(
+        repr=False, default=WeaponType.ranged
+    )
     range: Optional[int]
 
     magazine_size: Optional[int | UNLIMITED_LITERAL] = None

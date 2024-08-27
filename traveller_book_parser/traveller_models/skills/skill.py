@@ -1,6 +1,6 @@
 from typing import Any, Literal, Optional
 
-from pydantic import RootModel, Field
+from pydantic import Field
 
 from traveller_book_parser.traveller_models.trav_object_base import TravObjectBase
 from traveller_book_parser.traveller_models.trav_object_types import TravObjectType
@@ -9,7 +9,9 @@ from traveller_book_parser.traveller_models.trav_object_types import TravObjectT
 class Skill(TravObjectBase):
     """Skill with optional level."""
 
-    type: Literal[TravObjectType.SKILL] = Field(repr=False, default=TravObjectType.SKILL)
+    type: Literal[TravObjectType.SKILL] = Field(
+        repr=False, default=TravObjectType.SKILL
+    )
 
     # None signifies not knowing a skill
     level: Optional[int] = Field(repr=True)

@@ -9,6 +9,7 @@ import typer
 from traveller_book_parser.books.book_description import BookDescription
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.traveller_models.trav_database import TravDatabase
+from traveller_book_parser.traveller_models.trav_glossary import TravGlossary
 from traveller_book_parser.traveller_models.trav_object import TravObjectRoot
 from traveller_book_parser.utils import ensure_folder
 
@@ -64,11 +65,22 @@ schema_app.command("trav_object")(trav_object_schema_cli)
 schema_app.command("TravObject")(trav_object_schema_cli)
 
 
+def trav_glossary_schema_cli(path: Optional[pathlib.Path] = None):
+    """Dump the JSON schema of the 'TravGlossary' model."""
+    dump_model_schema(path, TravGlossary, "TravGlossary")
+
+
+schema_app.command("trav-glossary")(trav_glossary_schema_cli)
+schema_app.command("trav_glossary")(trav_glossary_schema_cli)
+schema_app.command("TravGlossary")(trav_glossary_schema_cli)
+
+
 def all_schema_cli(path: Optional[pathlib.Path] = None):
     """Dump all JSON schema files."""
     book_description_schema_cli(path)
     trav_database_schema_cli(path)
     trav_object_schema_cli(path)
+    trav_glossary_schema_cli(path)
 
 
 schema_app.command("all")(all_schema_cli)
