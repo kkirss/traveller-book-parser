@@ -128,3 +128,8 @@ To run tests, run:
 ```shell
 just test
 ```
+
+To run tests and update snapshots, run:
+```shell
+just test_update
+```

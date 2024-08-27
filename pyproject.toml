@@ -43,6 +43,7 @@ pydantic-settings = "2.2.1"
 tabula-py = { version = "2.9.3", extras = ["jpype"] }
 typer = "0.12.3"
 rich = "13.7.1"
+syrupy = "4.7.1"
 
 [tool.poetry.dev-dependencies]
 ruff = "0.4.4"
@@ -84,7 +85,8 @@ ignore = [
     "EM101",  # Exception must not use a string literal, assign to variable first
     "EM102",  # Exception must not use an f-string literal, assign to variable first
     # TODO: Enable following:
-    "TRY003",  # Avoid specifying long messages outside the exception class
+    "TRY003",  # Avoid specifying long messages outside the exception class,
+    "UP007",  # Allow Optional[pathlib.Path] for typer command arguments to work
 ]
 
 [tool.ruff.lint.per-file-ignores]
