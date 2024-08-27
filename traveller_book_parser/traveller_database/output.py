@@ -1,14 +1,14 @@
 from contextlib import contextmanager
 
-from traveller_book_parser.traveller_models.traveller_database import TravellerDatabase
+from traveller_book_parser.traveller_models.trav_database import TravDatabase
 
 from .output_format.output_format import DatabaseOutputFormat, format_output
 
 
 @contextmanager
 def outputted_database(output_format: DatabaseOutputFormat):
-    """Context manager for a TravellerDatabase, which outputs it at the end."""
-    database = TravellerDatabase()
+    """Context manager for a TravDatabase, which outputs it at the end."""
+    database = TravDatabase()
 
     yield database
 

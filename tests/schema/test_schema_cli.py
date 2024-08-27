@@ -30,7 +30,7 @@ def test_schema_trav_object_cli(snapshot: SnapshotAssertion, tmp_path: Path):
 
 def test_schema_traveller_database_cli(snapshot: SnapshotAssertion, tmp_path: Path):
     # Arrange
-    command = ["schema", "TravellerDatabase"]
+    command = ["schema", "TravDatabase"]
     output_file = tmp_path / f"{'.'.join(command)}.json"
 
     # Act

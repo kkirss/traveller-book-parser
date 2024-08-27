@@ -27,11 +27,11 @@ from traveller_book_parser.traveller_database.objects import (
     add_objects_in_collection_to_database,
 )
 from traveller_book_parser.traveller_models.book import Book
+from traveller_book_parser.traveller_models.trav_database import TravDatabase
 from traveller_book_parser.traveller_models.trav_object import TravObject
 from traveller_book_parser.traveller_models.trav_object_source_collection import (
     ObjectSourceCollection,
 )
-from traveller_book_parser.traveller_models.traveller_database import TravellerDatabase
 from traveller_book_parser.utils import ensure_folder
 
 from .book_description import BookDescription
@@ -99,7 +99,7 @@ def _check_collection_amount(
         )
 
 
-def parse_book(database: TravellerDatabase, book_code_name: str) -> None:
+def parse_book(database: TravDatabase, book_code_name: str) -> None:
     """Parse a book into a database."""
     try:
         book_description = load_book_description(book_code_name)
@@ -153,13 +153,13 @@ def parse_book(database: TravellerDatabase, book_code_name: str) -> None:
     )
 
 
-def parse_books(database: TravellerDatabase, book_code_names: list[str]) -> None:
+def parse_books(database: TravDatabase, book_code_names: list[str]) -> None:
     """Parse books into a database."""
     for book_code_name in book_code_names:
         parse_book(database, book_code_name)
 
 
-def parse_all_books(database: TravellerDatabase) -> None:
+def parse_all_books(database: TravDatabase) -> None:
     """Parse all books into a database."""
     book_code_names = get_book_code_names()
 

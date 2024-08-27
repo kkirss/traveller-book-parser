@@ -1826,7 +1826,7 @@
         'type': 'array',
       }),
     }),
-    'title': 'TravellerDatabase',
+    'title': 'TravDatabase',
     'type': 'object',
   })
 # ---

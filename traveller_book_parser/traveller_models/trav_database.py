@@ -5,7 +5,7 @@ from .trav_object import TravObject
 from .trav_object_source_collection import ObjectSourceCollection
 
 
-class TravellerDatabase(BaseModel):
+class TravDatabase(BaseModel):
     """A database of traveller related objects."""
 
     all_books: list[Book] = Field(
