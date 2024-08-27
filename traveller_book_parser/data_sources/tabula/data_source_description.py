@@ -6,14 +6,11 @@ from traveller_book_parser.data_sources.base_data_source_description import (
     BaseDataSourceDescription,
 )
 
-TABULA_DATA_SOURCE_DESCRIPTION_TYPE = "tabula-table"
-TABULA_DATA_SOURCE_DESCRIPTION_TYPE_LITERAL = Literal["tabula-table"]
-
 
 class TabulaDataSourceDescription(BaseDataSourceDescription):
     """Description of getting data using Tabula."""
 
-    type: TABULA_DATA_SOURCE_DESCRIPTION_TYPE_LITERAL
+    type: Literal["tabula-table"]
 
     page: int
     page_table_number: int = Field(

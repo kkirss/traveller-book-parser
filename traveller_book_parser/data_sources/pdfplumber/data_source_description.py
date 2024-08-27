@@ -8,14 +8,11 @@ from traveller_book_parser.data_sources.base_data_source_description import (
 
 from .pdfplumber_integration import TableSettingsDict
 
-PDFPLUMBER_DATA_SOURCE_DESCRIPTION_TYPE = "pdfplumber-table"
-PDFPLUMBER_DATA_SOURCE_DESCRIPTION_TYPE_LITERAL = Literal["pdfplumber-table"]
-
 
 class PDFPlumberDataSourceDescription(BaseDataSourceDescription):
     """Description of getting data using pdfplumber."""
 
-    type: PDFPLUMBER_DATA_SOURCE_DESCRIPTION_TYPE_LITERAL
+    type: Literal["pdfplumber-table"]
 
     page: int
     page_table_number: int = Field(
