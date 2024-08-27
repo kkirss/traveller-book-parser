@@ -445,7 +445,7 @@
           'required_skill': dict({
             'anyOf': list([
               dict({
-                '$ref': '#/$defs/BaseSkill',
+                '$ref': '#/$defs/Skill',
               }),
               dict({
                 'type': 'null',
@@ -498,59 +498,6 @@
           'protection',
         ]),
         'title': 'Armour',
-        'type': 'object',
-      }),
-      'BaseSkill': dict({
-        'description': 'Skill with optional level.',
-        'properties': dict({
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'level': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Level',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'type': dict({
-            'const': 'skill',
-            'default': 'skill',
-            'enum': list([
-              'skill',
-            ]),
-            'title': 'Type',
-            'type': 'string',
-          }),
-        }),
-        'required': list([
-          'name',
-          'level',
-        ]),
-        'title': 'BaseSkill',
         'type': 'object',
       }),
       'BaseWeaponTrait': dict({
@@ -918,6 +865,59 @@
         'title': 'RangedWeapon',
         'type': 'object',
       }),
+      'Skill': dict({
+        'description': 'Skill with optional level.',
+        'properties': dict({
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'level': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Level',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'type': dict({
+            'const': 'skill',
+            'default': 'skill',
+            'enum': list([
+              'skill',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+          'level',
+        ]),
+        'title': 'Skill',
+        'type': 'object',
+      }),
       'WeaponTraitType': dict({
         'description': 'Weapon trait type.',
         'enum': list([
@@ -1010,7 +1010,7 @@
           ]),
           'title': 'Item',
         }),
-        'skill': '#/$defs/BaseSkill',
+        'skill': '#/$defs/Skill',
       }),
       'propertyName': 'type',
     }),
@@ -1072,7 +1072,7 @@
         'title': 'Item',
       }),
       dict({
-        '$ref': '#/$defs/BaseSkill',
+        '$ref': '#/$defs/Skill',
       }),
     ]),
     'title': 'TravObject',
@@ -1161,7 +1161,7 @@
           'required_skill': dict({
             'anyOf': list([
               dict({
-                '$ref': '#/$defs/BaseSkill',
+                '$ref': '#/$defs/Skill',
               }),
               dict({
                 'type': 'null',
@@ -1214,59 +1214,6 @@
           'protection',
         ]),
         'title': 'Armour',
-        'type': 'object',
-      }),
-      'BaseSkill': dict({
-        'description': 'Skill with optional level.',
-        'properties': dict({
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'level': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Level',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'type': dict({
-            'const': 'skill',
-            'default': 'skill',
-            'enum': list([
-              'skill',
-            ]),
-            'title': 'Type',
-            'type': 'string',
-          }),
-        }),
-        'required': list([
-          'name',
-          'level',
-        ]),
-        'title': 'BaseSkill',
         'type': 'object',
       }),
       'BaseWeaponTrait': dict({
@@ -1662,6 +1609,59 @@
         'title': 'RangedWeapon',
         'type': 'object',
       }),
+      'Skill': dict({
+        'description': 'Skill with optional level.',
+        'properties': dict({
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'level': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Level',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'type': dict({
+            'const': 'skill',
+            'default': 'skill',
+            'enum': list([
+              'skill',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+          'level',
+        ]),
+        'title': 'Skill',
+        'type': 'object',
+      }),
       'WeaponTraitType': dict({
         'description': 'Weapon trait type.',
         'enum': list([
@@ -1775,7 +1775,7 @@
                 ]),
                 'title': 'Item',
               }),
-              'skill': '#/$defs/BaseSkill',
+              'skill': '#/$defs/Skill',
             }),
             'propertyName': 'type',
           }),
@@ -1837,7 +1837,7 @@
               'title': 'Item',
             }),
             dict({
-              '$ref': '#/$defs/BaseSkill',
+              '$ref': '#/$defs/Skill',
             }),
           ]),
           'title': 'TravObject',
