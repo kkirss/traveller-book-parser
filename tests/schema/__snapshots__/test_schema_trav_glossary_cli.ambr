@@ -565,6 +565,29 @@
         'title': 'CollectionDescription',
         'type': 'object',
       }),
+      'DataSourceDescriptionRoot': dict({
+        'description': 'Description of a source of data (e.g. a table).',
+        'discriminator': dict({
+          'mapping': dict({
+            'html-table': '#/$defs/HTMLTableDataSourceDescription',
+            'pdfplumber-table': '#/$defs/PDFPlumberDataSourceDescription',
+            'tabula-table': '#/$defs/TabulaDataSourceDescription',
+          }),
+          'propertyName': 'type',
+        }),
+        'oneOf': list([
+          dict({
+            '$ref': '#/$defs/HTMLTableDataSourceDescription',
+          }),
+          dict({
+            '$ref': '#/$defs/TabulaDataSourceDescription',
+          }),
+          dict({
+            '$ref': '#/$defs/PDFPlumberDataSourceDescription',
+          }),
+        ]),
+        'title': 'Data Source Description',
+      }),
       'HTMLTableDataSourceDescription': dict({
         'description': 'Description of getting data from exported HTML table.',
         'properties': dict({
@@ -606,6 +629,59 @@
         }),
         'title': 'Instrument',
         'type': 'object',
+      }),
+      'ItemRoot': dict({
+        'description': 'An item (e.g. sword, phone, book).',
+        'discriminator': dict({
+          'mapping': dict({
+            'armour': '#/$defs/Armour',
+            'weapon': dict({
+              'description': 'A weapon (e.g. sword, pistol).',
+              'discriminator': dict({
+                'mapping': dict({
+                  'melee': '#/$defs/MeleeWeapon',
+                  'ranged': '#/$defs/RangedWeapon',
+                }),
+                'propertyName': 'weapon_type',
+              }),
+              'oneOf': list([
+                dict({
+                  '$ref': '#/$defs/MeleeWeapon',
+                }),
+                dict({
+                  '$ref': '#/$defs/RangedWeapon',
+                }),
+              ]),
+              'title': 'Weapon',
+            }),
+          }),
+          'propertyName': 'item_type',
+        }),
+        'oneOf': list([
+          dict({
+            '$ref': '#/$defs/Armour',
+          }),
+          dict({
+            'description': 'A weapon (e.g. sword, pistol).',
+            'discriminator': dict({
+              'mapping': dict({
+                'melee': '#/$defs/MeleeWeapon',
+                'ranged': '#/$defs/RangedWeapon',
+              }),
+              'propertyName': 'weapon_type',
+            }),
+            'oneOf': list([
+              dict({
+                '$ref': '#/$defs/MeleeWeapon',
+              }),
+              dict({
+                '$ref': '#/$defs/RangedWeapon',
+              }),
+            ]),
+            'title': 'Weapon',
+          }),
+        ]),
+        'title': 'Item',
       }),
       'ItemType': dict({
         'description': 'Item type.',
@@ -1301,162 +1377,7 @@
         'title': 'TravDatabase',
         'type': 'object',
       }),
-      'TravObjectType': dict({
-        'description': 'Type of traveller object.',
-        'enum': list([
-          'characteristic',
-          'item',
-          'skill',
-        ]),
-        'title': 'TravObjectType',
-        'type': 'string',
-      }),
-      'WeaponTraitType': dict({
-        'description': 'Weapon trait type.',
-        'enum': list([
-          'AP',
-          'Artillery',
-          'Auto',
-          'Blast',
-          'Bulky',
-          'Very Bulky',
-          'Dangerous',
-          'Very Dangerous',
-          'Fire',
-          'One Use',
-          'One Shot',
-          'Radiation',
-          'Scope',
-          'Silent',
-          'Smart',
-          'Smasher',
-          'Stun',
-          'Special',
-          'Zero-G',
-        ]),
-        'title': 'WeaponTraitType',
-        'type': 'string',
-      }),
-      'WeaponType': dict({
-        'description': 'Weapon type.',
-        'enum': list([
-          'melee',
-          'ranged',
-        ]),
-        'title': 'WeaponType',
-        'type': 'string',
-      }),
-    }),
-    'description': '''
-      Glossary/collection of all Traveller models.
-      
-      This is not a model itself but simply a collection of all Traveller models.
-    ''',
-    'properties': dict({
-      'base_item': dict({
-        '$ref': '#/$defs/BaseItem',
-      }),
-      'base_weapon': dict({
-        '$ref': '#/$defs/BaseWeapon',
-      }),
-      'book_description': dict({
-        '$ref': '#/$defs/BookDescription',
-      }),
-      'characteristic': dict({
-        '$ref': '#/$defs/Characteristic',
-      }),
-      'collection_description': dict({
-        '$ref': '#/$defs/CollectionDescription',
-      }),
-      'data_source_description': dict({
-        'description': 'Description of a source of data (e.g. a table).',
-        'discriminator': dict({
-          'mapping': dict({
-            'html-table': '#/$defs/HTMLTableDataSourceDescription',
-            'pdfplumber-table': '#/$defs/PDFPlumberDataSourceDescription',
-            'tabula-table': '#/$defs/TabulaDataSourceDescription',
-          }),
-          'propertyName': 'type',
-        }),
-        'oneOf': list([
-          dict({
-            '$ref': '#/$defs/HTMLTableDataSourceDescription',
-          }),
-          dict({
-            '$ref': '#/$defs/TabulaDataSourceDescription',
-          }),
-          dict({
-            '$ref': '#/$defs/PDFPlumberDataSourceDescription',
-          }),
-        ]),
-        'title': 'Data Source Description',
-      }),
-      'item': dict({
-        'description': 'An item (e.g. sword, phone, book).',
-        'discriminator': dict({
-          'mapping': dict({
-            'armour': '#/$defs/Armour',
-            'weapon': dict({
-              'description': 'A weapon (e.g. sword, pistol).',
-              'discriminator': dict({
-                'mapping': dict({
-                  'melee': '#/$defs/MeleeWeapon',
-                  'ranged': '#/$defs/RangedWeapon',
-                }),
-                'propertyName': 'weapon_type',
-              }),
-              'oneOf': list([
-                dict({
-                  '$ref': '#/$defs/MeleeWeapon',
-                }),
-                dict({
-                  '$ref': '#/$defs/RangedWeapon',
-                }),
-              ]),
-              'title': 'Weapon',
-            }),
-          }),
-          'propertyName': 'item_type',
-        }),
-        'oneOf': list([
-          dict({
-            '$ref': '#/$defs/Armour',
-          }),
-          dict({
-            'description': 'A weapon (e.g. sword, pistol).',
-            'discriminator': dict({
-              'mapping': dict({
-                'melee': '#/$defs/MeleeWeapon',
-                'ranged': '#/$defs/RangedWeapon',
-              }),
-              'propertyName': 'weapon_type',
-            }),
-            'oneOf': list([
-              dict({
-                '$ref': '#/$defs/MeleeWeapon',
-              }),
-              dict({
-                '$ref': '#/$defs/RangedWeapon',
-              }),
-            ]),
-            'title': 'Weapon',
-          }),
-        ]),
-        'title': 'Item',
-      }),
-      'melee_weapon': dict({
-        '$ref': '#/$defs/MeleeWeapon',
-      }),
-      'ranged_weapon': dict({
-        '$ref': '#/$defs/RangedWeapon',
-      }),
-      'skill': dict({
-        '$ref': '#/$defs/Skill',
-      }),
-      'trav_database': dict({
-        '$ref': '#/$defs/TravDatabase',
-      }),
-      'trav_object': dict({
+      'TravObjectRoot': dict({
         'description': '''
           A traveller-related object.
           
@@ -1588,6 +1509,94 @@
           }),
         ]),
         'title': 'TravObject',
+      }),
+      'TravObjectType': dict({
+        'description': 'Type of traveller object.',
+        'enum': list([
+          'characteristic',
+          'item',
+          'skill',
+        ]),
+        'title': 'TravObjectType',
+        'type': 'string',
+      }),
+      'WeaponTraitType': dict({
+        'description': 'Weapon trait type.',
+        'enum': list([
+          'AP',
+          'Artillery',
+          'Auto',
+          'Blast',
+          'Bulky',
+          'Very Bulky',
+          'Dangerous',
+          'Very Dangerous',
+          'Fire',
+          'One Use',
+          'One Shot',
+          'Radiation',
+          'Scope',
+          'Silent',
+          'Smart',
+          'Smasher',
+          'Stun',
+          'Special',
+          'Zero-G',
+        ]),
+        'title': 'WeaponTraitType',
+        'type': 'string',
+      }),
+      'WeaponType': dict({
+        'description': 'Weapon type.',
+        'enum': list([
+          'melee',
+          'ranged',
+        ]),
+        'title': 'WeaponType',
+        'type': 'string',
+      }),
+    }),
+    'description': '''
+      Glossary/collection of all Traveller models.
+      
+      This is not a model itself but simply a collection of all Traveller models.
+    ''',
+    'properties': dict({
+      'base_item': dict({
+        '$ref': '#/$defs/BaseItem',
+      }),
+      'base_weapon': dict({
+        '$ref': '#/$defs/BaseWeapon',
+      }),
+      'book_description': dict({
+        '$ref': '#/$defs/BookDescription',
+      }),
+      'characteristic': dict({
+        '$ref': '#/$defs/Characteristic',
+      }),
+      'collection_description': dict({
+        '$ref': '#/$defs/CollectionDescription',
+      }),
+      'data_source_description': dict({
+        '$ref': '#/$defs/DataSourceDescriptionRoot',
+      }),
+      'item': dict({
+        '$ref': '#/$defs/ItemRoot',
+      }),
+      'melee_weapon': dict({
+        '$ref': '#/$defs/MeleeWeapon',
+      }),
+      'ranged_weapon': dict({
+        '$ref': '#/$defs/RangedWeapon',
+      }),
+      'skill': dict({
+        '$ref': '#/$defs/Skill',
+      }),
+      'trav_database': dict({
+        '$ref': '#/$defs/TravDatabase',
+      }),
+      'trav_object': dict({
+        '$ref': '#/$defs/TravObjectRoot',
       }),
     }),
     'required': list([

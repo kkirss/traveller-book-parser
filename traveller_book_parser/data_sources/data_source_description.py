@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from pydantic import Field
+from pydantic import Field, RootModel
 
 from traveller_book_parser.data_sources.html_table.data_source_description import (
     HTMLTableDataSourceDescription,
@@ -23,3 +23,7 @@ DataSourceDescription = Annotated[
     | PDFPlumberDataSourceDescription,
     DataSourceDescriptionField,
 ]
+
+
+class DataSourceDescriptionRoot(RootModel[DataSourceDescription]):
+    """Description of a source of data (e.g. a table)."""

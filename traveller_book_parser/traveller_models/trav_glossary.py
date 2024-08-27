@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 from traveller_book_parser.books.book_description import BookDescription
 from traveller_book_parser.data_sources.data_source_description import (
-    DataSourceDescription,
+    DataSourceDescriptionRoot,
 )
 from traveller_book_parser.object_collections.collection_description import (
     CollectionDescription,
@@ -10,13 +10,13 @@ from traveller_book_parser.object_collections.collection_description import (
 
 from .characteristics.characteristic import Characteristic
 from .items.base_item import BaseItem
-from .items.item import Item
+from .items.item import ItemRoot
 from .items.weapons.base_weapon import BaseWeapon
 from .items.weapons.melee_weapon import MeleeWeapon
 from .items.weapons.ranged_weapon import RangedWeapon
 from .skills.skill import Skill
 from .trav_database import TravDatabase
-from .trav_object import TravObject
+from .trav_object import TravObjectRoot
 
 
 class TravGlossary(BaseModel):
@@ -27,18 +27,18 @@ class TravGlossary(BaseModel):
 
     book_description: BookDescription
     collection_description: CollectionDescription
-    data_source_description: DataSourceDescription
+    data_source_description: DataSourceDescriptionRoot
 
     trav_database: TravDatabase
 
     # TravObject
-    trav_object: TravObject
+    trav_object: TravObjectRoot
 
     # Characteristic
     characteristic: Characteristic
 
     # Item
-    item: Item
+    item: ItemRoot
     base_item: BaseItem
 
     base_weapon: BaseWeapon
