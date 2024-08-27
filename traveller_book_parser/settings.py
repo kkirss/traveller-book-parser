@@ -59,6 +59,15 @@ class Settings(BaseSettings):
         default_factory=lambda: PROJECT_PATH / "data" / "cache" / "images",
     )
 
+    default_output_path: Path = Field(
+        description="Path for output files",
+        default_factory=lambda: PROJECT_PATH / "data" / "output",
+    )
+    default_schema_output_path: Path = Field(
+        description="Path for schema output files",
+        default_factory=lambda: PROJECT_PATH / "data" / "output" / "schema",
+    )
+
     pdf_to_html_executable: Path = Field(
         description="Path to pdftohml (version 4.x) executable",
         default_factory=lambda: Path("pdftohtml"),

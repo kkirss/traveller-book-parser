@@ -1,0 +1,1796 @@
+# serializer version: 1
+# name: test_schema_book_description_cli
+  dict({
+    '$defs': dict({
+      'CollectionDescription': dict({
+        'description': 'Description of a collection of objects.',
+        'properties': dict({
+          'check_amount': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Check Amount',
+          }),
+          'data_source_description': dict({
+            'discriminator': dict({
+              'mapping': dict({
+                'html-table': '#/$defs/HTMLTableDataSourceDescription',
+                'pdfplumber-table': '#/$defs/PDFPlumberDataSourceDescription',
+                'tabula-table': '#/$defs/TabulaDataSourceDescription',
+              }),
+              'propertyName': 'type',
+            }),
+            'oneOf': list([
+              dict({
+                '$ref': '#/$defs/HTMLTableDataSourceDescription',
+              }),
+              dict({
+                '$ref': '#/$defs/TabulaDataSourceDescription',
+              }),
+              dict({
+                '$ref': '#/$defs/PDFPlumberDataSourceDescription',
+              }),
+            ]),
+            'title': 'Data Source Description',
+          }),
+          'default_values': dict({
+            'description': 'Default values for trav_obj fields (for e.g. item_type). Note: These are not validated.',
+            'title': 'Default Values',
+            'type': 'object',
+          }),
+          'instrument': dict({
+            'allOf': list([
+              dict({
+                '$ref': '#/$defs/Instrument',
+              }),
+            ]),
+            'description': 'Instrument objects with additional data.',
+          }),
+          'name': dict({
+            'anyOf': list([
+              dict({
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Name',
+          }),
+          'name_nth_largest_font': dict({
+            'default': 1,
+            'description': 'Text with the Nth largest font is used as the collection name.',
+            'title': 'Name Nth Largest Font',
+            'type': 'integer',
+          }),
+          'name_page': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'description': 'Page number where the collection name is found (defaults to data source page, if available).',
+            'title': 'Name Page',
+          }),
+          'type': dict({
+            '$ref': '#/$defs/TravObjectType',
+          }),
+        }),
+        'required': list([
+          'type',
+          'data_source_description',
+        ]),
+        'title': 'CollectionDescription',
+        'type': 'object',
+      }),
+      'HTMLTableDataSourceDescription': dict({
+        'description': 'Description of getting data from exported HTML table.',
+        'properties': dict({
+          'pages': dict({
+            'title': 'Pages',
+            'type': 'string',
+          }),
+          'type': dict({
+            'const': 'html-table',
+            'enum': list([
+              'html-table',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'type',
+          'pages',
+        ]),
+        'title': 'HTMLTableDataSourceDescription',
+        'type': 'object',
+      }),
+      'Instrument': dict({
+        'description': 'Instrumentation settings for objects.',
+        'properties': dict({
+          'add_images': dict({
+            'default': False,
+            'title': 'Add Images',
+            'type': 'boolean',
+          }),
+          'image_pages': dict({
+            'items': dict({
+              'type': 'integer',
+            }),
+            'title': 'Image Pages',
+            'type': 'array',
+          }),
+        }),
+        'title': 'Instrument',
+        'type': 'object',
+      }),
+      'PDFPlumberDataSourceDescription': dict({
+        'description': 'Description of getting data using pdfplumber.',
+        'properties': dict({
+          'page': dict({
+            'title': 'Page',
+            'type': 'integer',
+          }),
+          'page_table_number': dict({
+            'default': 1,
+            'description': 'The sequential number of the table on the page.',
+            'title': 'Page Table Number',
+            'type': 'integer',
+          }),
+          'table_settings': dict({
+            'anyOf': list([
+              dict({
+                '$ref': '#/$defs/TableSettingsDict',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'description': 'Settings for table extraction, used by pdfplumber.See https://github.com/jsvine/pdfplumber/blob/stable/README.md#table-extraction-settings',
+          }),
+          'type': dict({
+            'const': 'pdfplumber-table',
+            'enum': list([
+              'pdfplumber-table',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'type',
+          'page',
+        ]),
+        'title': 'PDFPlumberDataSourceDescription',
+        'type': 'object',
+      }),
+      'TableSettingsDict': dict({
+        'description': '''
+          Settings for table extraction, used by pdfplumber.
+          
+          See https://github.com/jsvine/pdfplumber/blob/stable/README.md#table-extraction-settings
+        ''',
+        'properties': dict({
+          'explicit_horizontal_lines': dict({
+            'items': dict({
+              'type': 'number',
+            }),
+            'title': 'Explicit Horizontal Lines',
+            'type': 'array',
+          }),
+          'explicit_vertical_lines': dict({
+            'items': dict({
+              'type': 'number',
+            }),
+            'title': 'Explicit Vertical Lines',
+            'type': 'array',
+          }),
+          'horizontal_strategy': dict({
+            'enum': list([
+              'lines',
+              'lines_strict',
+              'text',
+              'explicit',
+            ]),
+            'title': 'Horizontal Strategy',
+            'type': 'string',
+          }),
+          'intersection_x_tolerance': dict({
+            'title': 'Intersection X Tolerance',
+            'type': 'number',
+          }),
+          'intersection_y_tolerance': dict({
+            'title': 'Intersection Y Tolerance',
+            'type': 'number',
+          }),
+          'join_x_tolerance': dict({
+            'title': 'Join X Tolerance',
+            'type': 'number',
+          }),
+          'join_y_tolerance': dict({
+            'title': 'Join Y Tolerance',
+            'type': 'number',
+          }),
+          'min_words_horizontal': dict({
+            'title': 'Min Words Horizontal',
+            'type': 'integer',
+          }),
+          'min_words_vertical': dict({
+            'title': 'Min Words Vertical',
+            'type': 'integer',
+          }),
+          'snap_x_tolerance': dict({
+            'title': 'Snap X Tolerance',
+            'type': 'number',
+          }),
+          'snap_y_tolerance': dict({
+            'title': 'Snap Y Tolerance',
+            'type': 'number',
+          }),
+          'text_x_tolerance': dict({
+            'title': 'Text X Tolerance',
+            'type': 'number',
+          }),
+          'text_y_tolerance': dict({
+            'title': 'Text Y Tolerance',
+            'type': 'number',
+          }),
+          'vertical_strategy': dict({
+            'enum': list([
+              'lines',
+              'lines_strict',
+              'text',
+              'explicit',
+            ]),
+            'title': 'Vertical Strategy',
+            'type': 'string',
+          }),
+        }),
+        'title': 'TableSettingsDict',
+        'type': 'object',
+      }),
+      'TabulaDataSourceDescription': dict({
+        'description': 'Description of getting data using Tabula.',
+        'properties': dict({
+          'area': dict({
+            'anyOf': list([
+              dict({
+                'items': dict({
+                  'type': 'number',
+                }),
+                'type': 'array',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'description': 'Area of page to look for table in.',
+            'title': 'Area',
+          }),
+          'extraction_method': dict({
+            'anyOf': list([
+              dict({
+                'enum': list([
+                  'lattice',
+                  'stream',
+                ]),
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Extraction Method',
+          }),
+          'page': dict({
+            'title': 'Page',
+            'type': 'integer',
+          }),
+          'page_table_number': dict({
+            'default': 1,
+            'description': 'The sequential number of the table on the page.',
+            'title': 'Page Table Number',
+            'type': 'integer',
+          }),
+          'type': dict({
+            'const': 'tabula-table',
+            'enum': list([
+              'tabula-table',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'type',
+          'page',
+        ]),
+        'title': 'TabulaDataSourceDescription',
+        'type': 'object',
+      }),
+      'TravObjectType': dict({
+        'description': 'Type of traveller object.',
+        'enum': list([
+          'characteristic',
+          'item',
+          'skill',
+        ]),
+        'title': 'TravObjectType',
+        'type': 'string',
+      }),
+    }),
+    'description': 'Description of a book and the content within.',
+    'properties': dict({
+      'code_name': dict({
+        'title': 'Code Name',
+        'type': 'string',
+      }),
+      'collection_descriptions': dict({
+        'items': dict({
+          '$ref': '#/$defs/CollectionDescription',
+        }),
+        'title': 'Collection Descriptions',
+        'type': 'array',
+      }),
+      'name': dict({
+        'title': 'Name',
+        'type': 'string',
+      }),
+    }),
+    'required': list([
+      'name',
+      'code_name',
+      'collection_descriptions',
+    ]),
+    'title': 'BookDescription',
+    'type': 'object',
+  })
+# ---
+# name: test_schema_trav_object_cli
+  dict({
+    '$defs': dict({
+      'Armour': dict({
+        'description': 'Armour.',
+        'properties': dict({
+          'base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Base Price',
+          }),
+          'characteristic_bonuses': dict({
+            'additionalProperties': dict({
+              'type': 'integer',
+            }),
+            'title': 'Characteristic Bonuses',
+            'type': 'object',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'item_type': dict({
+            'const': 'armour',
+            'default': 'armour',
+            'enum': list([
+              'armour',
+            ]),
+            'title': 'Item Type',
+            'type': 'string',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'protection': dict({
+            'title': 'Protection',
+            'type': 'integer',
+          }),
+          'protection_laser': dict({
+            'default': None,
+            'title': 'Protection Laser',
+            'type': 'integer',
+          }),
+          'protection_plasma': dict({
+            'default': None,
+            'title': 'Protection Plasma',
+            'type': 'integer',
+          }),
+          'protection_psionics': dict({
+            'default': None,
+            'title': 'Protection Psionics',
+            'type': 'integer',
+          }),
+          'radiation_protection': dict({
+            'default': 0,
+            'title': 'Radiation Protection',
+            'type': 'integer',
+          }),
+          'required_skill': dict({
+            'anyOf': list([
+              dict({
+                '$ref': '#/$defs/BaseSkill',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+          }),
+          'slots_count': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Slots Count',
+          }),
+          'tech_level': dict({
+            'minimum': 0,
+            'title': 'Tech Level',
+            'type': 'integer',
+          }),
+          'type': dict({
+            'const': 'item',
+            'default': 'item',
+            'enum': list([
+              'item',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+          'weight': dict({
+            'anyOf': list([
+              dict({
+                'type': 'number',
+              }),
+              dict({
+                'type': 'string',
+              }),
+            ]),
+            'title': 'Weight',
+          }),
+        }),
+        'required': list([
+          'name',
+          'tech_level',
+          'weight',
+          'protection',
+        ]),
+        'title': 'Armour',
+        'type': 'object',
+      }),
+      'BaseSkill': dict({
+        'description': 'Skill with optional level.',
+        'properties': dict({
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'level': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Level',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'type': dict({
+            'const': 'skill',
+            'default': 'skill',
+            'enum': list([
+              'skill',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+          'level',
+        ]),
+        'title': 'BaseSkill',
+        'type': 'object',
+      }),
+      'BaseWeaponTrait': dict({
+        'description': 'Trait of a weapon with optional amount.',
+        'properties': dict({
+          'amount': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Amount',
+          }),
+          'weapon_trait_type': dict({
+            '$ref': '#/$defs/WeaponTraitType',
+          }),
+        }),
+        'required': list([
+          'weapon_trait_type',
+        ]),
+        'title': 'BaseWeaponTrait',
+        'type': 'object',
+      }),
+      'Characteristic': dict({
+        'description': 'Characteristic with optional level.',
+        'properties': dict({
+          'characteristic_type': dict({
+            '$ref': '#/$defs/CharacteristicType',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'level': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Level',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'type': dict({
+            'const': 'characteristic',
+            'default': 'characteristic',
+            'enum': list([
+              'characteristic',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+          'characteristic_type',
+        ]),
+        'title': 'Characteristic',
+        'type': 'object',
+      }),
+      'CharacteristicType': dict({
+        'description': 'Characteristic type.',
+        'enum': list([
+          'STR',
+          'DEX',
+          'END',
+          'INT',
+          'EDU',
+          'SOC',
+          'LCK',
+          'INF',
+        ]),
+        'title': 'CharacteristicType',
+        'type': 'string',
+      }),
+      'MeleeWeapon': dict({
+        'description': 'Melee weapon.',
+        'properties': dict({
+          'base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Base Price',
+          }),
+          'damage': dict({
+            'title': 'Damage',
+            'type': 'string',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'item_type': dict({
+            'const': 'weapon',
+            'default': 'weapon',
+            'enum': list([
+              'weapon',
+            ]),
+            'title': 'Item Type',
+            'type': 'string',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'range': dict({
+            'const': 'Melee',
+            'enum': list([
+              'Melee',
+            ]),
+            'title': 'Range',
+            'type': 'string',
+          }),
+          'tech_level': dict({
+            'minimum': 0,
+            'title': 'Tech Level',
+            'type': 'integer',
+          }),
+          'traits': dict({
+            'anyOf': list([
+              dict({
+                'items': dict({
+                  '$ref': '#/$defs/BaseWeaponTrait',
+                }),
+                'type': 'array',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Traits',
+          }),
+          'type': dict({
+            'const': 'item',
+            'default': 'item',
+            'enum': list([
+              'item',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+          'weapon_type': dict({
+            'const': 'melee',
+            'default': 'melee',
+            'enum': list([
+              'melee',
+            ]),
+            'title': 'Weapon Type',
+            'type': 'string',
+          }),
+          'weight': dict({
+            'anyOf': list([
+              dict({
+                'type': 'number',
+              }),
+              dict({
+                'type': 'string',
+              }),
+            ]),
+            'title': 'Weight',
+          }),
+        }),
+        'required': list([
+          'name',
+          'tech_level',
+          'weight',
+          'range',
+          'damage',
+        ]),
+        'title': 'MeleeWeapon',
+        'type': 'object',
+      }),
+      'RangedWeapon': dict({
+        'description': 'Ranged weapon.',
+        'properties': dict({
+          'base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Base Price',
+          }),
+          'damage': dict({
+            'title': 'Damage',
+            'type': 'string',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'item_type': dict({
+            'const': 'weapon',
+            'default': 'weapon',
+            'enum': list([
+              'weapon',
+            ]),
+            'title': 'Item Type',
+            'type': 'string',
+          }),
+          'magazine_base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Magazine Base Price',
+          }),
+          'magazine_size': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'const': 'Unlimited',
+                'enum': list([
+                  'Unlimited',
+                ]),
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Magazine Size',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'range': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Range',
+          }),
+          'tech_level': dict({
+            'minimum': 0,
+            'title': 'Tech Level',
+            'type': 'integer',
+          }),
+          'traits': dict({
+            'anyOf': list([
+              dict({
+                'items': dict({
+                  '$ref': '#/$defs/BaseWeaponTrait',
+                }),
+                'type': 'array',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Traits',
+          }),
+          'type': dict({
+            'const': 'item',
+            'default': 'item',
+            'enum': list([
+              'item',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+          'weapon_type': dict({
+            'const': 'ranged',
+            'default': 'ranged',
+            'enum': list([
+              'ranged',
+            ]),
+            'title': 'Weapon Type',
+            'type': 'string',
+          }),
+          'weight': dict({
+            'anyOf': list([
+              dict({
+                'type': 'number',
+              }),
+              dict({
+                'type': 'string',
+              }),
+            ]),
+            'title': 'Weight',
+          }),
+        }),
+        'required': list([
+          'name',
+          'tech_level',
+          'weight',
+          'range',
+          'damage',
+        ]),
+        'title': 'RangedWeapon',
+        'type': 'object',
+      }),
+      'WeaponTraitType': dict({
+        'description': 'Weapon trait type.',
+        'enum': list([
+          'AP',
+          'Artillery',
+          'Auto',
+          'Blast',
+          'Bulky',
+          'Very Bulky',
+          'Dangerous',
+          'Very Dangerous',
+          'Fire',
+          'One Use',
+          'One Shot',
+          'Radiation',
+          'Scope',
+          'Silent',
+          'Smart',
+          'Smasher',
+          'Stun',
+          'Special',
+          'Zero-G',
+        ]),
+        'title': 'WeaponTraitType',
+        'type': 'string',
+      }),
+    }),
+    'description': '''
+      A traveller-related object.
+      
+      The `type: TravObjectType` signifies different types of traveller objects:
+          * `characteristic` - An attribute of a character (e.g. strength).
+          * `item` - An item (e.g. sword, phone, book).
+          * `skill` - A skill (e.g. athletics, pilot, science).
+    ''',
+    'discriminator': dict({
+      'mapping': dict({
+        'characteristic': '#/$defs/Characteristic',
+        'item': dict({
+          'discriminator': dict({
+            'mapping': dict({
+              'armour': '#/$defs/Armour',
+              'weapon': dict({
+                'discriminator': dict({
+                  'mapping': dict({
+                    'melee': '#/$defs/MeleeWeapon',
+                    'ranged': '#/$defs/RangedWeapon',
+                  }),
+                  'propertyName': 'weapon_type',
+                }),
+                'oneOf': list([
+                  dict({
+                    '$ref': '#/$defs/MeleeWeapon',
+                  }),
+                  dict({
+                    '$ref': '#/$defs/RangedWeapon',
+                  }),
+                ]),
+              }),
+            }),
+            'propertyName': 'item_type',
+          }),
+          'oneOf': list([
+            dict({
+              '$ref': '#/$defs/Armour',
+            }),
+            dict({
+              'discriminator': dict({
+                'mapping': dict({
+                  'melee': '#/$defs/MeleeWeapon',
+                  'ranged': '#/$defs/RangedWeapon',
+                }),
+                'propertyName': 'weapon_type',
+              }),
+              'oneOf': list([
+                dict({
+                  '$ref': '#/$defs/MeleeWeapon',
+                }),
+                dict({
+                  '$ref': '#/$defs/RangedWeapon',
+                }),
+              ]),
+            }),
+          ]),
+        }),
+        'skill': '#/$defs/BaseSkill',
+      }),
+      'propertyName': 'type',
+    }),
+    'oneOf': list([
+      dict({
+        '$ref': '#/$defs/Characteristic',
+      }),
+      dict({
+        'discriminator': dict({
+          'mapping': dict({
+            'armour': '#/$defs/Armour',
+            'weapon': dict({
+              'discriminator': dict({
+                'mapping': dict({
+                  'melee': '#/$defs/MeleeWeapon',
+                  'ranged': '#/$defs/RangedWeapon',
+                }),
+                'propertyName': 'weapon_type',
+              }),
+              'oneOf': list([
+                dict({
+                  '$ref': '#/$defs/MeleeWeapon',
+                }),
+                dict({
+                  '$ref': '#/$defs/RangedWeapon',
+                }),
+              ]),
+            }),
+          }),
+          'propertyName': 'item_type',
+        }),
+        'oneOf': list([
+          dict({
+            '$ref': '#/$defs/Armour',
+          }),
+          dict({
+            'discriminator': dict({
+              'mapping': dict({
+                'melee': '#/$defs/MeleeWeapon',
+                'ranged': '#/$defs/RangedWeapon',
+              }),
+              'propertyName': 'weapon_type',
+            }),
+            'oneOf': list([
+              dict({
+                '$ref': '#/$defs/MeleeWeapon',
+              }),
+              dict({
+                '$ref': '#/$defs/RangedWeapon',
+              }),
+            ]),
+          }),
+        ]),
+      }),
+      dict({
+        '$ref': '#/$defs/BaseSkill',
+      }),
+    ]),
+    'title': 'TravObjectRoot',
+  })
+# ---
+# name: test_schema_traveller_database_cli
+  dict({
+    '$defs': dict({
+      'Armour': dict({
+        'description': 'Armour.',
+        'properties': dict({
+          'base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Base Price',
+          }),
+          'characteristic_bonuses': dict({
+            'additionalProperties': dict({
+              'type': 'integer',
+            }),
+            'title': 'Characteristic Bonuses',
+            'type': 'object',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'item_type': dict({
+            'const': 'armour',
+            'default': 'armour',
+            'enum': list([
+              'armour',
+            ]),
+            'title': 'Item Type',
+            'type': 'string',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'protection': dict({
+            'title': 'Protection',
+            'type': 'integer',
+          }),
+          'protection_laser': dict({
+            'default': None,
+            'title': 'Protection Laser',
+            'type': 'integer',
+          }),
+          'protection_plasma': dict({
+            'default': None,
+            'title': 'Protection Plasma',
+            'type': 'integer',
+          }),
+          'protection_psionics': dict({
+            'default': None,
+            'title': 'Protection Psionics',
+            'type': 'integer',
+          }),
+          'radiation_protection': dict({
+            'default': 0,
+            'title': 'Radiation Protection',
+            'type': 'integer',
+          }),
+          'required_skill': dict({
+            'anyOf': list([
+              dict({
+                '$ref': '#/$defs/BaseSkill',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+          }),
+          'slots_count': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Slots Count',
+          }),
+          'tech_level': dict({
+            'minimum': 0,
+            'title': 'Tech Level',
+            'type': 'integer',
+          }),
+          'type': dict({
+            'const': 'item',
+            'default': 'item',
+            'enum': list([
+              'item',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+          'weight': dict({
+            'anyOf': list([
+              dict({
+                'type': 'number',
+              }),
+              dict({
+                'type': 'string',
+              }),
+            ]),
+            'title': 'Weight',
+          }),
+        }),
+        'required': list([
+          'name',
+          'tech_level',
+          'weight',
+          'protection',
+        ]),
+        'title': 'Armour',
+        'type': 'object',
+      }),
+      'BaseSkill': dict({
+        'description': 'Skill with optional level.',
+        'properties': dict({
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'level': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Level',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'type': dict({
+            'const': 'skill',
+            'default': 'skill',
+            'enum': list([
+              'skill',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+          'level',
+        ]),
+        'title': 'BaseSkill',
+        'type': 'object',
+      }),
+      'BaseWeaponTrait': dict({
+        'description': 'Trait of a weapon with optional amount.',
+        'properties': dict({
+          'amount': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Amount',
+          }),
+          'weapon_trait_type': dict({
+            '$ref': '#/$defs/WeaponTraitType',
+          }),
+        }),
+        'required': list([
+          'weapon_trait_type',
+        ]),
+        'title': 'BaseWeaponTrait',
+        'type': 'object',
+      }),
+      'Book': dict({
+        'description': 'Book.',
+        'properties': dict({
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+        ]),
+        'title': 'Book',
+        'type': 'object',
+      }),
+      'Characteristic': dict({
+        'description': 'Characteristic with optional level.',
+        'properties': dict({
+          'characteristic_type': dict({
+            '$ref': '#/$defs/CharacteristicType',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'level': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Level',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'type': dict({
+            'const': 'characteristic',
+            'default': 'characteristic',
+            'enum': list([
+              'characteristic',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+          'characteristic_type',
+        ]),
+        'title': 'Characteristic',
+        'type': 'object',
+      }),
+      'CharacteristicType': dict({
+        'description': 'Characteristic type.',
+        'enum': list([
+          'STR',
+          'DEX',
+          'END',
+          'INT',
+          'EDU',
+          'SOC',
+          'LCK',
+          'INF',
+        ]),
+        'title': 'CharacteristicType',
+        'type': 'string',
+      }),
+      'MeleeWeapon': dict({
+        'description': 'Melee weapon.',
+        'properties': dict({
+          'base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Base Price',
+          }),
+          'damage': dict({
+            'title': 'Damage',
+            'type': 'string',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'item_type': dict({
+            'const': 'weapon',
+            'default': 'weapon',
+            'enum': list([
+              'weapon',
+            ]),
+            'title': 'Item Type',
+            'type': 'string',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'range': dict({
+            'const': 'Melee',
+            'enum': list([
+              'Melee',
+            ]),
+            'title': 'Range',
+            'type': 'string',
+          }),
+          'tech_level': dict({
+            'minimum': 0,
+            'title': 'Tech Level',
+            'type': 'integer',
+          }),
+          'traits': dict({
+            'anyOf': list([
+              dict({
+                'items': dict({
+                  '$ref': '#/$defs/BaseWeaponTrait',
+                }),
+                'type': 'array',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Traits',
+          }),
+          'type': dict({
+            'const': 'item',
+            'default': 'item',
+            'enum': list([
+              'item',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+          'weapon_type': dict({
+            'const': 'melee',
+            'default': 'melee',
+            'enum': list([
+              'melee',
+            ]),
+            'title': 'Weapon Type',
+            'type': 'string',
+          }),
+          'weight': dict({
+            'anyOf': list([
+              dict({
+                'type': 'number',
+              }),
+              dict({
+                'type': 'string',
+              }),
+            ]),
+            'title': 'Weight',
+          }),
+        }),
+        'required': list([
+          'name',
+          'tech_level',
+          'weight',
+          'range',
+          'damage',
+        ]),
+        'title': 'MeleeWeapon',
+        'type': 'object',
+      }),
+      'ObjectSourceCollection': dict({
+        'description': 'Source collection of a Traveller object.',
+        'properties': dict({
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+        ]),
+        'title': 'ObjectSourceCollection',
+        'type': 'object',
+      }),
+      'RangedWeapon': dict({
+        'description': 'Ranged weapon.',
+        'properties': dict({
+          'base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Base Price',
+          }),
+          'damage': dict({
+            'title': 'Damage',
+            'type': 'string',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'item_type': dict({
+            'const': 'weapon',
+            'default': 'weapon',
+            'enum': list([
+              'weapon',
+            ]),
+            'title': 'Item Type',
+            'type': 'string',
+          }),
+          'magazine_base_price': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Magazine Base Price',
+          }),
+          'magazine_size': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'const': 'Unlimited',
+                'enum': list([
+                  'Unlimited',
+                ]),
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Magazine Size',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'range': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Range',
+          }),
+          'tech_level': dict({
+            'minimum': 0,
+            'title': 'Tech Level',
+            'type': 'integer',
+          }),
+          'traits': dict({
+            'anyOf': list([
+              dict({
+                'items': dict({
+                  '$ref': '#/$defs/BaseWeaponTrait',
+                }),
+                'type': 'array',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'title': 'Traits',
+          }),
+          'type': dict({
+            'const': 'item',
+            'default': 'item',
+            'enum': list([
+              'item',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+          'weapon_type': dict({
+            'const': 'ranged',
+            'default': 'ranged',
+            'enum': list([
+              'ranged',
+            ]),
+            'title': 'Weapon Type',
+            'type': 'string',
+          }),
+          'weight': dict({
+            'anyOf': list([
+              dict({
+                'type': 'number',
+              }),
+              dict({
+                'type': 'string',
+              }),
+            ]),
+            'title': 'Weight',
+          }),
+        }),
+        'required': list([
+          'name',
+          'tech_level',
+          'weight',
+          'range',
+          'damage',
+        ]),
+        'title': 'RangedWeapon',
+        'type': 'object',
+      }),
+      'WeaponTraitType': dict({
+        'description': 'Weapon trait type.',
+        'enum': list([
+          'AP',
+          'Artillery',
+          'Auto',
+          'Blast',
+          'Bulky',
+          'Very Bulky',
+          'Dangerous',
+          'Very Dangerous',
+          'Fire',
+          'One Use',
+          'One Shot',
+          'Radiation',
+          'Scope',
+          'Silent',
+          'Smart',
+          'Smasher',
+          'Stun',
+          'Special',
+          'Zero-G',
+        ]),
+        'title': 'WeaponTraitType',
+        'type': 'string',
+      }),
+    }),
+    'description': 'A database of traveller related objects.',
+    'properties': dict({
+      'all_books': dict({
+        'description': 'A list of all books.',
+        'items': dict({
+          '$ref': '#/$defs/Book',
+        }),
+        'title': 'All Books',
+        'type': 'array',
+      }),
+      'all_object_source_collections': dict({
+        'description': 'A list of all object source collections.',
+        'items': dict({
+          '$ref': '#/$defs/ObjectSourceCollection',
+        }),
+        'title': 'All Object Source Collections',
+        'type': 'array',
+      }),
+      'all_objects': dict({
+        'description': 'A list of all objects.',
+        'items': dict({
+          'discriminator': dict({
+            'mapping': dict({
+              'characteristic': '#/$defs/Characteristic',
+              'item': dict({
+                'discriminator': dict({
+                  'mapping': dict({
+                    'armour': '#/$defs/Armour',
+                    'weapon': dict({
+                      'discriminator': dict({
+                        'mapping': dict({
+                          'melee': '#/$defs/MeleeWeapon',
+                          'ranged': '#/$defs/RangedWeapon',
+                        }),
+                        'propertyName': 'weapon_type',
+                      }),
+                      'oneOf': list([
+                        dict({
+                          '$ref': '#/$defs/MeleeWeapon',
+                        }),
+                        dict({
+                          '$ref': '#/$defs/RangedWeapon',
+                        }),
+                      ]),
+                    }),
+                  }),
+                  'propertyName': 'item_type',
+                }),
+                'oneOf': list([
+                  dict({
+                    '$ref': '#/$defs/Armour',
+                  }),
+                  dict({
+                    'discriminator': dict({
+                      'mapping': dict({
+                        'melee': '#/$defs/MeleeWeapon',
+                        'ranged': '#/$defs/RangedWeapon',
+                      }),
+                      'propertyName': 'weapon_type',
+                    }),
+                    'oneOf': list([
+                      dict({
+                        '$ref': '#/$defs/MeleeWeapon',
+                      }),
+                      dict({
+                        '$ref': '#/$defs/RangedWeapon',
+                      }),
+                    ]),
+                  }),
+                ]),
+              }),
+              'skill': '#/$defs/BaseSkill',
+            }),
+            'propertyName': 'type',
+          }),
+          'oneOf': list([
+            dict({
+              '$ref': '#/$defs/Characteristic',
+            }),
+            dict({
+              'discriminator': dict({
+                'mapping': dict({
+                  'armour': '#/$defs/Armour',
+                  'weapon': dict({
+                    'discriminator': dict({
+                      'mapping': dict({
+                        'melee': '#/$defs/MeleeWeapon',
+                        'ranged': '#/$defs/RangedWeapon',
+                      }),
+                      'propertyName': 'weapon_type',
+                    }),
+                    'oneOf': list([
+                      dict({
+                        '$ref': '#/$defs/MeleeWeapon',
+                      }),
+                      dict({
+                        '$ref': '#/$defs/RangedWeapon',
+                      }),
+                    ]),
+                  }),
+                }),
+                'propertyName': 'item_type',
+              }),
+              'oneOf': list([
+                dict({
+                  '$ref': '#/$defs/Armour',
+                }),
+                dict({
+                  'discriminator': dict({
+                    'mapping': dict({
+                      'melee': '#/$defs/MeleeWeapon',
+                      'ranged': '#/$defs/RangedWeapon',
+                    }),
+                    'propertyName': 'weapon_type',
+                  }),
+                  'oneOf': list([
+                    dict({
+                      '$ref': '#/$defs/MeleeWeapon',
+                    }),
+                    dict({
+                      '$ref': '#/$defs/RangedWeapon',
+                    }),
+                  ]),
+                }),
+              ]),
+            }),
+            dict({
+              '$ref': '#/$defs/BaseSkill',
+            }),
+          ]),
+        }),
+        'title': 'All Objects',
+        'type': 'array',
+      }),
+    }),
+    'title': 'TravellerDatabase',
+    'type': 'object',
+  })
+# ---
