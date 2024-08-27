@@ -5,7 +5,12 @@ from pydantic import Field, RootModel
 from .armour import Armour
 from .weapons.weapon import Weapon
 
-Item = Annotated[Armour | Weapon, Field(discriminator="item_type")]
+ItemField = Field(
+    title="Item",
+    description="An item (e.g. sword, phone, book).",
+    discriminator="item_type",
+)
+Item = Annotated[Armour | Weapon, ItemField]
 
 
 def create_item(**kwargs: Any) -> Item:  # noqa: ANN401

@@ -947,6 +947,7 @@
       'mapping': dict({
         'characteristic': '#/$defs/Characteristic',
         'item': dict({
+          'description': 'An item (e.g. sword, phone, book).',
           'discriminator': dict({
             'mapping': dict({
               'armour': '#/$defs/Armour',
@@ -992,6 +993,7 @@
               ]),
             }),
           ]),
+          'title': 'Item',
         }),
         'skill': '#/$defs/BaseSkill',
       }),
@@ -1002,6 +1004,7 @@
         '$ref': '#/$defs/Characteristic',
       }),
       dict({
+        'description': 'An item (e.g. sword, phone, book).',
         'discriminator': dict({
           'mapping': dict({
             'armour': '#/$defs/Armour',
@@ -1047,6 +1050,7 @@
             ]),
           }),
         ]),
+        'title': 'Item',
       }),
       dict({
         '$ref': '#/$defs/BaseSkill',
@@ -1690,6 +1694,7 @@
             'mapping': dict({
               'characteristic': '#/$defs/Characteristic',
               'item': dict({
+                'description': 'An item (e.g. sword, phone, book).',
                 'discriminator': dict({
                   'mapping': dict({
                     'armour': '#/$defs/Armour',
@@ -1735,6 +1740,7 @@
                     ]),
                   }),
                 ]),
+                'title': 'Item',
               }),
               'skill': '#/$defs/BaseSkill',
             }),
@@ -1745,6 +1751,7 @@
               '$ref': '#/$defs/Characteristic',
             }),
             dict({
+              'description': 'An item (e.g. sword, phone, book).',
               'discriminator': dict({
                 'mapping': dict({
                   'armour': '#/$defs/Armour',
@@ -1790,6 +1797,7 @@
                   ]),
                 }),
               ]),
+              'title': 'Item',
             }),
             dict({
               '$ref': '#/$defs/BaseSkill',

@@ -1,11 +1,10 @@
 from typing import Annotated, Any
 
-from pydantic import Field, RootModel, BaseModel
+from pydantic import Field, RootModel
 
 from .characteristics.characteristic import Characteristic
 from .items.item import Item
 from .skills.skill import Skill
-
 
 TRAV_OBJ_DESCRIPTION = """A traveller-related object.
 
@@ -24,6 +23,7 @@ TravObject = Annotated[
     Characteristic | Item | Skill,
     TravObjectField,
 ]
+
 
 class TravObjectRoot(RootModel[TravObject]):  # noqa: D101
     ...
