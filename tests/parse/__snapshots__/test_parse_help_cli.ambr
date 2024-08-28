@@ -1,0 +1,19 @@
+# serializer version: 1
+# name: test_parse_help_cli
+  '''
+                                                                                 
+   Usage: root parse [OPTIONS] COMMAND [ARGS]...                                 
+                                                                                 
+   Parse books for content.                                                      
+                                                                                 
+  ┌─ Options ───────────────────────────────────────────────────────────────────┐
+  │ --help          Show this message and exit.                                 │
+  └─────────────────────────────────────────────────────────────────────────────┘
+  ┌─ Commands ──────────────────────────────────────────────────────────────────┐
+  │ all    Parse all books and print processed objects.                         │
+  │ book   Parse a book and print processed objects.                            │
+  └─────────────────────────────────────────────────────────────────────────────┘
+  
+  
+  '''
+# ---
