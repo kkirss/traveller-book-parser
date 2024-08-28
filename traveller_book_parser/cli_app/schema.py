@@ -7,7 +7,7 @@ from pydantic import BaseModel
 import typer
 
 from traveller_book_parser.books.book_description import BookDescription
-from traveller_book_parser.settings import SETTINGS
+from traveller_book_parser.settings import SETTINGS, Settings
 from traveller_book_parser.traveller_models.trav_database import TravDatabase
 from traveller_book_parser.traveller_models.trav_glossary import (
     TravBookParserGlossary,
@@ -99,12 +99,22 @@ schema_app.command("trav-book-parser-glossary", hidden=True)(
 )
 
 
+def trav_settings_schema_cli(path: Optional[pathlib.Path] = None):
+    """Dump the JSON schema of the 'Settings' model."""
+    dump_model_schema(path, Settings, "Settings")
+
+
+schema_app.command("Settings")(trav_settings_schema_cli)
+schema_app.command("settings", hidden=True)(trav_settings_schema_cli)
+
+
 def all_schema_cli(path: Optional[pathlib.Path] = None):
     """Dump all JSON schema files."""
     book_description_schema_cli(path)
     trav_database_schema_cli(path)
     trav_object_schema_cli(path)
     trav_models_glossary_schema_cli(path)
+    trav_settings_schema_cli(path)
 
 
 schema_app.command("all")(all_schema_cli)

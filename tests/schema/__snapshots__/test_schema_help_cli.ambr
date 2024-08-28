@@ -11,6 +11,7 @@
   └─────────────────────────────────────────────────────────────────────────────┘
   ┌─ Commands ──────────────────────────────────────────────────────────────────┐
   │ BookDescription   Dump the JSON schema of the 'BookDescription' model.      │
+  │ Settings          Dump the JSON schema of the 'Settings' model.             │
   │ TravBookParser    Dump the JSON schema of the 'TravBookParserGlossary'      │
   │                   model.                                                    │
   │ TravDatabase      Dump the JSON schema of the 'TravDatabase' model.         │

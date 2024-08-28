@@ -104,7 +104,11 @@ The script can be configured using environment variables.
 
 See `traveller_book_parser/settings/settings.py` for a list of all settings.
 
-TODO: Add docs on the settings.
+You can also run:
+```shell
+traveller-book-parser schema Settings
+```
+This will dump the JSON schema of the `Settings` model (by default to `/data/output/schema/Settings.json`).
 
 ## Contributing
 
