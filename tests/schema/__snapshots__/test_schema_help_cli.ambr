@@ -1,0 +1,22 @@
+# serializer version: 1
+# name: test_schema_help_cli
+  '''
+                                                                                 
+   Usage: root schema [OPTIONS] COMMAND [ARGS]...                                
+                                                                                 
+   Dump the JSON schema of models.                                               
+                                                                                 
+  ┌─ Options ───────────────────────────────────────────────────────────────────┐
+  │ --help          Show this message and exit.                                 │
+  └─────────────────────────────────────────────────────────────────────────────┘
+  ┌─ Commands ──────────────────────────────────────────────────────────────────┐
+  │ BookDescription   Dump the JSON schema of the 'BookDescription' model.      │
+  │ TravDatabase      Dump the JSON schema of the 'TravDatabase' model.         │
+  │ TravGlossary      Dump the JSON schema of the 'TravGlossary' model.         │
+  │ TravObject        Dump the JSON schema of the 'TravObject' model.           │
+  │ all               Dump all JSON schema files.                               │
+  └─────────────────────────────────────────────────────────────────────────────┘
+  
+  
+  '''
+# ---
