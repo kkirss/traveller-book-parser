@@ -16,7 +16,7 @@ class TravDatabase(BaseModel):
         description="A list of all object source collections.",
         default_factory=list,
     )
-    all_objects: list[TravObject] = Field(
-        description="A list of all objects.",
-        default_factory=list,
+    objects_by_id: dict[str, TravObject] = Field(
+        description="A mapping of all objects by their trav_id.",
+        default_factory=dict,
     )

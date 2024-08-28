@@ -863,9 +863,8 @@
             'title': 'All Object Source Collections',
             'type': 'array',
           }),
-          'all_objects': dict({
-            'description': 'A list of all objects.',
-            'items': dict({
+          'objects_by_id': dict({
+            'additionalProperties': dict({
               'description': '''
                 A traveller-related object.
                 
@@ -996,10 +995,10 @@
                   '$ref': '#/$defs/Skill',
                 }),
               ]),
-              'title': 'TravObject',
             }),
-            'title': 'All Objects',
-            'type': 'array',
+            'description': 'A mapping of all objects by their trav_id.',
+            'title': 'Objects By Id',
+            'type': 'object',
           }),
         }),
         'title': 'TravDatabase',
