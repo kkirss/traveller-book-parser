@@ -1,0 +1,16 @@
+# serializer version: 1
+# name: test_parse_all_help_cli
+  '''
+                                                                                 
+   Usage: root parse all [OPTIONS]                                               
+                                                                                 
+   Parse all books and print processed objects.                                  
+                                                                                 
+  ┌─ Options ───────────────────────────────────────────────────────────────────┐
+  │ --output-format        [json|none]  [default: json]                         │
+  │ --help                              Show this message and exit.             │
+  └─────────────────────────────────────────────────────────────────────────────┘
+  
+  
+  '''
+# ---
