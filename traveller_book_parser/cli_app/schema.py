@@ -114,6 +114,7 @@ def all_schema_cli(path: Optional[pathlib.Path] = None):
     trav_database_schema_cli(path)
     trav_object_schema_cli(path)
     trav_models_glossary_schema_cli(path)
+    trav_book_parser_glossary_schema_cli(path)
     trav_settings_schema_cli(path)
 
 
