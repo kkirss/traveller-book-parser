@@ -9,7 +9,10 @@ import typer
 from traveller_book_parser.books.book_description import BookDescription
 from traveller_book_parser.settings import SETTINGS
 from traveller_book_parser.traveller_models.trav_database import TravDatabase
-from traveller_book_parser.traveller_models.trav_glossary import TravGlossary
+from traveller_book_parser.traveller_models.trav_glossary import (
+    TravBookParserGlossary,
+    TravModelsGlossary,
+)
 from traveller_book_parser.traveller_models.trav_object import TravObjectRoot
 from traveller_book_parser.utils import ensure_folder
 
@@ -68,14 +71,32 @@ schema_app.command("trav_object", hidden=True)(trav_object_schema_cli)
 schema_app.command("trav-object", hidden=True)(trav_object_schema_cli)
 
 
-def trav_glossary_schema_cli(path: Optional[pathlib.Path] = None):
-    """Dump the JSON schema of the 'TravGlossary' model."""
-    dump_model_schema(path, TravGlossary, "TravGlossary")
+def trav_models_glossary_schema_cli(path: Optional[pathlib.Path] = None):
+    """Dump the JSON schema of the 'TravModelsGlossary' model."""
+    dump_model_schema(path, TravModelsGlossary, "TravModelsGlossary")
 
 
-schema_app.command("TravGlossary")(trav_glossary_schema_cli)
-schema_app.command("trav_glossary", hidden=True)(trav_glossary_schema_cli)
-schema_app.command("trav-glossary", hidden=True)(trav_glossary_schema_cli)
+schema_app.command("TravModels")(trav_models_glossary_schema_cli)
+schema_app.command("TravModelsGlossary", hidden=True)(trav_models_glossary_schema_cli)
+schema_app.command("trav_models_glossary", hidden=True)(trav_models_glossary_schema_cli)
+schema_app.command("trav-models-glossary", hidden=True)(trav_models_glossary_schema_cli)
+
+
+def trav_book_parser_glossary_schema_cli(path: Optional[pathlib.Path] = None):
+    """Dump the JSON schema of the 'TravBookParserGlossary' model."""
+    dump_model_schema(path, TravBookParserGlossary, "TravBookParserGlossary")
+
+
+schema_app.command("TravBookParser")(trav_book_parser_glossary_schema_cli)
+schema_app.command("TravBookParserGlossary", hidden=True)(
+    trav_book_parser_glossary_schema_cli
+)
+schema_app.command("trav_book_parser_glossary", hidden=True)(
+    trav_book_parser_glossary_schema_cli
+)
+schema_app.command("trav-book-parser-glossary", hidden=True)(
+    trav_book_parser_glossary_schema_cli
+)
 
 
 def all_schema_cli(path: Optional[pathlib.Path] = None):
@@ -83,7 +104,7 @@ def all_schema_cli(path: Optional[pathlib.Path] = None):
     book_description_schema_cli(path)
     trav_database_schema_cli(path)
     trav_object_schema_cli(path)
-    trav_glossary_schema_cli(path)
+    trav_models_glossary_schema_cli(path)
 
 
 schema_app.command("all")(all_schema_cli)

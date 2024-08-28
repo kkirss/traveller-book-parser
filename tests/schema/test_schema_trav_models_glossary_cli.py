@@ -11,12 +11,13 @@ from traveller_book_parser.cli_app.app import app
 @pytest.mark.parametrize(
     ("command_name", "check_snapshot"),
     [
-        ("TravGlossary", True),
-        ("trav_glossary", False),
-        ("trav-glossary", False),
+        ("TravModelsGlossary", True),
+        ("TravModels", False),
+        ("trav_models_glossary", False),
+        ("trav-models-glossary", False),
     ],
 )
-def test_schema_trav_glossary_cli(
+def test_schema_trav_models_glossary_cli(
     *,
     command_name: str,
     check_snapshot: bool,

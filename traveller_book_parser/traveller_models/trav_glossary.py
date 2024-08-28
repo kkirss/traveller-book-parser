@@ -19,15 +19,22 @@ from .trav_database import TravDatabase
 from .trav_object import TravObjectRoot
 
 
-class TravGlossary(BaseModel):
-    """Glossary/collection of all Traveller models.
+class TravBookParserGlossary(BaseModel):
+    """Glossary of traveller-book-parser functional models.
 
-    This is not a model itself but simply a collection of all Traveller models.
+    This is not a model itself but simply a collection of traveller-book-parser functional models.
     """
 
     book_description: BookDescription
     collection_description: CollectionDescription
     data_source_description: DataSourceDescriptionRoot
+
+
+class TravModelsGlossary(BaseModel):
+    """Glossary of core Traveller models.
+
+    This is not a model itself but simply a collection of all core Traveller models.
+    """
 
     trav_database: TravDatabase
 
