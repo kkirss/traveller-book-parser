@@ -6,7 +6,7 @@ from traveller_book_parser.traveller_database.output_format.output_format import
     DatabaseOutputFormat,
 )
 
-parse_app = typer.Typer()
+parse_app = typer.Typer(no_args_is_help=True)
 
 
 def parse_book_cli(

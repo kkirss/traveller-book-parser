@@ -15,7 +15,7 @@ from traveller_book_parser.utils import ensure_folder
 
 logger = logging.getLogger(__name__)
 
-schema_app = typer.Typer()
+schema_app = typer.Typer(no_args_is_help=True)
 
 
 def dump_model_schema(
