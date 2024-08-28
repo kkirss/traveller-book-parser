@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from typer.testing import CliRunner
 
-from schema.test_schema_cli import runner
 from traveller_book_parser.cli_app.app import app
 
 
@@ -20,6 +20,7 @@ def test_schema_trav_glossary_cli(
     *,
     command_name: str,
     check_snapshot: bool,
+    cli_runner: CliRunner,
     snapshot: SnapshotAssertion,
     tmp_path: Path,
 ):
@@ -28,7 +29,7 @@ def test_schema_trav_glossary_cli(
     output_file = tmp_path / f"{'.'.join(command)}.json"
 
     # Act
-    result = runner.invoke(app, [*command, "--path", str(output_file)])
+    result = cli_runner.invoke(app, [*command, "--path", str(output_file)])
 
     # Assert
     assert result.exit_code == 0, result.output
