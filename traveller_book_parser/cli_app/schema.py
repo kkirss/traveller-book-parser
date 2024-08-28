@@ -43,8 +43,9 @@ def book_description_schema_cli(path: Optional[pathlib.Path] = None):
     dump_model_schema(path, BookDescription, "BookDescription")
 
 
-schema_app.command("book_description")(book_description_schema_cli)
 schema_app.command("BookDescription")(book_description_schema_cli)
+schema_app.command("book_description", hidden=True)(book_description_schema_cli)
+schema_app.command("book-description", hidden=True)(book_description_schema_cli)
 
 
 def trav_database_schema_cli(path: Optional[pathlib.Path] = None):
@@ -52,8 +53,9 @@ def trav_database_schema_cli(path: Optional[pathlib.Path] = None):
     dump_model_schema(path, TravDatabase, "TravDatabase")
 
 
-schema_app.command("traveller_database")(trav_database_schema_cli)
 schema_app.command("TravDatabase")(trav_database_schema_cli)
+schema_app.command("trav_database", hidden=True)(trav_database_schema_cli)
+schema_app.command("trav-database", hidden=True)(trav_database_schema_cli)
 
 
 def trav_object_schema_cli(path: Optional[pathlib.Path] = None):
@@ -61,8 +63,9 @@ def trav_object_schema_cli(path: Optional[pathlib.Path] = None):
     dump_model_schema(path, TravObjectRoot, "TravObject")
 
 
-schema_app.command("trav_object")(trav_object_schema_cli)
 schema_app.command("TravObject")(trav_object_schema_cli)
+schema_app.command("trav_object", hidden=True)(trav_object_schema_cli)
+schema_app.command("trav-object", hidden=True)(trav_object_schema_cli)
 
 
 def trav_glossary_schema_cli(path: Optional[pathlib.Path] = None):
@@ -70,9 +73,9 @@ def trav_glossary_schema_cli(path: Optional[pathlib.Path] = None):
     dump_model_schema(path, TravGlossary, "TravGlossary")
 
 
-schema_app.command("trav-glossary")(trav_glossary_schema_cli)
-schema_app.command("trav_glossary")(trav_glossary_schema_cli)
 schema_app.command("TravGlossary")(trav_glossary_schema_cli)
+schema_app.command("trav_glossary", hidden=True)(trav_glossary_schema_cli)
+schema_app.command("trav-glossary", hidden=True)(trav_glossary_schema_cli)
 
 
 def all_schema_cli(path: Optional[pathlib.Path] = None):
