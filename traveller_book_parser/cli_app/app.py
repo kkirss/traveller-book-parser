@@ -1,6 +1,6 @@
 import typer
 
-from .parse import parse_all_books_cli, parse_book_cli
+from .parse import parse_app
 from .schema import schema_app
 
 app = typer.Typer(
@@ -9,8 +9,7 @@ app = typer.Typer(
 )
 
 
-app.command("parse-book", no_args_is_help=True)(parse_book_cli)
-app.command("parse")(parse_all_books_cli)
+app.add_typer(parse_app, name="parse", help="Parse books for content.")
 app.add_typer(schema_app, name="schema", help="Dump the JSON schema of models.")
 
 
