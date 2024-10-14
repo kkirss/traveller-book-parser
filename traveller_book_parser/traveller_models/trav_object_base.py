@@ -33,4 +33,4 @@ class TravObjectBase(BaseModel):
         return f"{parent}{suffixes_with_separators}"
 
     def _get_trav_id_pieces(self) -> list[str | int | None]:
-        return [self.name]
+        return [self.name.replace(TRAV_ID_SEPARATOR, "-")]

@@ -327,6 +327,7 @@
       'TravObjectType': dict({
         'description': 'Type of traveller object.',
         'enum': list([
+          'character',
           'characteristic',
           'item',
           'skill',
@@ -523,6 +524,60 @@
           'weapon_trait_type',
         ]),
         'title': 'BaseWeaponTrait',
+        'type': 'object',
+      }),
+      'Character': dict({
+        'description': 'Character.',
+        'properties': dict({
+          'characteristics': dict({
+            'items': dict({
+              '$ref': '#/$defs/Characteristic',
+            }),
+            'title': 'Characteristics',
+            'type': 'array',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'skills': dict({
+            'items': dict({
+              '$ref': '#/$defs/Skill',
+            }),
+            'title': 'Skills',
+            'type': 'array',
+          }),
+          'type': dict({
+            'const': 'character',
+            'enum': list([
+              'character',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+        ]),
+        'title': 'Character',
         'type': 'object',
       }),
       'Characteristic': dict({
@@ -952,10 +1007,12 @@
           * `characteristic` - An attribute of a character (e.g. strength).
           * `item` - An item (e.g. sword, phone, book).
           * `skill` - A skill (e.g. athletics, pilot, science).
+          * `character` - A character.
   
     ''',
     'discriminator': dict({
       'mapping': dict({
+        'character': '#/$defs/Character',
         'characteristic': '#/$defs/Characteristic',
         'item': dict({
           'description': 'An item (e.g. sword, phone, book).',
@@ -1015,6 +1072,9 @@
       'propertyName': 'type',
     }),
     'oneOf': list([
+      dict({
+        '$ref': '#/$defs/Character',
+      }),
       dict({
         '$ref': '#/$defs/Characteristic',
       }),
@@ -1253,6 +1313,60 @@
           'name',
         ]),
         'title': 'Book',
+        'type': 'object',
+      }),
+      'Character': dict({
+        'description': 'Character.',
+        'properties': dict({
+          'characteristics': dict({
+            'items': dict({
+              '$ref': '#/$defs/Characteristic',
+            }),
+            'title': 'Characteristics',
+            'type': 'array',
+          }),
+          'description': dict({
+            'default': '',
+            'title': 'Description',
+            'type': 'string',
+          }),
+          'image_path': dict({
+            'anyOf': list([
+              dict({
+                'format': 'path',
+                'type': 'string',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
+            'default': None,
+            'title': 'Image Path',
+          }),
+          'name': dict({
+            'title': 'Name',
+            'type': 'string',
+          }),
+          'skills': dict({
+            'items': dict({
+              '$ref': '#/$defs/Skill',
+            }),
+            'title': 'Skills',
+            'type': 'array',
+          }),
+          'type': dict({
+            'const': 'character',
+            'enum': list([
+              'character',
+            ]),
+            'title': 'Type',
+            'type': 'string',
+          }),
+        }),
+        'required': list([
+          'name',
+        ]),
+        'title': 'Character',
         'type': 'object',
       }),
       'Characteristic': dict({
@@ -1716,10 +1830,12 @@
                 * `characteristic` - An attribute of a character (e.g. strength).
                 * `item` - An item (e.g. sword, phone, book).
                 * `skill` - A skill (e.g. athletics, pilot, science).
+                * `character` - A character.
   
           ''',
           'discriminator': dict({
             'mapping': dict({
+              'character': '#/$defs/Character',
               'characteristic': '#/$defs/Characteristic',
               'item': dict({
                 'description': 'An item (e.g. sword, phone, book).',
@@ -1779,6 +1895,9 @@
             'propertyName': 'type',
           }),
           'oneOf': list([
+            dict({
+              '$ref': '#/$defs/Character',
+            }),
             dict({
               '$ref': '#/$defs/Characteristic',
             }),

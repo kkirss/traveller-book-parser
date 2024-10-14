@@ -27,7 +27,9 @@ SchemaModelCLIFunction = Callable[[Path | None], None]
 class SchemaModelRegistration(BaseModel):
     """Registration of a model for dumping its schema using CLI."""
 
-    model_cls: type[BaseModel]
+    model_cls: type[
+        BaseModel
+    ]  # TODO: Fix ```UserWarning: Field "model_cls" has conflict with protected namespace "model_".```
     name: str
     name_aliases: tuple[str, ...]
     description: Optional[str]

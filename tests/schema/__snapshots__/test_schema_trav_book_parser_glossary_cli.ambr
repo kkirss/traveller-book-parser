@@ -377,6 +377,7 @@
       'TravObjectType': dict({
         'description': 'Type of traveller object.',
         'enum': list([
+          'character',
           'characteristic',
           'item',
           'skill',

@@ -1,0 +1,40 @@
+# serializer version: 1
+# name: test_character
+  dict({
+    'characteristics': list([
+      dict({
+        'characteristic_type': <CharacteristicType.STR: 'STR'>,
+        'level': 7,
+        'name': 'Strength',
+        'trav_id': 'characteristic:Strength',
+      }),
+      dict({
+        'characteristic_type': <CharacteristicType.DEX: 'DEX'>,
+        'level': 5,
+        'name': 'Dexterity',
+        'trav_id': 'characteristic:Dexterity',
+      }),
+    ]),
+    'name': 'John Doe',
+    'skills': list([
+      dict({
+        'level': 1,
+        'name': 'Admin',
+        'trav_id': 'skill:Admin:1',
+      }),
+    ]),
+    'trav_id': 'character:John Doe',
+    'type': <TravObjectType.CHARACTER: 'character'>,
+  })
+# ---
+# name: test_character_with_colon_in_name
+  dict({
+    'characteristics': list([
+    ]),
+    'name': 'hello:world',
+    'skills': list([
+    ]),
+    'trav_id': 'character:hello-world',
+    'type': <TravObjectType.CHARACTER: 'character'>,
+  })
+# ---
