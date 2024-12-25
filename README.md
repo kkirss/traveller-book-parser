@@ -43,16 +43,29 @@ Stellagama Publishing specifically has shown interest in this.
 
 ## How
 
-We distinctly separate parsing of books from outputting content.
-This allows for greater flexibility:
-* Parsing code doesn't need to know how the content will be used.
-* Outputting code doesn't need to know how the content was parsed.
+We distinctly split the application into 2 steps:
+1. parsing books to Traveller objects
+2. outputting something from Traveller objects (e.g. their JSON representation)
+
+The intention is that the traveller objects in JSON format can be used for any other application.
 
 ### Parsing books
 
-First, we convert the content within books into a machine-readable format, in the form of "Traveller objects".
+First, we convert the content within books into a specific format - to Traveller objects.
 
-TODO: Document the traveller object formats.
+#### Traveller objects
+
+Traveller objects are defined as different (Traveller themed) sub-models, using `type` field to differentiate them:
+* `characteristic` - A characteristic of a character (e.g. strength).
+* `item` - An item (e.g. sword, phone, book).
+* `skill` - A skill (e.g. athletics, pilot, science).
+* `character` - A character.
+
+Each sub-model has its own fields. Sub-models may have further subtypes with additional fields.
+These are intended to be usable with any edition of Traveller. (But completely untested so Your Mileage May Vary.)
+
+Run `traveller-book-parser schema TravObject` for the full JSON schema.
+See [`traveller_book_parser/traveller_models`](traveller_book_parser/traveller_models) for the actual models.
 
 #### Book descriptions
 

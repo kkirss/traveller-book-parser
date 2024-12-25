@@ -9,11 +9,17 @@ from .skills.skill import Skill
 
 TRAV_OBJ_DESCRIPTION = """A traveller-related object.
 
-The `type: TravObjectType` signifies different types of traveller objects:
-    * `characteristic` - An attribute of a character (e.g. strength).
-    * `item` - An item (e.g. sword, phone, book).
-    * `skill` - A skill (e.g. athletics, pilot, science).
-    * `character` - A character.
+Traveller objects are defined as different sub-models, using `type` field to differentiate them:
+* `characteristic` - A characteristic of a character (e.g. strength).
+* `item` - An item (e.g. sword, phone, book).
+* `skill` - A skill (e.g. athletics, pilot, science).
+* `character` - A character.
+
+Each type of traveller object has its own fields. Different types may have further sub-types with further fields.
+These are intended to be usable with any edition of Traveller. (But completely untested so Your Mileage May Vary.)
+
+Run `traveller-book-parser schema TravObject` for the full JSON schema.
+See [`traveller_book_parser/traveller_models/trav_object.py`](traveller_book_parser/traveller_models/trav_object.py) for the actual models.
 """
 
 TravObjectField = Field(
