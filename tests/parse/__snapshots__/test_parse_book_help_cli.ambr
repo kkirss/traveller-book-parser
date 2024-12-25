@@ -10,10 +10,12 @@
   │ *    book_code_name      TEXT  [default: None] [required]                   │
   └─────────────────────────────────────────────────────────────────────────────┘
   ┌─ Options ───────────────────────────────────────────────────────────────────┐
-  │ --output-format        [json|none]    [default: json]                       │
-  │ --output-type          [stdout|file]  [default: stdout]                     │
-  │ --output-path          PATH           [default: None]                       │
-  │ --help                                Show this message and exit.           │
+  │ --output-format        [cheat_sheet_pdf|json|non  [default: json]           │
+  │                        e]                                                   │
+  │ --output-type          [stdout|file]              [default: stdout]         │
+  │ --output-path          PATH                       [default: None]           │
+  │ --help                                            Show this message and     │
+  │                                                   exit.                     │
   └─────────────────────────────────────────────────────────────────────────────┘
   
   
