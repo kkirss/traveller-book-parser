@@ -10,16 +10,15 @@ def remove_credits_prefix(value: Any) -> Any:  # noqa: ANN401
     Example:
     --------
     >>> remove_credits_prefix("Cr10")
-    '10'
+    10.0
     >>> remove_credits_prefix("MCr1.5")
     1500000.0
     """
     if isinstance(value, str):
         if value.startswith(MEGA_CREDIT):
-            value = value.removeprefix(MEGA_CREDIT)
-            value = float(value) * 1000000
+            value = float(value.removeprefix(MEGA_CREDIT)) * 1000000
         elif value.startswith(CREDIT):
-            value = value.removeprefix(CREDIT)
-
-        return value
+            value = float(value.removeprefix(CREDIT))
+        else:
+            return float(value)
     return value
