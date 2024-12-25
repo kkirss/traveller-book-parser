@@ -1,11 +1,15 @@
 # traveller-book-parser
 
+---
+
 ## What
 
 Parse Traveller books into other formats.
 
 *By books, we mean any piece of writing related to traveller or a similar RPG system
  (e.g. rulebooks, content books, roll tables, etc.).*
+
+---
 
 ## Why
 
@@ -35,6 +39,8 @@ This is definitely an avenue to look into.
 
 Stellagama Publishing specifically has shown interest in this.
 
+---
+
 ## How
 
 We distinctly separate parsing of books from outputting content.
@@ -58,9 +64,12 @@ These are JSON files describing the book (see `book_descriptions` folder for exa
 
 ### Outputting book content
 
-TODO: This is not implemented yet.
+After parsing the books, we can output the content in various forms.
+Currently, we only support outputting the direct JSON of all the "Traveller objects" parsed (as described [above](#parsing-books)).
 
-After parsing the books, we output the parsed objects into various formats. 
+If you have any suggestions or want to help, feel free to get in touch!
+
+---
 
 ## Usage
 
@@ -110,6 +119,8 @@ traveller-book-parser schema Settings
 ```
 This will dump the JSON schema of the `Settings` model (by default to `/data/output/schema/Settings.json`).
 
+---
+
 ## Contributing
 
 This project is open to contributions.
@@ -117,7 +128,11 @@ Feel free to open an issue or pull request.
 
 ## Development
 
+### justfile
+
 Install [just](https://github.com/casey/just?tab=readme-ov-file#installation) to run utility commands.
+
+There are more `just` commands available. Take a look at [justfile](./justfile) for all commands.
 
 ### Linting
 
