@@ -11,8 +11,15 @@ from traveller_book_parser.traveller_models.trav_object_types import TravObjectT
 class Instrument(BaseModel):
     """Instrumentation settings for objects."""
 
-    add_images: bool = False
-    image_pages: list[int] = Field(default_factory=list)
+    add_images: bool = Field(
+        default=False,
+        description="Add images for the objects in the collection."
+        " Images are found by looking for the objects name in `image_pages` pages."
+        " The closest image is used.",
+    )
+    image_pages: list[int] = Field(
+        default_factory=list, description="""Pages in the book to search for images."""
+    )
 
 
 class CollectionDescription(BaseModel):

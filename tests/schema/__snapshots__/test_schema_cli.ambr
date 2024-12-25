@@ -123,10 +123,12 @@
         'properties': dict({
           'add_images': dict({
             'default': False,
+            'description': 'Add images for the objects in the collection. Images are found by looking for the objects name in `image_pages` pages. The closest image is used.',
             'title': 'Add Images',
             'type': 'boolean',
           }),
           'image_pages': dict({
+            'description': 'Pages in the book to search for images.',
             'items': dict({
               'type': 'integer',
             }),
