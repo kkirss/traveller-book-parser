@@ -1,83 +1,85 @@
 # serializer version: 1
 # name: test_schema_settings_cli[Settings-True]
-  dict({
-    '$defs': dict({
-      'LogLevel': dict({
-        'description': 'Logging level.',
-        'enum': list([
-          'CRITICAL',
-          'ERROR',
-          'WARNING',
-          'INFO',
-          'DEBUG',
-          'NOTSET',
-        ]),
-        'title': 'LogLevel',
-        'type': 'string',
-      }),
-    }),
-    'description': 'Settings for the application.',
-    'properties': dict({
-      'book_descriptions_path': dict({
-        'description': 'Folder path where book description files are loaded from',
-        'format': 'path',
-        'title': 'Book Descriptions Path',
-        'type': 'string',
-      }),
-      'books_path': dict({
-        'description': 'Folder path where books are loaded from',
-        'format': 'path',
-        'title': 'Books Path',
-        'type': 'string',
-      }),
-      'cache_path': dict({
-        'description': 'Path for temporary files',
-        'format': 'path',
-        'title': 'Cache Path',
-        'type': 'string',
-      }),
-      'default_output_path': dict({
-        'description': 'Path for output files',
-        'format': 'path',
-        'title': 'Default Output Path',
-        'type': 'string',
-      }),
-      'default_schema_output_path': dict({
-        'description': 'Path for schema output files',
-        'format': 'path',
-        'title': 'Default Schema Output Path',
-        'type': 'string',
-      }),
-      'images_path': dict({
-        'description': 'Path for image files',
-        'format': 'path',
-        'title': 'Images Path',
-        'type': 'string',
-      }),
-      'log_intermediate_data': dict({
-        'default': False,
-        'description': 'Whether to log intermediate data. Note: These are logged at DEBUG level.',
-        'title': 'Log Intermediate Data',
-        'type': 'boolean',
-      }),
-      'log_level': dict({
-        '$ref': '#/$defs/LogLevel',
-        'default': 'INFO',
-      }),
-      'log_parsed_objects': dict({
-        'default': False,
-        'description': 'Whether to log parsed objects. Note: These are logged at DEBUG level.',
-        'title': 'Log Parsed Objects',
-        'type': 'boolean',
-      }),
-      'pdf_to_html_executable': dict({
-        'description': 'Path to pdftohml (version 4.x) executable',
-        'format': 'path',
-        'title': 'Pdf To Html Executable',
-        'type': 'string',
-      }),
-    }),
-    'title': 'Settings',
-    'type': 'object',
-  })
+  '''
+  {
+    "$defs": {
+      "LogLevel": {
+        "description": "Logging level.",
+        "enum": [
+          "CRITICAL",
+          "ERROR",
+          "WARNING",
+          "INFO",
+          "DEBUG",
+          "NOTSET"
+        ],
+        "title": "LogLevel",
+        "type": "string"
+      }
+    },
+    "description": "Settings for the application.",
+    "properties": {
+      "log_level": {
+        "$ref": "#/$defs/LogLevel",
+        "default": "INFO"
+      },
+      "log_parsed_objects": {
+        "default": false,
+        "description": "Whether to log parsed objects. Note: These are logged at DEBUG level.",
+        "title": "Log Parsed Objects",
+        "type": "boolean"
+      },
+      "log_intermediate_data": {
+        "default": false,
+        "description": "Whether to log intermediate data. Note: These are logged at DEBUG level.",
+        "title": "Log Intermediate Data",
+        "type": "boolean"
+      },
+      "books_path": {
+        "description": "Folder path where books are loaded from",
+        "format": "path",
+        "title": "Books Path",
+        "type": "string"
+      },
+      "book_descriptions_path": {
+        "description": "Folder path where book description files are loaded from",
+        "format": "path",
+        "title": "Book Descriptions Path",
+        "type": "string"
+      },
+      "cache_path": {
+        "description": "Path for temporary files",
+        "format": "path",
+        "title": "Cache Path",
+        "type": "string"
+      },
+      "images_path": {
+        "description": "Path for image files",
+        "format": "path",
+        "title": "Images Path",
+        "type": "string"
+      },
+      "default_output_path": {
+        "description": "Path for output files",
+        "format": "path",
+        "title": "Default Output Path",
+        "type": "string"
+      },
+      "default_schema_output_path": {
+        "description": "Path for schema output files",
+        "format": "path",
+        "title": "Default Schema Output Path",
+        "type": "string"
+      },
+      "pdf_to_html_executable": {
+        "description": "Path to pdftohml (version 4.x) executable",
+        "format": "path",
+        "title": "Pdf To Html Executable",
+        "type": "string"
+      }
+    },
+    "title": "Settings",
+    "type": "object"
+  }
+  '''
 # ---

@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 import pytest
@@ -37,7 +36,7 @@ def test_schema_trav_models_glossary_cli(
     assert output_file.exists()
 
     with output_file.open("r", encoding="utf-8") as f:
-        schema = json.load(f)
+        schema = f.read()
 
     if check_snapshot:
         # Compare the schema with the snapshot

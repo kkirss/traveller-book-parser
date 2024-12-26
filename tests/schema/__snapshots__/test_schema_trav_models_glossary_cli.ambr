@@ -1,1205 +1,1203 @@
 # serializer version: 1
 # name: test_schema_trav_models_glossary_cli[TravModelsGlossary-True]
-  dict({
-    '$defs': dict({
-      'Armour': dict({
-        'description': 'Armour.',
-        'properties': dict({
-          'base_price': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Base Price',
-          }),
-          'characteristic_bonuses': dict({
-            'additionalProperties': dict({
-              'type': 'integer',
-            }),
-            'title': 'Characteristic Bonuses',
-            'type': 'object',
-          }),
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'item_type': dict({
-            'const': 'armour',
-            'default': 'armour',
-            'title': 'Item Type',
-            'type': 'string',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'protection': dict({
-            'title': 'Protection',
-            'type': 'integer',
-          }),
-          'protection_laser': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Protection Laser',
-          }),
-          'protection_plasma': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Protection Plasma',
-          }),
-          'protection_psionics': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Protection Psionics',
-          }),
-          'radiation_protection': dict({
-            'default': 0,
-            'title': 'Radiation Protection',
-            'type': 'integer',
-          }),
-          'required_skill': dict({
-            'anyOf': list([
-              dict({
-                '$ref': '#/$defs/Skill',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-          }),
-          'slots_count': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Slots Count',
-          }),
-          'tech_level': dict({
-            'minimum': 0,
-            'title': 'Tech Level',
-            'type': 'integer',
-          }),
-          'type': dict({
-            'const': 'item',
-            'default': 'item',
-            'title': 'Type',
-            'type': 'string',
-          }),
-          'weight': dict({
-            'title': 'Weight',
-            'type': 'number',
-          }),
-        }),
-        'required': list([
-          'name',
-          'tech_level',
-          'weight',
-          'protection',
-        ]),
-        'title': 'Armour',
-        'type': 'object',
-      }),
-      'BaseItem': dict({
-        'description': 'Item.',
-        'properties': dict({
-          'base_price': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Base Price',
-          }),
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'item_type': dict({
-            '$ref': '#/$defs/ItemType',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'tech_level': dict({
-            'minimum': 0,
-            'title': 'Tech Level',
-            'type': 'integer',
-          }),
-          'type': dict({
-            'const': 'item',
-            'default': 'item',
-            'title': 'Type',
-            'type': 'string',
-          }),
-          'weight': dict({
-            'title': 'Weight',
-            'type': 'number',
-          }),
-        }),
-        'required': list([
-          'name',
-          'item_type',
-          'tech_level',
-          'weight',
-        ]),
-        'title': 'BaseItem',
-        'type': 'object',
-      }),
-      'BaseWeapon': dict({
-        'description': 'Weapon.',
-        'properties': dict({
-          'base_price': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Base Price',
-          }),
-          'damage': dict({
-            'title': 'Damage',
-            'type': 'string',
-          }),
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'item_type': dict({
-            'const': 'weapon',
-            'default': 'weapon',
-            'title': 'Item Type',
-            'type': 'string',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'range': dict({
-            'anyOf': list([
-              dict({
-                'const': 'Melee',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Range',
-          }),
-          'tech_level': dict({
-            'minimum': 0,
-            'title': 'Tech Level',
-            'type': 'integer',
-          }),
-          'traits': dict({
-            'anyOf': list([
-              dict({
-                'items': dict({
-                  '$ref': '#/$defs/BaseWeaponTrait',
-                }),
-                'type': 'array',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Traits',
-          }),
-          'type': dict({
-            'const': 'item',
-            'default': 'item',
-            'title': 'Type',
-            'type': 'string',
-          }),
-          'weapon_type': dict({
-            '$ref': '#/$defs/WeaponType',
-          }),
-          'weight': dict({
-            'title': 'Weight',
-            'type': 'number',
-          }),
-        }),
-        'required': list([
-          'name',
-          'tech_level',
-          'weight',
-          'weapon_type',
-          'range',
-          'damage',
-        ]),
-        'title': 'BaseWeapon',
-        'type': 'object',
-      }),
-      'BaseWeaponTrait': dict({
-        'description': 'Trait of a weapon with optional amount.',
-        'properties': dict({
-          'amount': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Amount',
-          }),
-          'weapon_trait_type': dict({
-            '$ref': '#/$defs/WeaponTraitType',
-          }),
-        }),
-        'required': list([
-          'weapon_trait_type',
-        ]),
-        'title': 'BaseWeaponTrait',
-        'type': 'object',
-      }),
-      'Book': dict({
-        'description': 'Book.',
-        'properties': dict({
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-        }),
-        'required': list([
-          'name',
-        ]),
-        'title': 'Book',
-        'type': 'object',
-      }),
-      'Character': dict({
-        'description': 'Character.',
-        'properties': dict({
-          'characteristics': dict({
-            'items': dict({
-              '$ref': '#/$defs/Characteristic',
-            }),
-            'title': 'Characteristics',
-            'type': 'array',
-          }),
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'skills': dict({
-            'items': dict({
-              '$ref': '#/$defs/Skill',
-            }),
-            'title': 'Skills',
-            'type': 'array',
-          }),
-          'type': dict({
-            'const': 'character',
-            'title': 'Type',
-            'type': 'string',
-          }),
-        }),
-        'required': list([
-          'name',
-        ]),
-        'title': 'Character',
-        'type': 'object',
-      }),
-      'Characteristic': dict({
-        'description': 'Characteristic with optional level.',
-        'properties': dict({
-          'characteristic_type': dict({
-            '$ref': '#/$defs/CharacteristicType',
-          }),
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'level': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Level',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'type': dict({
-            'const': 'characteristic',
-            'default': 'characteristic',
-            'title': 'Type',
-            'type': 'string',
-          }),
-        }),
-        'required': list([
-          'name',
-          'characteristic_type',
-        ]),
-        'title': 'Characteristic',
-        'type': 'object',
-      }),
-      'CharacteristicType': dict({
-        'description': 'Characteristic type.',
-        'enum': list([
-          'STR',
-          'DEX',
-          'END',
-          'INT',
-          'EDU',
-          'SOC',
-          'LCK',
-          'INF',
-        ]),
-        'title': 'CharacteristicType',
-        'type': 'string',
-      }),
-      'ItemRoot': dict({
-        'description': 'An item (e.g. sword, phone, book).',
-        'discriminator': dict({
-          'mapping': dict({
-            'armour': '#/$defs/Armour',
-            'weapon': dict({
-              'description': 'A weapon (e.g. sword, pistol).',
-              'discriminator': dict({
-                'mapping': dict({
-                  'melee': '#/$defs/MeleeWeapon',
-                  'ranged': '#/$defs/RangedWeapon',
-                }),
-                'propertyName': 'weapon_type',
-              }),
-              'oneOf': list([
-                dict({
-                  '$ref': '#/$defs/MeleeWeapon',
-                }),
-                dict({
-                  '$ref': '#/$defs/RangedWeapon',
-                }),
-              ]),
-              'title': 'Weapon',
-            }),
-          }),
-          'propertyName': 'item_type',
-        }),
-        'oneOf': list([
-          dict({
-            '$ref': '#/$defs/Armour',
-          }),
-          dict({
-            'description': 'A weapon (e.g. sword, pistol).',
-            'discriminator': dict({
-              'mapping': dict({
-                'melee': '#/$defs/MeleeWeapon',
-                'ranged': '#/$defs/RangedWeapon',
-              }),
-              'propertyName': 'weapon_type',
-            }),
-            'oneOf': list([
-              dict({
-                '$ref': '#/$defs/MeleeWeapon',
-              }),
-              dict({
-                '$ref': '#/$defs/RangedWeapon',
-              }),
-            ]),
-            'title': 'Weapon',
-          }),
-        ]),
-        'title': 'Item',
-      }),
-      'ItemType': dict({
-        'description': 'Item type.',
-        'enum': list([
-          'armour',
-          'augment',
-          'tool',
-          'weapon',
-        ]),
-        'title': 'ItemType',
-        'type': 'string',
-      }),
-      'MeleeWeapon': dict({
-        'description': 'Melee weapon.',
-        'properties': dict({
-          'base_price': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Base Price',
-          }),
-          'damage': dict({
-            'title': 'Damage',
-            'type': 'string',
-          }),
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'item_type': dict({
-            'const': 'weapon',
-            'default': 'weapon',
-            'title': 'Item Type',
-            'type': 'string',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'range': dict({
-            'const': 'Melee',
-            'title': 'Range',
-            'type': 'string',
-          }),
-          'tech_level': dict({
-            'minimum': 0,
-            'title': 'Tech Level',
-            'type': 'integer',
-          }),
-          'traits': dict({
-            'anyOf': list([
-              dict({
-                'items': dict({
-                  '$ref': '#/$defs/BaseWeaponTrait',
-                }),
-                'type': 'array',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Traits',
-          }),
-          'type': dict({
-            'const': 'item',
-            'default': 'item',
-            'title': 'Type',
-            'type': 'string',
-          }),
-          'weapon_type': dict({
-            'const': 'melee',
-            'default': 'melee',
-            'title': 'Weapon Type',
-            'type': 'string',
-          }),
-          'weight': dict({
-            'title': 'Weight',
-            'type': 'number',
-          }),
-        }),
-        'required': list([
-          'name',
-          'tech_level',
-          'weight',
-          'range',
-          'damage',
-        ]),
-        'title': 'MeleeWeapon',
-        'type': 'object',
-      }),
-      'ObjectSourceCollection': dict({
-        'description': 'Source collection of a Traveller object.',
-        'properties': dict({
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-        }),
-        'required': list([
-          'name',
-        ]),
-        'title': 'ObjectSourceCollection',
-        'type': 'object',
-      }),
-      'RangedWeapon': dict({
-        'description': 'Ranged weapon.',
-        'properties': dict({
-          'base_price': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Base Price',
-          }),
-          'damage': dict({
-            'title': 'Damage',
-            'type': 'string',
-          }),
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'item_type': dict({
-            'const': 'weapon',
-            'default': 'weapon',
-            'title': 'Item Type',
-            'type': 'string',
-          }),
-          'magazine_base_price': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Magazine Base Price',
-          }),
-          'magazine_size': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'const': 'Unlimited',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Magazine Size',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'range': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Range',
-          }),
-          'tech_level': dict({
-            'minimum': 0,
-            'title': 'Tech Level',
-            'type': 'integer',
-          }),
-          'traits': dict({
-            'anyOf': list([
-              dict({
-                'items': dict({
-                  '$ref': '#/$defs/BaseWeaponTrait',
-                }),
-                'type': 'array',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Traits',
-          }),
-          'type': dict({
-            'const': 'item',
-            'default': 'item',
-            'title': 'Type',
-            'type': 'string',
-          }),
-          'weapon_type': dict({
-            'const': 'ranged',
-            'default': 'ranged',
-            'title': 'Weapon Type',
-            'type': 'string',
-          }),
-          'weight': dict({
-            'title': 'Weight',
-            'type': 'number',
-          }),
-        }),
-        'required': list([
-          'name',
-          'tech_level',
-          'weight',
-          'range',
-          'damage',
-        ]),
-        'title': 'RangedWeapon',
-        'type': 'object',
-      }),
-      'Skill': dict({
-        'description': 'Skill with optional level.',
-        'properties': dict({
-          'description': dict({
-            'default': '',
-            'title': 'Description',
-            'type': 'string',
-          }),
-          'image_path': dict({
-            'anyOf': list([
-              dict({
-                'format': 'path',
-                'type': 'string',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'default': None,
-            'title': 'Image Path',
-          }),
-          'level': dict({
-            'anyOf': list([
-              dict({
-                'type': 'integer',
-              }),
-              dict({
-                'type': 'null',
-              }),
-            ]),
-            'title': 'Level',
-          }),
-          'name': dict({
-            'title': 'Name',
-            'type': 'string',
-          }),
-          'type': dict({
-            'const': 'skill',
-            'default': 'skill',
-            'title': 'Type',
-            'type': 'string',
-          }),
-        }),
-        'required': list([
-          'name',
-          'level',
-        ]),
-        'title': 'Skill',
-        'type': 'object',
-      }),
-      'TravDatabase': dict({
-        'description': 'A database of traveller related objects.',
-        'properties': dict({
-          'all_books': dict({
-            'description': 'A list of all books.',
-            'items': dict({
-              '$ref': '#/$defs/Book',
-            }),
-            'title': 'All Books',
-            'type': 'array',
-          }),
-          'all_object_source_collections': dict({
-            'description': 'A list of all object source collections.',
-            'items': dict({
-              '$ref': '#/$defs/ObjectSourceCollection',
-            }),
-            'title': 'All Object Source Collections',
-            'type': 'array',
-          }),
-          'objects_by_id': dict({
-            'additionalProperties': dict({
-              'description': 'A traveller-related object.',
-              'discriminator': dict({
-                'mapping': dict({
-                  'character': '#/$defs/Character',
-                  'characteristic': '#/$defs/Characteristic',
-                  'item': dict({
-                    'description': 'An item (e.g. sword, phone, book).',
-                    'discriminator': dict({
-                      'mapping': dict({
-                        'armour': '#/$defs/Armour',
-                        'weapon': dict({
-                          'description': 'A weapon (e.g. sword, pistol).',
-                          'discriminator': dict({
-                            'mapping': dict({
-                              'melee': '#/$defs/MeleeWeapon',
-                              'ranged': '#/$defs/RangedWeapon',
-                            }),
-                            'propertyName': 'weapon_type',
-                          }),
-                          'oneOf': list([
-                            dict({
-                              '$ref': '#/$defs/MeleeWeapon',
-                            }),
-                            dict({
-                              '$ref': '#/$defs/RangedWeapon',
-                            }),
-                          ]),
-                          'title': 'Weapon',
-                        }),
-                      }),
-                      'propertyName': 'item_type',
-                    }),
-                    'oneOf': list([
-                      dict({
-                        '$ref': '#/$defs/Armour',
-                      }),
-                      dict({
-                        'description': 'A weapon (e.g. sword, pistol).',
-                        'discriminator': dict({
-                          'mapping': dict({
-                            'melee': '#/$defs/MeleeWeapon',
-                            'ranged': '#/$defs/RangedWeapon',
-                          }),
-                          'propertyName': 'weapon_type',
-                        }),
-                        'oneOf': list([
-                          dict({
-                            '$ref': '#/$defs/MeleeWeapon',
-                          }),
-                          dict({
-                            '$ref': '#/$defs/RangedWeapon',
-                          }),
-                        ]),
-                        'title': 'Weapon',
-                      }),
-                    ]),
-                    'title': 'Item',
-                  }),
-                  'skill': '#/$defs/Skill',
-                }),
-                'propertyName': 'type',
-              }),
-              'oneOf': list([
-                dict({
-                  '$ref': '#/$defs/Character',
-                }),
-                dict({
-                  '$ref': '#/$defs/Characteristic',
-                }),
-                dict({
-                  'description': 'An item (e.g. sword, phone, book).',
-                  'discriminator': dict({
-                    'mapping': dict({
-                      'armour': '#/$defs/Armour',
-                      'weapon': dict({
-                        'description': 'A weapon (e.g. sword, pistol).',
-                        'discriminator': dict({
-                          'mapping': dict({
-                            'melee': '#/$defs/MeleeWeapon',
-                            'ranged': '#/$defs/RangedWeapon',
-                          }),
-                          'propertyName': 'weapon_type',
-                        }),
-                        'oneOf': list([
-                          dict({
-                            '$ref': '#/$defs/MeleeWeapon',
-                          }),
-                          dict({
-                            '$ref': '#/$defs/RangedWeapon',
-                          }),
-                        ]),
-                        'title': 'Weapon',
-                      }),
-                    }),
-                    'propertyName': 'item_type',
-                  }),
-                  'oneOf': list([
-                    dict({
-                      '$ref': '#/$defs/Armour',
-                    }),
-                    dict({
-                      'description': 'A weapon (e.g. sword, pistol).',
-                      'discriminator': dict({
-                        'mapping': dict({
-                          'melee': '#/$defs/MeleeWeapon',
-                          'ranged': '#/$defs/RangedWeapon',
-                        }),
-                        'propertyName': 'weapon_type',
-                      }),
-                      'oneOf': list([
-                        dict({
-                          '$ref': '#/$defs/MeleeWeapon',
-                        }),
-                        dict({
-                          '$ref': '#/$defs/RangedWeapon',
-                        }),
-                      ]),
-                      'title': 'Weapon',
-                    }),
-                  ]),
-                  'title': 'Item',
-                }),
-                dict({
-                  '$ref': '#/$defs/Skill',
-                }),
-              ]),
-            }),
-            'description': 'A mapping of all objects by their trav_id.',
-            'title': 'Objects By Id',
-            'type': 'object',
-          }),
-        }),
-        'title': 'TravDatabase',
-        'type': 'object',
-      }),
-      'TravObjectRoot': dict({
-        'description': 'A traveller-related object.',
-        'discriminator': dict({
-          'mapping': dict({
-            'character': '#/$defs/Character',
-            'characteristic': '#/$defs/Characteristic',
-            'item': dict({
-              'description': 'An item (e.g. sword, phone, book).',
-              'discriminator': dict({
-                'mapping': dict({
-                  'armour': '#/$defs/Armour',
-                  'weapon': dict({
-                    'description': 'A weapon (e.g. sword, pistol).',
-                    'discriminator': dict({
-                      'mapping': dict({
-                        'melee': '#/$defs/MeleeWeapon',
-                        'ranged': '#/$defs/RangedWeapon',
-                      }),
-                      'propertyName': 'weapon_type',
-                    }),
-                    'oneOf': list([
-                      dict({
-                        '$ref': '#/$defs/MeleeWeapon',
-                      }),
-                      dict({
-                        '$ref': '#/$defs/RangedWeapon',
-                      }),
-                    ]),
-                    'title': 'Weapon',
-                  }),
-                }),
-                'propertyName': 'item_type',
-              }),
-              'oneOf': list([
-                dict({
-                  '$ref': '#/$defs/Armour',
-                }),
-                dict({
-                  'description': 'A weapon (e.g. sword, pistol).',
-                  'discriminator': dict({
-                    'mapping': dict({
-                      'melee': '#/$defs/MeleeWeapon',
-                      'ranged': '#/$defs/RangedWeapon',
-                    }),
-                    'propertyName': 'weapon_type',
-                  }),
-                  'oneOf': list([
-                    dict({
-                      '$ref': '#/$defs/MeleeWeapon',
-                    }),
-                    dict({
-                      '$ref': '#/$defs/RangedWeapon',
-                    }),
-                  ]),
-                  'title': 'Weapon',
-                }),
-              ]),
-              'title': 'Item',
-            }),
-            'skill': '#/$defs/Skill',
-          }),
-          'propertyName': 'type',
-        }),
-        'oneOf': list([
-          dict({
-            '$ref': '#/$defs/Character',
-          }),
-          dict({
-            '$ref': '#/$defs/Characteristic',
-          }),
-          dict({
-            'description': 'An item (e.g. sword, phone, book).',
-            'discriminator': dict({
-              'mapping': dict({
-                'armour': '#/$defs/Armour',
-                'weapon': dict({
-                  'description': 'A weapon (e.g. sword, pistol).',
-                  'discriminator': dict({
-                    'mapping': dict({
-                      'melee': '#/$defs/MeleeWeapon',
-                      'ranged': '#/$defs/RangedWeapon',
-                    }),
-                    'propertyName': 'weapon_type',
-                  }),
-                  'oneOf': list([
-                    dict({
-                      '$ref': '#/$defs/MeleeWeapon',
-                    }),
-                    dict({
-                      '$ref': '#/$defs/RangedWeapon',
-                    }),
-                  ]),
-                  'title': 'Weapon',
-                }),
-              }),
-              'propertyName': 'item_type',
-            }),
-            'oneOf': list([
-              dict({
-                '$ref': '#/$defs/Armour',
-              }),
-              dict({
-                'description': 'A weapon (e.g. sword, pistol).',
-                'discriminator': dict({
-                  'mapping': dict({
-                    'melee': '#/$defs/MeleeWeapon',
-                    'ranged': '#/$defs/RangedWeapon',
-                  }),
-                  'propertyName': 'weapon_type',
-                }),
-                'oneOf': list([
-                  dict({
-                    '$ref': '#/$defs/MeleeWeapon',
-                  }),
-                  dict({
-                    '$ref': '#/$defs/RangedWeapon',
-                  }),
-                ]),
-                'title': 'Weapon',
-              }),
-            ]),
-            'title': 'Item',
-          }),
-          dict({
-            '$ref': '#/$defs/Skill',
-          }),
-        ]),
-        'title': 'TravObject',
-      }),
-      'WeaponTraitType': dict({
-        'description': 'Weapon trait type.',
-        'enum': list([
-          'AP',
-          'Artillery',
-          'Auto',
-          'Blast',
-          'Bulky',
-          'Very Bulky',
-          'Dangerous',
-          'Very Dangerous',
-          'Fire',
-          'One Use',
-          'One Shot',
-          'Radiation',
-          'Scope',
-          'Silent',
-          'Smart',
-          'Smasher',
-          'Stun',
-          'Special',
-          'Zero-G',
-        ]),
-        'title': 'WeaponTraitType',
-        'type': 'string',
-      }),
-      'WeaponType': dict({
-        'description': 'Weapon type.',
-        'enum': list([
-          'melee',
-          'ranged',
-        ]),
-        'title': 'WeaponType',
-        'type': 'string',
-      }),
-    }),
-    'description': '''
-      Glossary of core Traveller models.
-      
-      This is not a model itself but simply a collection of all core Traveller models.
-    ''',
-    'properties': dict({
-      'base_item': dict({
-        '$ref': '#/$defs/BaseItem',
-      }),
-      'base_weapon': dict({
-        '$ref': '#/$defs/BaseWeapon',
-      }),
-      'characteristic': dict({
-        '$ref': '#/$defs/Characteristic',
-      }),
-      'item': dict({
-        '$ref': '#/$defs/ItemRoot',
-      }),
-      'melee_weapon': dict({
-        '$ref': '#/$defs/MeleeWeapon',
-      }),
-      'ranged_weapon': dict({
-        '$ref': '#/$defs/RangedWeapon',
-      }),
-      'skill': dict({
-        '$ref': '#/$defs/Skill',
-      }),
-      'trav_database': dict({
-        '$ref': '#/$defs/TravDatabase',
-      }),
-      'trav_object': dict({
-        '$ref': '#/$defs/TravObjectRoot',
-      }),
-    }),
-    'required': list([
-      'trav_database',
-      'trav_object',
-      'characteristic',
-      'item',
-      'base_item',
-      'base_weapon',
-      'ranged_weapon',
-      'melee_weapon',
-      'skill',
-    ]),
-    'title': 'TravModelsGlossary',
-    'type': 'object',
-  })
+  '''
+  {
+    "$defs": {
+      "Armour": {
+        "description": "Armour.",
+        "properties": {
+          "type": {
+            "const": "item",
+            "default": "item",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "item_type": {
+            "const": "armour",
+            "default": "armour",
+            "title": "Item Type",
+            "type": "string"
+          },
+          "tech_level": {
+            "minimum": 0,
+            "title": "Tech Level",
+            "type": "integer"
+          },
+          "weight": {
+            "title": "Weight",
+            "type": "number"
+          },
+          "base_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Base Price"
+          },
+          "protection": {
+            "title": "Protection",
+            "type": "integer"
+          },
+          "protection_laser": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Protection Laser"
+          },
+          "protection_plasma": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Protection Plasma"
+          },
+          "protection_psionics": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Protection Psionics"
+          },
+          "radiation_protection": {
+            "default": 0,
+            "title": "Radiation Protection",
+            "type": "integer"
+          },
+          "required_skill": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Skill"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "slots_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Slots Count"
+          },
+          "characteristic_bonuses": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Characteristic Bonuses",
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "tech_level",
+          "weight",
+          "protection"
+        ],
+        "title": "Armour",
+        "type": "object"
+      },
+      "BaseItem": {
+        "description": "Item.",
+        "properties": {
+          "type": {
+            "const": "item",
+            "default": "item",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "item_type": {
+            "$ref": "#/$defs/ItemType"
+          },
+          "tech_level": {
+            "minimum": 0,
+            "title": "Tech Level",
+            "type": "integer"
+          },
+          "weight": {
+            "title": "Weight",
+            "type": "number"
+          },
+          "base_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Base Price"
+          }
+        },
+        "required": [
+          "name",
+          "item_type",
+          "tech_level",
+          "weight"
+        ],
+        "title": "BaseItem",
+        "type": "object"
+      },
+      "BaseWeapon": {
+        "description": "Weapon.",
+        "properties": {
+          "type": {
+            "const": "item",
+            "default": "item",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "item_type": {
+            "const": "weapon",
+            "default": "weapon",
+            "title": "Item Type",
+            "type": "string"
+          },
+          "tech_level": {
+            "minimum": 0,
+            "title": "Tech Level",
+            "type": "integer"
+          },
+          "weight": {
+            "title": "Weight",
+            "type": "number"
+          },
+          "base_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Base Price"
+          },
+          "weapon_type": {
+            "$ref": "#/$defs/WeaponType"
+          },
+          "range": {
+            "anyOf": [
+              {
+                "const": "Melee",
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Range"
+          },
+          "damage": {
+            "title": "Damage",
+            "type": "string"
+          },
+          "traits": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/BaseWeaponTrait"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Traits"
+          }
+        },
+        "required": [
+          "name",
+          "tech_level",
+          "weight",
+          "weapon_type",
+          "range",
+          "damage"
+        ],
+        "title": "BaseWeapon",
+        "type": "object"
+      },
+      "BaseWeaponTrait": {
+        "description": "Trait of a weapon with optional amount.",
+        "properties": {
+          "weapon_trait_type": {
+            "$ref": "#/$defs/WeaponTraitType"
+          },
+          "amount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Amount"
+          }
+        },
+        "required": [
+          "weapon_trait_type"
+        ],
+        "title": "BaseWeaponTrait",
+        "type": "object"
+      },
+      "Book": {
+        "description": "Book.",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "Book",
+        "type": "object"
+      },
+      "Character": {
+        "description": "Character.",
+        "properties": {
+          "type": {
+            "const": "character",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "characteristics": {
+            "items": {
+              "$ref": "#/$defs/Characteristic"
+            },
+            "title": "Characteristics",
+            "type": "array"
+          },
+          "skills": {
+            "items": {
+              "$ref": "#/$defs/Skill"
+            },
+            "title": "Skills",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "Character",
+        "type": "object"
+      },
+      "Characteristic": {
+        "description": "Characteristic with optional level.",
+        "properties": {
+          "type": {
+            "const": "characteristic",
+            "default": "characteristic",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "characteristic_type": {
+            "$ref": "#/$defs/CharacteristicType"
+          },
+          "level": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Level"
+          }
+        },
+        "required": [
+          "name",
+          "characteristic_type"
+        ],
+        "title": "Characteristic",
+        "type": "object"
+      },
+      "CharacteristicType": {
+        "description": "Characteristic type.",
+        "enum": [
+          "STR",
+          "DEX",
+          "END",
+          "INT",
+          "EDU",
+          "SOC",
+          "LCK",
+          "INF"
+        ],
+        "title": "CharacteristicType",
+        "type": "string"
+      },
+      "ItemRoot": {
+        "description": "An item (e.g. sword, phone, book).",
+        "discriminator": {
+          "mapping": {
+            "armour": "#/$defs/Armour",
+            "weapon": {
+              "description": "A weapon (e.g. sword, pistol).",
+              "discriminator": {
+                "mapping": {
+                  "melee": "#/$defs/MeleeWeapon",
+                  "ranged": "#/$defs/RangedWeapon"
+                },
+                "propertyName": "weapon_type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/MeleeWeapon"
+                },
+                {
+                  "$ref": "#/$defs/RangedWeapon"
+                }
+              ],
+              "title": "Weapon"
+            }
+          },
+          "propertyName": "item_type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Armour"
+          },
+          {
+            "description": "A weapon (e.g. sword, pistol).",
+            "discriminator": {
+              "mapping": {
+                "melee": "#/$defs/MeleeWeapon",
+                "ranged": "#/$defs/RangedWeapon"
+              },
+              "propertyName": "weapon_type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/MeleeWeapon"
+              },
+              {
+                "$ref": "#/$defs/RangedWeapon"
+              }
+            ],
+            "title": "Weapon"
+          }
+        ],
+        "title": "Item"
+      },
+      "ItemType": {
+        "description": "Item type.",
+        "enum": [
+          "armour",
+          "augment",
+          "tool",
+          "weapon"
+        ],
+        "title": "ItemType",
+        "type": "string"
+      },
+      "MeleeWeapon": {
+        "description": "Melee weapon.",
+        "properties": {
+          "type": {
+            "const": "item",
+            "default": "item",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "item_type": {
+            "const": "weapon",
+            "default": "weapon",
+            "title": "Item Type",
+            "type": "string"
+          },
+          "tech_level": {
+            "minimum": 0,
+            "title": "Tech Level",
+            "type": "integer"
+          },
+          "weight": {
+            "title": "Weight",
+            "type": "number"
+          },
+          "base_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Base Price"
+          },
+          "weapon_type": {
+            "const": "melee",
+            "default": "melee",
+            "title": "Weapon Type",
+            "type": "string"
+          },
+          "range": {
+            "const": "Melee",
+            "title": "Range",
+            "type": "string"
+          },
+          "damage": {
+            "title": "Damage",
+            "type": "string"
+          },
+          "traits": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/BaseWeaponTrait"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Traits"
+          }
+        },
+        "required": [
+          "name",
+          "tech_level",
+          "weight",
+          "range",
+          "damage"
+        ],
+        "title": "MeleeWeapon",
+        "type": "object"
+      },
+      "ObjectSourceCollection": {
+        "description": "Source collection of a Traveller object.",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "ObjectSourceCollection",
+        "type": "object"
+      },
+      "RangedWeapon": {
+        "description": "Ranged weapon.",
+        "properties": {
+          "type": {
+            "const": "item",
+            "default": "item",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "item_type": {
+            "const": "weapon",
+            "default": "weapon",
+            "title": "Item Type",
+            "type": "string"
+          },
+          "tech_level": {
+            "minimum": 0,
+            "title": "Tech Level",
+            "type": "integer"
+          },
+          "weight": {
+            "title": "Weight",
+            "type": "number"
+          },
+          "base_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Base Price"
+          },
+          "weapon_type": {
+            "const": "ranged",
+            "default": "ranged",
+            "title": "Weapon Type",
+            "type": "string"
+          },
+          "range": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Range"
+          },
+          "damage": {
+            "title": "Damage",
+            "type": "string"
+          },
+          "traits": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/BaseWeaponTrait"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Traits"
+          },
+          "magazine_size": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "const": "Unlimited",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Magazine Size"
+          },
+          "magazine_base_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Magazine Base Price"
+          }
+        },
+        "required": [
+          "name",
+          "tech_level",
+          "weight",
+          "range",
+          "damage"
+        ],
+        "title": "RangedWeapon",
+        "type": "object"
+      },
+      "Skill": {
+        "description": "Skill with optional level.",
+        "properties": {
+          "type": {
+            "const": "skill",
+            "default": "skill",
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "image_path": {
+            "anyOf": [
+              {
+                "format": "path",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Image Path"
+          },
+          "level": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Level"
+          }
+        },
+        "required": [
+          "name",
+          "level"
+        ],
+        "title": "Skill",
+        "type": "object"
+      },
+      "TravDatabase": {
+        "description": "A database of traveller related objects.",
+        "properties": {
+          "all_books": {
+            "description": "A list of all books.",
+            "items": {
+              "$ref": "#/$defs/Book"
+            },
+            "title": "All Books",
+            "type": "array"
+          },
+          "all_object_source_collections": {
+            "description": "A list of all object source collections.",
+            "items": {
+              "$ref": "#/$defs/ObjectSourceCollection"
+            },
+            "title": "All Object Source Collections",
+            "type": "array"
+          },
+          "objects_by_id": {
+            "additionalProperties": {
+              "description": "A traveller-related object.",
+              "discriminator": {
+                "mapping": {
+                  "character": "#/$defs/Character",
+                  "characteristic": "#/$defs/Characteristic",
+                  "item": {
+                    "description": "An item (e.g. sword, phone, book).",
+                    "discriminator": {
+                      "mapping": {
+                        "armour": "#/$defs/Armour",
+                        "weapon": {
+                          "description": "A weapon (e.g. sword, pistol).",
+                          "discriminator": {
+                            "mapping": {
+                              "melee": "#/$defs/MeleeWeapon",
+                              "ranged": "#/$defs/RangedWeapon"
+                            },
+                            "propertyName": "weapon_type"
+                          },
+                          "oneOf": [
+                            {
+                              "$ref": "#/$defs/MeleeWeapon"
+                            },
+                            {
+                              "$ref": "#/$defs/RangedWeapon"
+                            }
+                          ],
+                          "title": "Weapon"
+                        }
+                      },
+                      "propertyName": "item_type"
+                    },
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/Armour"
+                      },
+                      {
+                        "description": "A weapon (e.g. sword, pistol).",
+                        "discriminator": {
+                          "mapping": {
+                            "melee": "#/$defs/MeleeWeapon",
+                            "ranged": "#/$defs/RangedWeapon"
+                          },
+                          "propertyName": "weapon_type"
+                        },
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/MeleeWeapon"
+                          },
+                          {
+                            "$ref": "#/$defs/RangedWeapon"
+                          }
+                        ],
+                        "title": "Weapon"
+                      }
+                    ],
+                    "title": "Item"
+                  },
+                  "skill": "#/$defs/Skill"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/Character"
+                },
+                {
+                  "$ref": "#/$defs/Characteristic"
+                },
+                {
+                  "description": "An item (e.g. sword, phone, book).",
+                  "discriminator": {
+                    "mapping": {
+                      "armour": "#/$defs/Armour",
+                      "weapon": {
+                        "description": "A weapon (e.g. sword, pistol).",
+                        "discriminator": {
+                          "mapping": {
+                            "melee": "#/$defs/MeleeWeapon",
+                            "ranged": "#/$defs/RangedWeapon"
+                          },
+                          "propertyName": "weapon_type"
+                        },
+                        "oneOf": [
+                          {
+                            "$ref": "#/$defs/MeleeWeapon"
+                          },
+                          {
+                            "$ref": "#/$defs/RangedWeapon"
+                          }
+                        ],
+                        "title": "Weapon"
+                      }
+                    },
+                    "propertyName": "item_type"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/Armour"
+                    },
+                    {
+                      "description": "A weapon (e.g. sword, pistol).",
+                      "discriminator": {
+                        "mapping": {
+                          "melee": "#/$defs/MeleeWeapon",
+                          "ranged": "#/$defs/RangedWeapon"
+                        },
+                        "propertyName": "weapon_type"
+                      },
+                      "oneOf": [
+                        {
+                          "$ref": "#/$defs/MeleeWeapon"
+                        },
+                        {
+                          "$ref": "#/$defs/RangedWeapon"
+                        }
+                      ],
+                      "title": "Weapon"
+                    }
+                  ],
+                  "title": "Item"
+                },
+                {
+                  "$ref": "#/$defs/Skill"
+                }
+              ]
+            },
+            "description": "A mapping of all objects by their trav_id.",
+            "title": "Objects By Id",
+            "type": "object"
+          }
+        },
+        "title": "TravDatabase",
+        "type": "object"
+      },
+      "TravObjectRoot": {
+        "description": "A traveller-related object.",
+        "discriminator": {
+          "mapping": {
+            "character": "#/$defs/Character",
+            "characteristic": "#/$defs/Characteristic",
+            "item": {
+              "description": "An item (e.g. sword, phone, book).",
+              "discriminator": {
+                "mapping": {
+                  "armour": "#/$defs/Armour",
+                  "weapon": {
+                    "description": "A weapon (e.g. sword, pistol).",
+                    "discriminator": {
+                      "mapping": {
+                        "melee": "#/$defs/MeleeWeapon",
+                        "ranged": "#/$defs/RangedWeapon"
+                      },
+                      "propertyName": "weapon_type"
+                    },
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/MeleeWeapon"
+                      },
+                      {
+                        "$ref": "#/$defs/RangedWeapon"
+                      }
+                    ],
+                    "title": "Weapon"
+                  }
+                },
+                "propertyName": "item_type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/Armour"
+                },
+                {
+                  "description": "A weapon (e.g. sword, pistol).",
+                  "discriminator": {
+                    "mapping": {
+                      "melee": "#/$defs/MeleeWeapon",
+                      "ranged": "#/$defs/RangedWeapon"
+                    },
+                    "propertyName": "weapon_type"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/MeleeWeapon"
+                    },
+                    {
+                      "$ref": "#/$defs/RangedWeapon"
+                    }
+                  ],
+                  "title": "Weapon"
+                }
+              ],
+              "title": "Item"
+            },
+            "skill": "#/$defs/Skill"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Character"
+          },
+          {
+            "$ref": "#/$defs/Characteristic"
+          },
+          {
+            "description": "An item (e.g. sword, phone, book).",
+            "discriminator": {
+              "mapping": {
+                "armour": "#/$defs/Armour",
+                "weapon": {
+                  "description": "A weapon (e.g. sword, pistol).",
+                  "discriminator": {
+                    "mapping": {
+                      "melee": "#/$defs/MeleeWeapon",
+                      "ranged": "#/$defs/RangedWeapon"
+                    },
+                    "propertyName": "weapon_type"
+                  },
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/MeleeWeapon"
+                    },
+                    {
+                      "$ref": "#/$defs/RangedWeapon"
+                    }
+                  ],
+                  "title": "Weapon"
+                }
+              },
+              "propertyName": "item_type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/Armour"
+              },
+              {
+                "description": "A weapon (e.g. sword, pistol).",
+                "discriminator": {
+                  "mapping": {
+                    "melee": "#/$defs/MeleeWeapon",
+                    "ranged": "#/$defs/RangedWeapon"
+                  },
+                  "propertyName": "weapon_type"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/MeleeWeapon"
+                  },
+                  {
+                    "$ref": "#/$defs/RangedWeapon"
+                  }
+                ],
+                "title": "Weapon"
+              }
+            ],
+            "title": "Item"
+          },
+          {
+            "$ref": "#/$defs/Skill"
+          }
+        ],
+        "title": "TravObject"
+      },
+      "WeaponTraitType": {
+        "description": "Weapon trait type.",
+        "enum": [
+          "AP",
+          "Artillery",
+          "Auto",
+          "Blast",
+          "Bulky",
+          "Very Bulky",
+          "Dangerous",
+          "Very Dangerous",
+          "Fire",
+          "One Use",
+          "One Shot",
+          "Radiation",
+          "Scope",
+          "Silent",
+          "Smart",
+          "Smasher",
+          "Stun",
+          "Special",
+          "Zero-G"
+        ],
+        "title": "WeaponTraitType",
+        "type": "string"
+      },
+      "WeaponType": {
+        "description": "Weapon type.",
+        "enum": [
+          "melee",
+          "ranged"
+        ],
+        "title": "WeaponType",
+        "type": "string"
+      }
+    },
+    "description": "Glossary of core Traveller models.\n\nThis is not a model itself but simply a collection of all core Traveller models.",
+    "properties": {
+      "trav_database": {
+        "$ref": "#/$defs/TravDatabase"
+      },
+      "trav_object": {
+        "$ref": "#/$defs/TravObjectRoot"
+      },
+      "characteristic": {
+        "$ref": "#/$defs/Characteristic"
+      },
+      "item": {
+        "$ref": "#/$defs/ItemRoot"
+      },
+      "base_item": {
+        "$ref": "#/$defs/BaseItem"
+      },
+      "base_weapon": {
+        "$ref": "#/$defs/BaseWeapon"
+      },
+      "ranged_weapon": {
+        "$ref": "#/$defs/RangedWeapon"
+      },
+      "melee_weapon": {
+        "$ref": "#/$defs/MeleeWeapon"
+      },
+      "skill": {
+        "$ref": "#/$defs/Skill"
+      }
+    },
+    "required": [
+      "trav_database",
+      "trav_object",
+      "characteristic",
+      "item",
+      "base_item",
+      "base_weapon",
+      "ranged_weapon",
+      "melee_weapon",
+      "skill"
+    ],
+    "title": "TravModelsGlossary",
+    "type": "object"
+  }
+  '''
 # ---
