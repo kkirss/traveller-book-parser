@@ -16,6 +16,13 @@ PDFPlumberTable = list[list[Optional[str]]]
 TableStrategy = Literal["lines", "lines_strict", "text", "explicit"]
 
 
+class NoTablesFoundError(Exception):
+    """Exception raised when no tables are found on a page."""
+
+    def __init__(self, page_number: int):
+        super().__init__(f"No tables found on page {page_number}.")
+
+
 class TableSettingsDict(TypedDict, total=False):
     """Settings for table extraction, used by pdfplumber.
 
@@ -86,4 +93,4 @@ def get_pdfplumber_table(
         try:
             return tables[table_index]
         except IndexError as e:
-            raise ValueError(f"No tables found on page {page_number}") from e
+            raise NoTablesFoundError(page_number) from e

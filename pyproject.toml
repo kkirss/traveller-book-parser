@@ -77,6 +77,7 @@ ignore = [
     "S101",  # Use of assert detected
     "D100",  # Missing docstring in public module
     "D104",  # Missing docstring in public package
+    "D107",  # Missing docstring in `__init__`
     "E501",  # https://beta.ruff.rs/docs/rules/line-too-long/
     "ERA001",  # Commented-out code
     "FIX",  # Comments with "TO DO" etc.
@@ -85,7 +86,6 @@ ignore = [
     "EM101",  # Exception must not use a string literal, assign to variable first
     "EM102",  # Exception must not use an f-string literal, assign to variable first
     # TODO: Enable following:
-    "TRY003",  # Avoid specifying long messages outside the exception class,
     "UP007",  # Allow Optional[pathlib.Path] for typer command arguments to work
 ]
 

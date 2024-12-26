@@ -13,6 +13,13 @@ from .book_description import BookDescription
 logger = logging.getLogger(__name__)
 
 
+class BookDescriptionFileNotFoundError(FileNotFoundError):
+    """Exception raised when book description file not found for a book."""
+
+    def __init__(self, book_code_name: str):
+        super().__init__(f"Book description file not found for {book_code_name}")
+
+
 def get_book_paths(book_code_name: str) -> list[Path]:
     """Get paths of books to parse."""
     ensure_folder(SETTINGS.book_descriptions_path)
@@ -24,9 +31,7 @@ def get_book_description_path(book_code_name: str) -> Path:
     paths = get_book_paths(book_code_name)
 
     if not paths:
-        raise FileNotFoundError(
-            f"Book description file not found for {book_code_name}",
-        )
+        raise BookDescriptionFileNotFoundError(book_code_name)
 
     return get_supported_path(paths)
 

@@ -11,6 +11,15 @@ from .collection_description import CollectionDescription
 logger = logging.getLogger(__name__)
 
 
+class FailedToGuessCollectionNameError(Exception):
+    """Exception raised when failed to guess collection name."""
+
+    def __init__(self, collection_description: CollectionDescription):
+        super().__init__(
+            f"Failed to guess collection name for {collection_description}"
+        )
+
+
 def get_collection_name_page(collection_description: CollectionDescription) -> int:
     """Get the page number of the collection name."""
     if collection_description.name_page is not None:
@@ -44,9 +53,7 @@ def parse_collection_name(
     )
 
     if guess is None:
-        raise ValueError(
-            f"Failed to guess collection name for {collection_description}"
-        )
+        raise FailedToGuessCollectionNameError(collection_description)
 
     name = guess.title()
 

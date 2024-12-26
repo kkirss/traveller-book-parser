@@ -13,11 +13,5 @@ def output_database_to_io(
     if output_type == OutputType.stdout:
         output_to_stdout(output)
 
-    elif output_type == OutputType.file and output_path is None:
-        raise ValueError("Output path is required for file output.")
-
-    elif output_type == OutputType.file and output_path is not None:
+    elif output_type == OutputType.file:
         output_to_file(output, output_path)
-
-    else:
-        raise ValueError(f"Unknown output type: {output_type}")

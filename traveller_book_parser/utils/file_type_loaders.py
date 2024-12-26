@@ -7,6 +7,13 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 
+class FileTypeNotSupportedError(Exception):
+    """Exception raised when file type is not supported."""
+
+    def __init__(self, file_type: str):
+        super().__init__(f"File type is not supported: {file_type}")
+
+
 def load_json_data(path: Path) -> dict[str, Any]:
     """Load data from a JSON file."""
     with path.open("r", encoding="utf-8") as file:
@@ -39,11 +46,11 @@ def get_supported_path(paths: list[Path]) -> Path:
     """Get the first supported path from a list of paths."""
     match paths:
         case []:
-            raise ValueError("No paths found")
-        case [path] if not is_supported_file_type(path):
-            raise ValueError(
-                f"Loading data from '{path.suffix}' file-type is not supported.",
+            raise ValueError(  # noqa: TRY003
+                "No paths given. This should be handled earlier."
             )
+        case [path] if not is_supported_file_type(path):
+            raise FileTypeNotSupportedError(path.suffix)
         case [path]:
             return path
         case _:
@@ -52,7 +59,4 @@ def get_supported_path(paths: list[Path]) -> Path:
                 logger.info("Found multiple supported files. Using %s", path)
                 return path
 
-            file_types = ",".join({path.suffix for path in paths})
-            raise ValueError(
-                f"Loading data from '{file_types}' file-types is not supported.",
-            )
+            raise FileTypeNotSupportedError(", ".join([path.suffix for path in paths]))

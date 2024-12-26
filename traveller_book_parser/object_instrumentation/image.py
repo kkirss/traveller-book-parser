@@ -25,6 +25,22 @@ from traveller_book_parser.traveller_models.trav_object import TravObject
 logger = logging.getLogger(__name__)
 
 
+class ImageExportError(Exception):
+    """Failed to export image for trav_obj."""
+
+    def __init__(self, obj: TravObject) -> None:
+        super().__init__(f"Failed to export image for trav_obj {obj}")
+
+
+class ImagePagesNotSetError(Exception):
+    """Must specify instrument.image_pages to add image to trav_obj."""
+
+    def __init__(self) -> None:
+        super().__init__(
+            "Must specify instrument.image_pages to add image to trav_obj."
+        )
+
+
 def get_obj_image_path(obj: TravObject) -> Optional[Path]:
     """Get the path to an objects image, if it exists."""
     matched_files = list(SETTINGS.images_path.glob(f"{obj.name}.*"))
@@ -161,7 +177,7 @@ def export_obj_image(
     image_path = get_obj_image_path(obj)
 
     if image_path is None:
-        raise ValueError("Failed to export image_path for trav_obj %s", obj)
+        raise ImageExportError(obj)
 
     return image_path
 
@@ -176,9 +192,7 @@ def add_obj_image_path(
 
     if image_path is None:
         if len(collection_description.instrument.image_pages) == 0:
-            raise ValueError(
-                "Must specify image_pages in instrument to add image_path to trav_obj."
-            )
+            raise ImagePagesNotSetError
 
         image_path = export_obj_image(
             obj,
