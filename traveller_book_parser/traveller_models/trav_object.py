@@ -1,6 +1,6 @@
 from typing import Annotated, Any
 
-from pydantic import Field, RootModel
+from pydantic import Field, RootModel, TypeAdapter
 
 from .characteristics.characteristic import Characteristic
 from .characters.character import Character
@@ -28,4 +28,4 @@ class TravObjectRoot(RootModel[TravObject]):
 
 def create_trav_object(**kwargs: Any) -> TravObject:  # noqa: ANN401
     """Create TravObject model instance."""
-    return RootModel[TravObject](**kwargs).root
+    return TypeAdapter(TravObject).validate_python(kwargs)
