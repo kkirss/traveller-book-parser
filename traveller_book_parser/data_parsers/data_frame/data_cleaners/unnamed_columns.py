@@ -32,7 +32,7 @@ def remove_unnamed_columns(input_data_frame: DataFrame) -> Optional[DataFrame]:
     for index, column in enumerate(columns):
         if is_unnamed_column(column):
             unnamed_columns_count += 1
-            columns[index] = ""
+            columns[index] = ""  # pyright: ignore [reportIndexIssue]
 
     if unnamed_columns_count > (len(columns) / 2):
         data_frame.columns = columns
