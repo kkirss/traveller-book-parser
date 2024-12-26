@@ -39,7 +39,7 @@ def replace_few_returns_with_spaces(input_data_frame: DataFrame) -> Optional[Dat
         values_with_return = _get_cells_with_return_count(row)
         if 0 < values_with_return < len(row) / 2:
             values = list(map(_replace_return_with_space, row))
-            data_frame.iloc[row_index] = values
+            data_frame.iloc[row_index] = values  # pyright: ignore [reportArgumentType]
             has_updates = True
 
     if has_updates:

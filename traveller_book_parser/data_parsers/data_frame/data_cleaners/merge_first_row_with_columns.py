@@ -26,9 +26,7 @@ def merge_first_row_with_columns(input_data_frame: DataFrame) -> Optional[DataFr
     data_frame.columns = new_columns
 
     drop_index = data_frame.index[0]
-    if not isinstance(
-        drop_index, Hashable  # pyright: ignore [reportGeneralTypeIssues]
-    ):
+    if not isinstance(drop_index, Hashable):
         raise TypeError("No index to drop")  # noqa: TRY003
 
     return data_frame.drop(index=drop_index)

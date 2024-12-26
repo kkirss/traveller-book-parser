@@ -52,7 +52,7 @@ jupyterlab = "4.2.0"
 pyright = "1.1.363"
 pytest = "8.2.1"
 syrupy = "4.7.1"
-
+pandas-stubs = "2.2.3.241126"
 
 [tool.black]
 line-length = 88
