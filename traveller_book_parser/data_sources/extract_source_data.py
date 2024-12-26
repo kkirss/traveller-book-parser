@@ -8,8 +8,8 @@ from .base_data_source_description import BaseDataSourceDescription
 
 @dispatch.abstract
 def extract_source_data(
-    book_description: BookDescription,  # noqa: ARG001
-    data_source_description: BaseDataSourceDescription,  # noqa: ARG001
+    book_description: BookDescription,
+    data_source_description: BaseDataSourceDescription,
 ) -> BaseDataContainer:
     """Parse data from a collection."""
     raise NotImplementedError

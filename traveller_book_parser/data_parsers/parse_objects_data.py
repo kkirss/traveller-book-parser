@@ -11,9 +11,9 @@ from .base_data_container import BaseDataContainer
 
 @dispatch.abstract
 def parse_objects(
-    data_container: BaseDataContainer,  # noqa: ARG001
+    data_container: BaseDataContainer,
     _type: TravObjectType,
-    default_values: dict[str, Any],  # noqa: ARG001
+    default_values: dict[str, Any],
 ) -> Iterable[TravObject]:
     """Parse a collection of objects from a data container."""
     raise NotImplementedError

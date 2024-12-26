@@ -2,6 +2,6 @@ import pytest
 from typer.testing import CliRunner
 
 
-@pytest.fixture()
+@pytest.fixture
 def cli_runner() -> CliRunner:
     return CliRunner()

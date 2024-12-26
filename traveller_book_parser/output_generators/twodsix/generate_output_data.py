@@ -6,8 +6,8 @@ from .output_generator import TwodsixOutputGenerator
 
 @generate_output_data.dispatch
 def generate_twodsix_data(
-    output_generator: TwodsixOutputGenerator,  # noqa: ARG001
-    database: TravDatabase,  # noqa: ARG001
+    output_generator: TwodsixOutputGenerator,
+    database: TravDatabase,
 ) -> None:
     """Generate twodsix data from a database."""
     raise NotImplementedError

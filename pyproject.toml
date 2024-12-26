@@ -45,7 +45,7 @@ typer = "0.15.1"
 rich = "13.9.0"
 
 [tool.poetry.dev-dependencies]
-ruff = "0.4.4"
+ruff = "0.8.4"
 black = {extras = ["d"], version = "24.4.2"}
 ipywidgets = "8.1.2"
 jupyterlab = "4.2.0"
@@ -72,7 +72,6 @@ select = [
 ]
 ignore = [
     "COM",  # Trailing commas
-    "ANN101", # https://beta.ruff.rs/docs/rules/missing-type-self/
     "A003", # (class attribute) https://beta.ruff.rs/docs/rules/builtin-attribute-shadowing/
     "S101",  # Use of assert detected
     "D100",  # Missing docstring in public module
@@ -91,6 +90,7 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["D1"]
+"traveller_book_parser/utils/pdfplumber/debug_pdfplumber_table.ipynb" = ["ALL"]
 
 [tool.ruff.lint.flake8-annotations]
 suppress-none-returning = true

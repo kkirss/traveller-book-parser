@@ -13,23 +13,23 @@ from traveller_book_parser.traveller_models.items.weapons.melee_weapon import (
 def test_item_weapon_melee(melee_weapon_input_data: dict[str, Any]):
     model = create_item(**melee_weapon_input_data)
 
-    assert {
+    assert model.model_dump(exclude_unset=True) == {
         **melee_weapon_input_data,
         "item_type": ItemType.weapon,
         "weapon_type": WeaponType.melee,
         "weight": Decimal(0),
         "trav_id": "item:Dagger:TL:4:weapon:melee",
-    } == model.model_dump(exclude_unset=True)
+    }
     assert isinstance(model, MeleeWeapon)
 
 
 def test_item_armour(armour_input_data: dict[str, Any]):
     model = create_item(**armour_input_data)
 
-    assert {
+    assert model.model_dump(exclude_unset=True) == {
         **armour_input_data,
         "item_type": ItemType.armour,
         "weight": Decimal(5),
         "trav_id": "item:Cloth Armour:TL:8:armour",
-    } == model.model_dump(exclude_unset=True)
+    }
     assert isinstance(model, Armour)

@@ -18,12 +18,12 @@ def test_item_weapon_melee(melee_weapon_input_data: dict[str, Any]):
         },
     )
 
-    assert {
+    assert model.model_dump(exclude_unset=True) == {
         **melee_weapon_input_data,
         "type": TravObjectType.ITEM,
         "item_type": ItemType.weapon,
         "weapon_type": WeaponType.melee,
         "weight": Decimal(0),
         "trav_id": "item:Dagger:TL:4:weapon:melee",
-    } == model.model_dump(exclude_unset=True)
+    }
     assert isinstance(model, MeleeWeapon)
