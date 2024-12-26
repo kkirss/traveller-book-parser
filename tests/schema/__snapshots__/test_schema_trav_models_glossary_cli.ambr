@@ -8,7 +8,7 @@
           'base_price': dict({
             'anyOf': list([
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -132,15 +132,8 @@
             'type': 'string',
           }),
           'weight': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'string',
-              }),
-            ]),
             'title': 'Weight',
+            'type': 'number',
           }),
         }),
         'required': list([
@@ -158,7 +151,7 @@
           'base_price': dict({
             'anyOf': list([
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -204,15 +197,8 @@
             'type': 'string',
           }),
           'weight': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'string',
-              }),
-            ]),
             'title': 'Weight',
+            'type': 'number',
           }),
         }),
         'required': list([
@@ -230,7 +216,7 @@
           'base_price': dict({
             'anyOf': list([
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -278,7 +264,7 @@
                 'type': 'string',
               }),
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -315,15 +301,8 @@
             '$ref': '#/$defs/WeaponType',
           }),
           'weight': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'string',
-              }),
-            ]),
             'title': 'Weight',
+            'type': 'number',
           }),
         }),
         'required': list([
@@ -566,7 +545,7 @@
           'base_price': dict({
             'anyOf': list([
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -644,15 +623,8 @@
             'type': 'string',
           }),
           'weight': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'string',
-              }),
-            ]),
             'title': 'Weight',
+            'type': 'number',
           }),
         }),
         'required': list([
@@ -685,7 +657,7 @@
           'base_price': dict({
             'anyOf': list([
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -725,7 +697,7 @@
           'magazine_base_price': dict({
             'anyOf': list([
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -757,7 +729,7 @@
           'range': dict({
             'anyOf': list([
               dict({
-                'type': 'integer',
+                'type': 'number',
               }),
               dict({
                 'type': 'null',
@@ -797,15 +769,8 @@
             'type': 'string',
           }),
           'weight': dict({
-            'anyOf': list([
-              dict({
-                'type': 'number',
-              }),
-              dict({
-                'type': 'string',
-              }),
-            ]),
             'title': 'Weight',
+            'type': 'number',
           }),
         }),
         'required': list([

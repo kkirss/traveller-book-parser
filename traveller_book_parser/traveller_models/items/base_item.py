@@ -1,4 +1,3 @@
-from decimal import Decimal
 from enum import Enum
 from typing import Literal, Optional
 
@@ -29,8 +28,8 @@ class BaseItem(TravObjectBase):
     item_type: ItemType = Field(repr=True)
 
     tech_level: int = Field(repr=True, ge=0)
-    weight: Decimal  # In kilograms
-    base_price: Optional[int] = None  # In Credits
+    weight: float  # In kilograms
+    base_price: Optional[float] = None  # In Credits
 
     # Validators
     weight_asterisk = field_validator("weight", mode="before")(remove_asterisk)

@@ -21,10 +21,10 @@ class RangedWeapon(BaseWeapon):
     weapon_type: Literal[WeaponType.ranged] = Field(
         repr=False, default=WeaponType.ranged
     )
-    range: Optional[int]
+    range: Optional[float]
 
     magazine_size: Optional[int | UNLIMITED_LITERAL] = None
-    magazine_base_price: Optional[int] = None  # In Credits
+    magazine_base_price: Optional[float] = None  # In Credits
 
     magazine_size_range_max = field_validator("magazine_size", mode="before")(
         value_range_use_max

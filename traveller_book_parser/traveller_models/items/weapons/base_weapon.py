@@ -29,7 +29,7 @@ class BaseWeapon(BaseItem):
     item_type: Literal[ItemType.weapon] = Field(repr=False, default=ItemType.weapon)
     weapon_type: WeaponType
 
-    range: WeaponRangeMelee | Optional[int]
+    range: WeaponRangeMelee | Optional[float]
     damage: str
     traits: list[WeaponTrait] | None = Field(default_factory=list)
 
