@@ -45,6 +45,11 @@
             'title': 'Default Values',
             'type': 'object',
           }),
+          'disabled': dict({
+            'default': False,
+            'title': 'Disabled',
+            'type': 'boolean',
+          }),
           'instrument': dict({
             'allOf': list([
               dict({

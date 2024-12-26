@@ -122,6 +122,9 @@ def parse_book(database: TravDatabase, book_code_name: str) -> None:
 
     book_objects_count = 0
     for collection_description in book_description.collection_descriptions:
+        if collection_description.disabled:
+            continue
+
         logger.debug(
             "Parsing collection with description %s",
             collection_description,

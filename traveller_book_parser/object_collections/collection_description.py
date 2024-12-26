@@ -48,5 +48,8 @@ class CollectionDescription(BaseModel):
         description="Instrument objects with additional data.",
         default_factory=Instrument,
     )
+
     check_amount: Optional[int] = None
+    disabled: bool = False
+
     data_source_description: DataSourceDescription
