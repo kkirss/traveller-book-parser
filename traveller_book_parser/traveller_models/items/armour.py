@@ -24,6 +24,8 @@ def _get_type_protection_from_protection(
     {'protection': '5', 'protection_laser': '10'}
     >>> _get_type_protection_from_protection("protection_laser", "laser")(Armour, {"protection": "5 (10 vs. plasma)"})
     {'protection': '5 (10 vs. plasma)', 'protection_laser': '5'}
+    >>> _get_type_protection_from_protection("protection_plasma", "plasma")(Armour, {"protection": "5 (10 vs. plasma)"})
+    {'protection': '5', 'protection_plasma': '10'}
     """
 
     def type_protection_from_protection(
