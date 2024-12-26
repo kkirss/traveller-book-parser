@@ -11,12 +11,12 @@
   └─────────────────────────────────────────────────────────────────────────────┘
   ┌─ Commands ──────────────────────────────────────────────────────────────────┐
   │ BookDescription   Dump the JSON schema of the 'BookDescription' model.      │
-  │ Settings          Dump the JSON schema of the 'Settings' model.             │
+  │ TravDatabase      Dump the JSON schema of the 'TravDatabase' model.         │
+  │ TravObject        Dump the JSON schema of the 'TravObject' model.           │
+  │ TravModels        Dump the JSON schema of the 'TravModelsGlossary' model.   │
   │ TravBookParser    Dump the JSON schema of the 'TravBookParserGlossary'      │
   │                   model.                                                    │
-  │ TravDatabase      Dump the JSON schema of the 'TravDatabase' model.         │
-  │ TravModels        Dump the JSON schema of the 'TravModelsGlossary' model.   │
-  │ TravObject        Dump the JSON schema of the 'TravObject' model.           │
+  │ Settings          Dump the JSON schema of the 'Settings' model.             │
   │ all               Dump all JSON schema files.                               │
   └─────────────────────────────────────────────────────────────────────────────┘
   

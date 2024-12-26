@@ -10,8 +10,8 @@
   │ --help          Show this message and exit.                                 │
   └─────────────────────────────────────────────────────────────────────────────┘
   ┌─ Commands ──────────────────────────────────────────────────────────────────┐
-  │ all    Parse all books and print processed objects.                         │
   │ book   Parse a book and print processed objects.                            │
+  │ all    Parse all books and print processed objects.                         │
   └─────────────────────────────────────────────────────────────────────────────┘
   
   
