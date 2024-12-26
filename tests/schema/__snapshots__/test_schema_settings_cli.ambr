@@ -61,11 +61,7 @@
         'type': 'boolean',
       }),
       'log_level': dict({
-        'allOf': list([
-          dict({
-            '$ref': '#/$defs/LogLevel',
-          }),
-        ]),
+        '$ref': '#/$defs/LogLevel',
         'default': 'INFO',
       }),
       'log_parsed_objects': dict({

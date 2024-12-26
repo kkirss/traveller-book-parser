@@ -78,11 +78,7 @@
             'type': 'boolean',
           }),
           'instrument': dict({
-            'allOf': list([
-              dict({
-                '$ref': '#/$defs/Instrument',
-              }),
-            ]),
+            '$ref': '#/$defs/Instrument',
             'description': 'Instrument objects with additional data.',
           }),
           'name': dict({
@@ -159,9 +155,6 @@
           }),
           'type': dict({
             'const': 'html-table',
-            'enum': list([
-              'html-table',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
@@ -221,9 +214,6 @@
           }),
           'type': dict({
             'const': 'pdfplumber-table',
-            'enum': list([
-              'pdfplumber-table',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
@@ -367,9 +357,6 @@
           }),
           'type': dict({
             'const': 'tabula-table',
-            'enum': list([
-              'tabula-table',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),

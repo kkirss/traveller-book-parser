@@ -45,9 +45,6 @@
           'item_type': dict({
             'const': 'armour',
             'default': 'armour',
-            'enum': list([
-              'armour',
-            ]),
             'title': 'Item Type',
             'type': 'string',
           }),
@@ -60,19 +57,40 @@
             'type': 'integer',
           }),
           'protection_laser': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
             'default': None,
             'title': 'Protection Laser',
-            'type': 'integer',
           }),
           'protection_plasma': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
             'default': None,
             'title': 'Protection Plasma',
-            'type': 'integer',
           }),
           'protection_psionics': dict({
+            'anyOf': list([
+              dict({
+                'type': 'integer',
+              }),
+              dict({
+                'type': 'null',
+              }),
+            ]),
             'default': None,
             'title': 'Protection Psionics',
-            'type': 'integer',
           }),
           'radiation_protection': dict({
             'default': 0,
@@ -110,9 +128,6 @@
           'type': dict({
             'const': 'item',
             'default': 'item',
-            'enum': list([
-              'item',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
@@ -185,9 +200,6 @@
           'type': dict({
             'const': 'item',
             'default': 'item',
-            'enum': list([
-              'item',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
@@ -252,9 +264,6 @@
           'item_type': dict({
             'const': 'weapon',
             'default': 'weapon',
-            'enum': list([
-              'weapon',
-            ]),
             'title': 'Item Type',
             'type': 'string',
           }),
@@ -266,9 +275,6 @@
             'anyOf': list([
               dict({
                 'const': 'Melee',
-                'enum': list([
-                  'Melee',
-                ]),
                 'type': 'string',
               }),
               dict({
@@ -302,9 +308,6 @@
           'type': dict({
             'const': 'item',
             'default': 'item',
-            'enum': list([
-              'item',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
@@ -414,9 +417,6 @@
           }),
           'type': dict({
             'const': 'character',
-            'enum': list([
-              'character',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
@@ -470,9 +470,6 @@
           'type': dict({
             'const': 'characteristic',
             'default': 'characteristic',
-            'enum': list([
-              'characteristic',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
@@ -603,9 +600,6 @@
           'item_type': dict({
             'const': 'weapon',
             'default': 'weapon',
-            'enum': list([
-              'weapon',
-            ]),
             'title': 'Item Type',
             'type': 'string',
           }),
@@ -615,9 +609,6 @@
           }),
           'range': dict({
             'const': 'Melee',
-            'enum': list([
-              'Melee',
-            ]),
             'title': 'Range',
             'type': 'string',
           }),
@@ -643,18 +634,12 @@
           'type': dict({
             'const': 'item',
             'default': 'item',
-            'enum': list([
-              'item',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
           'weapon_type': dict({
             'const': 'melee',
             'default': 'melee',
-            'enum': list([
-              'melee',
-            ]),
             'title': 'Weapon Type',
             'type': 'string',
           }),
@@ -734,9 +719,6 @@
           'item_type': dict({
             'const': 'weapon',
             'default': 'weapon',
-            'enum': list([
-              'weapon',
-            ]),
             'title': 'Item Type',
             'type': 'string',
           }),
@@ -759,9 +741,6 @@
               }),
               dict({
                 'const': 'Unlimited',
-                'enum': list([
-                  'Unlimited',
-                ]),
                 'type': 'string',
               }),
               dict({
@@ -808,18 +787,12 @@
           'type': dict({
             'const': 'item',
             'default': 'item',
-            'enum': list([
-              'item',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),
           'weapon_type': dict({
             'const': 'ranged',
             'default': 'ranged',
-            'enum': list([
-              'ranged',
-            ]),
             'title': 'Weapon Type',
             'type': 'string',
           }),
@@ -884,9 +857,6 @@
           'type': dict({
             'const': 'skill',
             'default': 'skill',
-            'enum': list([
-              'skill',
-            ]),
             'title': 'Type',
             'type': 'string',
           }),

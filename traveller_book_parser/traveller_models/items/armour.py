@@ -66,9 +66,9 @@ class Armour(BaseItem):
     item_type: Literal[ItemType.armour] = Field(repr=False, default=ItemType.armour)
 
     protection: int
-    protection_laser: int = Field(default=None)
-    protection_plasma: int = Field(default=None)
-    protection_psionics: int = Field(default=None)
+    protection_laser: Optional[int] = Field(default=None)
+    protection_plasma: Optional[int] = Field(default=None)
+    protection_psionics: Optional[int] = Field(default=None)
 
     radiation_protection: int = 0
     required_skill: Optional[Skill] = None
