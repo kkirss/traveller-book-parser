@@ -1,25 +1,24 @@
 # serializer version: 1
 # name: test_schema_help_cli
   '''
-                                                                                 
-   Usage: root schema [OPTIONS] COMMAND [ARGS]...                                
-                                                                                 
-   Dump the JSON schema of models.                                               
-                                                                                 
-  ┌─ Options ───────────────────────────────────────────────────────────────────┐
-  │ --help          Show this message and exit.                                 │
-  └─────────────────────────────────────────────────────────────────────────────┘
-  ┌─ Commands ──────────────────────────────────────────────────────────────────┐
-  │ BookDescription   Dump the JSON schema of the 'BookDescription' model.      │
-  │ TravDatabase      Dump the JSON schema of the 'TravDatabase' model.         │
-  │ TravObject        Dump the JSON schema of the 'TravObject' model.           │
-  │ TravModels        Dump the JSON schema of the 'TravModelsGlossary' model.   │
-  │ TravBookParser    Dump the JSON schema of the 'TravBookParserGlossary'      │
-  │                   model.                                                    │
-  │ Settings          Dump the JSON schema of the 'Settings' model.             │
-  │ all               Dump all JSON schema files.                               │
-  └─────────────────────────────────────────────────────────────────────────────┘
-  
+                                                                                  
+   Usage: root schema [OPTIONS] COMMAND [ARGS]...                                 
+                                                                                  
+   Dump the JSON schema of models.                                                
+                                                                                  
+  ╭─ Options ────────────────────────────────────────────────────────────────────╮
+  │ --help          Show this message and exit.                                  │
+  ╰──────────────────────────────────────────────────────────────────────────────╯
+  ╭─ Commands ───────────────────────────────────────────────────────────────────╮
+  │ BookDescription   Dump the JSON schema of the 'BookDescription' model.       │
+  │ TravDatabase      Dump the JSON schema of the 'TravDatabase' model.          │
+  │ TravObject        Dump the JSON schema of the 'TravObject' model.            │
+  │ TravModels        Dump the JSON schema of the 'TravModelsGlossary' model.    │
+  │ TravBookParser    Dump the JSON schema of the 'TravBookParserGlossary'       │
+  │                   model.                                                     │
+  │ Settings          Dump the JSON schema of the 'Settings' model.              │
+  │ all               Dump all JSON schema files.                                │
+  ╰──────────────────────────────────────────────────────────────────────────────╯
   
   '''
 # ---

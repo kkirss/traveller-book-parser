@@ -12,5 +12,5 @@ def test_parse_help_cli(snapshot: SnapshotAssertion, cli_runner: CliRunner):
     result = cli_runner.invoke(app, [*command])
 
     # Assert
-    assert result.exit_code == 0, result.output
+    assert result.exit_code == 2, result.output
     assert result.output == snapshot

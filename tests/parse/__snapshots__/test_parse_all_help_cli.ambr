@@ -1,19 +1,19 @@
 # serializer version: 1
 # name: test_parse_all_help_cli
   '''
-                                                                                 
-   Usage: root parse all [OPTIONS]                                               
-                                                                                 
-   Parse all books and print processed objects.                                  
-                                                                                 
-  ┌─ Options ───────────────────────────────────────────────────────────────────┐
-  │ --output-format        [cheat_sheet_pdf|json|non  [default: json]           │
-  │                        e]                                                   │
-  │ --output-type          [stdout|file]              [default: stdout]         │
-  │ --output-path          PATH                       [default: None]           │
-  │ --help                                            Show this message and     │
-  │                                                   exit.                     │
-  └─────────────────────────────────────────────────────────────────────────────┘
+                                                                                  
+   Usage: root parse all [OPTIONS]                                                
+                                                                                  
+   Parse all books and print processed objects.                                   
+                                                                                  
+  ╭─ Options ────────────────────────────────────────────────────────────────────╮
+  │ --output-format        [cheat_sheet_pdf|json|non  [default: json]            │
+  │                        e]                                                    │
+  │ --output-type          [stdout|file]              [default: stdout]          │
+  │ --output-path          PATH                                                  │
+  │ --help                                            Show this message and      │
+  │                                                   exit.                      │
+  ╰──────────────────────────────────────────────────────────────────────────────╯
   
   
   '''

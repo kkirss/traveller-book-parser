@@ -34,15 +34,15 @@ packages = [{include = "traveller_book_parser"}]
 traveller-book-parser = "traveller_book_parser.cli:run_cli"
 
 [tool.poetry.dependencies]
-python = "~3.11"
+python = "~=3.11"
 pandas = "2.2.3"
 pdfplumber = "0.11.4"
 plum-dispatch = "2.5.4"
 pydantic = "2.10.4"
 pydantic-settings = "2.7.0"
 tabula-py = { version = "2.9.3", extras = ["jpype"] }
-typer = "0.15.1"
-rich = "13.9.0"
+typer = "0.17.3"
+rich = "14.1.0"
 
 [tool.poetry.dev-dependencies]
 ruff = "0.8.4"
