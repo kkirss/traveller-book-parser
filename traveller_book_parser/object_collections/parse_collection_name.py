@@ -4,9 +4,13 @@ from traveller_book_parser.books.book_description import (
     BookDescription,
     get_book_file_path,
 )
+from traveller_book_parser.data_sources.html.data_source_description import (
+    HTMLDataSourceDescription,
+)
 from traveller_book_parser.data_sources.pdfplumber.guess_header import guess_page_header
-
-from .collection_description import CollectionDescription
+from traveller_book_parser.object_collections.collection_description import (
+    CollectionDescription,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +35,11 @@ def get_collection_name_page(collection_description: CollectionDescription) -> i
         return (
             data_source_description.page  # pyright: ignore [reportAttributeAccessIssue]
         )
+
+    if isinstance(data_source_description, HTMLDataSourceDescription):
+        pages_list = data_source_description.pages_range_list
+        if pages_list:
+            return pages_list[0][0]  # Return the start of the first range
 
     raise NotImplementedError(
         f"Guessing collection name is not supported for this data source: {data_source_description}"

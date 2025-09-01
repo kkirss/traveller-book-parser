@@ -38,7 +38,9 @@ class Characteristic(TravObjectBase):
     """Characteristic with optional level."""
 
     type: Literal[TravObjectType.CHARACTERISTIC] = Field(
-        repr=False, default=TravObjectType.CHARACTERISTIC
+        repr=False,
+        default=TravObjectType.CHARACTERISTIC,
+        json_schema_extra={"default": "characteristic"},
     )
     characteristic_type: CharacteristicType = Field(repr=True)
 

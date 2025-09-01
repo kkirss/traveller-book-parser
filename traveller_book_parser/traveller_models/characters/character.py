@@ -14,11 +14,17 @@ class Character(TravObjectBase):
     """Character."""
 
     type: Literal[TravObjectType.CHARACTER] = Field(
-        repr=False, default=TravObjectType.CHARACTER
+        repr=False, 
+        default=TravObjectType.CHARACTER,
+        json_schema_extra={"default": TravObjectType.CHARACTER.value}
     )
 
-    characteristics: list[Characteristic] = Field(default_factory=list)
-    skills: list[Skill] = Field(default_factory=list)
+    characteristics: list[Characteristic] = Field(
+        default_factory=lambda : []
+    )
+    skills: list[Skill] = Field(
+        default_factory=lambda : []
+    )
 
 
 def create_character(**kwargs: Any) -> Character:  # noqa: ANN401
