@@ -86,6 +86,7 @@ ignore = [
     "EM102",  # Exception must not use an f-string literal, assign to variable first
     # TODO: Enable following:
     "UP007",  # Allow Optional[pathlib.Path] for typer command arguments to work
+    "EXE002",  # TODO: A bunch of files are marked as executable, we should remove the executable flag from these
 ]
 
 [tool.ruff.lint.per-file-ignores]
