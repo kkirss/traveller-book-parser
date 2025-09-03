@@ -19,6 +19,4 @@ def remove_credits_prefix(value: Any) -> Any:  # noqa: ANN401
             value = float(value.removeprefix(MEGA_CREDIT)) * 1000000
         elif value.startswith(CREDIT):
             value = float(value.removeprefix(CREDIT))
-        else:
-            return float(value)
     return value
